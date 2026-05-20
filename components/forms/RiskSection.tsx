@@ -1,16 +1,17 @@
 import { useFormContext } from "react-hook-form";
 import RiskChoices from "./Risks/RiskChoices";
 import CirculationRisk from "./Risks/CirculationRisk";
-import BruitRisk from "./Risks/Bruit";
-import ChutePlainPiedRisk from "./Risks/ChutePlainPied";
-import ChuteHauteurRisk from "./Risks/ChuteHauteur";
-import ChuteMaterielRisk from "./Risks/ChuteMateriel";
+import BruitRisk from "./Risks/BruitRisk";
+import ChutePlainPiedRisk from "./Risks/ChutePlainPiedRisk";
+import ChuteHauteurRisk from "./Risks/ChuteHauteurRisk";
+import ChuteMaterielRisk from "./Risks/ChuteMaterielRisk";
 import Manutention from "./Risks/ManutentionManuelMecanique";
-import MachineRisk from "./Risks/Machine";
+import MachineRisk from "./Risks/MachineRisk";
 import ElectricRisk from "./Risks/ElectricRisk";
 import OutillageRisk from "./Risks/OutillageRisk";
 import IncendieRisk from "./Risks/IncendieRisk";
 import BioChimRisk from "./Risks/BioChimRisk";
+import EspaceConfinesRisk from "./Risks/EspacesConfinesRisk";
 
 export default function RiskSection() {
   const { register, watch } = useFormContext();
@@ -25,6 +26,7 @@ export default function RiskSection() {
   const outillage = watch("risques.outillage.state");
   const incendie = watch("risques.incendie.state");
   const bioChim = watch("risques.bioChim.state");
+  const espaceconfine = watch("risques.espaceconfine.state");
 
   return (
     <div className="mt-5 ">
@@ -39,6 +41,7 @@ export default function RiskSection() {
       {chutePlainPied && <ChutePlainPiedRisk />}
       {circulation && <CirculationRisk />}
       {electric && <ElectricRisk />}
+      {espaceconfine && <EspaceConfinesRisk />}
       {incendie && <IncendieRisk />}
       {machine && <MachineRisk />}
       {manutention && <Manutention />}
