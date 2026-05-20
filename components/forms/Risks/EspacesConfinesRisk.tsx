@@ -63,7 +63,7 @@ export default function EspaceConfinesRisk() {
           {/* MESURE 1 (Haut du bloc) */}
           <tr>
             {/* Colonne Phases (Fusionnée sur les 4 lignes de mesures) */}
-            <td rowSpan={6} className="border border-black align-top p-3">
+            <td rowSpan={5} className="border border-black align-top p-3">
               <div className="flex flex-col gap-4">
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                   <input
