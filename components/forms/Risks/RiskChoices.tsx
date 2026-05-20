@@ -30,22 +30,12 @@ export default function RiskChoices() {
                 <label className="text-sm flex items-center gap-1 leading-snug">
                   <input
                     type="checkbox"
-                    {...register("risques.chutePied.state")}
-                    className="scale-75 accent-black w-4 shrink-0"
-                  />
-                  Chute de plain pied
-                </label>
-
-                <div></div>
-
-                <label className="text-sm flex items-center gap-1 leading-snug">
-                  <input
-                    type="checkbox"
                     {...register("risques.chuteHauteur.state")}
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Chute de hauteur
                 </label>
+                <div></div>
 
                 <label className="text-sm flex items-center gap-1 leading-snug">
                   <input
@@ -55,6 +45,16 @@ export default function RiskChoices() {
                   />
                   Chute de matériel
                 </label>
+
+                <label className="text-sm flex items-center gap-1 leading-snug">
+                  <input
+                    type="checkbox"
+                    {...register("risques.chutePied.state")}
+                    className="scale-75 accent-black w-4 shrink-0"
+                  />
+                  Chute de plain pied
+                </label>
+
                 <div></div>
 
                 <label className="text-sm flex items-center gap-1 leading-snug">
