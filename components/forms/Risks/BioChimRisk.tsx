@@ -178,7 +178,7 @@ export default function BioChimRisk() {
                     type="checkbox"
                     className="scale-75 accent-black w-4 shrink-0 mt-1"
                   />
-                  Nocif, irritan
+                  Nocif, irritant
                 </label>
 
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
