@@ -17,6 +17,11 @@ import RescueOrganizationSection from "@/components/forms/RescueOrganizationSect
 import CompanyInformationSection1 from "@/components/forms/CompanyInformationSection1";
 import CompanyInformationSection2 from "@/components/forms/CompanyInformationSection2";
 import JointInspectionSection from "@/components/forms/JointInspectionSection";
+import CovidSection from "@/components/forms/CovidSection";
+import FilesToCompanySection from "@/components/forms/FilesToCompanySection";
+import SocialOfficeSection from "@/components/forms/SocialOfficeSection";
+import InstructionsSection from "@/components/forms/InstructionsSection";
+import SignatureSection from "@/components/forms/SignatureSection";
 
 const schema = z.object({
   entreprise: z.string().min(1, "Entreprise obligatoire"),
@@ -61,6 +66,11 @@ export default function Page({
           <JointInspectionSection />
 
           <RiskSection />
+          <CovidSection />
+          <FilesToCompanySection />
+          <SocialOfficeSection />
+          <InstructionsSection />
+          <SignatureSection />
 
           <div className="text-red-500 text-sm">
             {methods.formState.errors.entreprise?.message}

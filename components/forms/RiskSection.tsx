@@ -12,6 +12,7 @@ import OutillageRisk from "./Risks/OutillageRisk";
 import IncendieRisk from "./Risks/IncendieRisk";
 import BioChimRisk from "./Risks/BioChimRisk";
 import EspaceConfinesRisk from "./Risks/EspacesConfinesRisk";
+import AmianteRisk from "./Risks/AmianteRisk";
 
 export default function RiskSection() {
   const { register, watch } = useFormContext();
@@ -27,6 +28,7 @@ export default function RiskSection() {
   const incendie = watch("risques.incendie.state");
   const bioChim = watch("risques.bioChim.state");
   const espaceconfine = watch("risques.espaceconfine.state");
+  const amiante = watch("risques.amiante.state");
 
   return (
     <div className="mt-5 ">
@@ -47,6 +49,7 @@ export default function RiskSection() {
       {manutention && <Manutention />}
       {outillage && <OutillageRisk />}
       {bioChim && <BioChimRisk />}
+      {amiante && <AmianteRisk />}
     </div>
   );
 }

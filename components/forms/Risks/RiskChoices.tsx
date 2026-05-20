@@ -134,6 +134,15 @@ export default function RiskChoices() {
                   Risque de contamination biologique <br />
                   et chimique
                 </label>
+                <div></div>
+                <label className="text-sm flex items-center gap-1 leading-snug ">
+                  <input
+                    type="checkbox"
+                    {...register("risques.amiante.state")}
+                    className="scale-75 accent-black w-4 shrink-0"
+                  />
+                  Risque à l'amiante
+                </label>
               </div>
             </td>
           </tr>

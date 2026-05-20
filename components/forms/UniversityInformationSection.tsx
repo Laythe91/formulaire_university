@@ -43,7 +43,7 @@ export default function UniversityInformationSection() {
                 <input
                   {...register("commentaire")}
                   className="border px-2 py-0.5 text-center text-sm"
-                  placeholder="01.49.40."
+                  placeholder="format 01.49.40.00.00"
                   type="text"
                 />
               </div>
@@ -52,7 +52,7 @@ export default function UniversityInformationSection() {
                 <input
                   {...register("commentaire")}
                   className="border px-2 py-0.5 text-center text-sm"
-                  placeholder="Numéro de portable"
+                  placeholder="format 06.00.00.00.00"
                   type="text"
                 />
               </div>

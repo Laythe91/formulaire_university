@@ -20,6 +20,7 @@ export default function ExecutionConditionSection() {
               <label className="text-sm flex items-start pl-20 leading-snug">
                 <input
                   type="checkbox"
+                  {...register("Condition.1.state")}
                   className="scale-75 accent-black mt-1 w-4 shrink-0"
                 />
                 Protections collectives existantes
@@ -28,6 +29,7 @@ export default function ExecutionConditionSection() {
               <label className="text-sm flex items-start pl-20 leading-snug">
                 <input
                   type="checkbox"
+                  {...register("Condition.2.state")}
                   className="scale-75 accent-black mt-1 w-4 shrink-0"
                 />
                 Protections collectives inexistantes
@@ -36,6 +38,7 @@ export default function ExecutionConditionSection() {
               <label className="text-sm flex items-start pl-20 leading-snug">
                 <input
                   type="checkbox"
+                  {...register("Condition.3.state")}
                   className="scale-75 accent-black mt-1 w-4 shrink-0"
                 />
                 Protections individuelles EPI à définir précisément dans le
@@ -47,6 +50,7 @@ export default function ExecutionConditionSection() {
               <label className="text-sm flex items-start pl-20 leading-snug">
                 <input
                   type="checkbox"
+                  {...register("Condition.4.state")}
                   className="scale-75 accent-black mt-1 w-4 shrink-0"
                 />
 
@@ -59,6 +63,7 @@ export default function ExecutionConditionSection() {
               <label className="text-sm flex items-start pl-20 leading-snug">
                 <input
                   type="checkbox"
+                  {...register("Condition.5.state")}
                   className="scale-75 accent-black mt-1 w-4 shrink-0"
                 />
 
@@ -73,6 +78,7 @@ export default function ExecutionConditionSection() {
               <label className="text-sm flex items-start pl-20 leading-snug">
                 <input
                   type="checkbox"
+                  {...register("condition.6.state")}
                   className="scale-75 accent-black mt-1 w-4 shrink-0"
                 />
                 Sauveteur Secouriste du Travail – SST (Cf Décret n° 2004-924 du

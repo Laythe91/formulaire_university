@@ -92,7 +92,7 @@ export default function BioChimRisk() {
           {/* MESURE 1 (Haut du bloc) */}
           <tr>
             {/* Colonne Phases (Fusionnée sur les 4 lignes de mesures) */}
-            <td rowSpan={18} className="border border-black align-top p-3">
+            <td rowSpan={13} className="border border-black align-top p-3">
               <div className="flex flex-col gap-4">
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                   <input
@@ -197,24 +197,6 @@ export default function BioChimRisk() {
                     className="scale-75 accent-black w-4 shrink-0 mt-1"
                   />
                   Explosif
-                </label>
-
-                <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
-                  <input
-                    {...register("Risk.bioChim.phase.11")}
-                    type="checkbox"
-                    className="scale-75 accent-black w-4 shrink-0 mt-1"
-                  />
-                  Intervention sur matériau susceptible de contenir de l’amiante
-                </label>
-
-                <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
-                  <input
-                    {...register("Risk.bioChim.phase.12")}
-                    type="checkbox"
-                    className="scale-75 accent-black w-4 shrink-0 mt-1"
-                  />
-                  Travaux de retrait et/ou confinement de l’amiante
                 </label>
 
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
@@ -661,185 +643,6 @@ export default function BioChimRisk() {
             <td className="border-x border-black align-top p-3 pt-1 text-center">
               <input
                 {...register("Risk.bioChim.ee.13")}
-                type="checkbox"
-                className="scale-75 accent-black mt-1"
-              />
-            </td>
-          </tr>
-
-          <tr>
-            {/* Mesure 14 */}
-            <td className="border-x border-black align-top p-3 pt-1">
-              <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
-                <input
-                  {...register("Risk.bioChim.mesure.14")}
-                  type="checkbox"
-                  className="scale-75 accent-black w-4 shrink-0 mt-1"
-                />
-
-                <span>
-                  Interdiction{" "}
-                  <span className="text-red-600 font-bold">
-                    d’intervenir sans prévenir le Responsable du Service
-                    Technique du patrimoine
-                  </span>{" "}
-                </span>
-              </label>
-            </td>
-
-            {/* Université 14 */}
-            <td className="border-x  border-black align-top p-3 pt-1 text-center">
-              <input
-                {...register("Risk.bioChim.universite.14")}
-                type="checkbox"
-                className="scale-75 accent-black mt-1"
-              />
-            </td>
-
-            {/* EE 14 */}
-            <td className="border-x border-black align-top p-3 pt-1 text-center">
-              <input
-                {...register("Risk.bioChim.ee.14")}
-                type="checkbox"
-                className="scale-75 accent-black mt-1"
-              />
-            </td>
-          </tr>
-
-          <tr>
-            {/* Mesure 15 */}
-            <td className="border-x border-black align-top p-3 pt-1">
-              <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
-                <input
-                  {...register("Risk.bioChim.mesure.15")}
-                  type="checkbox"
-                  className="scale-75 accent-black w-4 shrink-0 mt-1"
-                />
-
-                <span>
-                  Réalisation d’un{" "}
-                  <span className="text-red-600 font-bold">
-                    plan de retrait
-                  </span>{" "}
-                </span>
-              </label>
-            </td>
-
-            {/* Université 15 */}
-            <td className="border-x  border-black align-top p-3 pt-1 text-center">
-              <input
-                {...register("Risk.bioChim.universite.15")}
-                type="checkbox"
-                className="scale-75 accent-black mt-1"
-              />
-            </td>
-
-            {/* EE 15 */}
-            <td className="border-x border-black align-top p-3 pt-1 text-center">
-              <input
-                {...register("Risk.bioChim.ee.15")}
-                type="checkbox"
-                className="scale-75 accent-black mt-1"
-              />
-            </td>
-          </tr>
-
-          <tr>
-            {/* Mesure 16 */}
-            <td className="border-x border-black align-top p-3 pt-1">
-              <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
-                <input
-                  {...register("Risk.bioChim.mesure.16")}
-                  type="checkbox"
-                  className="scale-75 accent-black w-4 shrink-0 mt-1"
-                />
-                Présenter et respecter le protocole pour limiter l’émission de
-                fibres
-              </label>
-            </td>
-
-            {/* Université 16 */}
-            <td className="border-x  border-black align-top p-3 pt-1 text-center">
-              <input
-                {...register("Risk.bioChim.universite.16")}
-                type="checkbox"
-                className="scale-75 accent-black mt-1"
-              />
-            </td>
-
-            {/* EE 16 */}
-            <td className="border-x border-black align-top p-3 pt-1 text-center">
-              <input
-                {...register("Risk.bioChim.ee.16")}
-                type="checkbox"
-                className="scale-75 accent-black mt-1"
-              />
-            </td>
-          </tr>
-
-          <tr>
-            {/* Mesure 17 */}
-            <td className="border-x border-black align-top p-3 pt-1">
-              <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
-                <input
-                  {...register("Risk.bioChim.mesure.17")}
-                  type="checkbox"
-                  className="scale-75 accent-black w-4 shrink-0 mt-1"
-                />
-                Utilisation d’EPI (blouses, masques P3, gants latex et gants de
-                manutention, tenue jetable, bottes de sécurité étanche et
-                antidérapantes, appareil de protection respiratoire à
-                ventilation assistée, ruban adhésif pour étanchéité des points
-                de jonction, protections auditives)
-              </label>
-            </td>
-
-            {/* Université 17 */}
-            <td className="border-x  border-black align-top p-3 pt-1 text-center">
-              <input
-                {...register("Risk.bioChim.universite.17")}
-                type="checkbox"
-                className="scale-75 accent-black mt-1"
-              />
-            </td>
-
-            {/* EE 17 */}
-            <td className="border-x border-black align-top p-3 pt-1 text-center">
-              <input
-                {...register("Risk.bioChim.ee.17")}
-                type="checkbox"
-                className="scale-75 accent-black mt-1"
-              />
-            </td>
-          </tr>
-
-          <tr>
-            {/* Mesure 18 */}
-            <td className="border-x border-black align-top p-3 pt-1">
-              <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
-                <input
-                  {...register("Risk.bioChim.mesure.18")}
-                  type="checkbox"
-                  className="scale-75 accent-black w-4 shrink-0 mt-1"
-                />
-                Autre : stockage des déchets amiantés, utilisation sacs
-                spécifiques
-              </label>
-            </td>
-
-            {/* Université 18 */}
-            <td className="border-x  border-black align-top p-3 pt-1 text-center">
-              <input
-                {...register("Risk.bioChim.universite.18")}
-                type="checkbox"
-                className="scale-75 accent-black mt-1"
-              />
-            </td>
-
-            {/* EE 18 */}
-            <td className="border-x border-black align-top p-3 pt-1 text-center">
-              <input
-                {...register("Risk.bioChim.ee.18")}
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />

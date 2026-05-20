@@ -31,6 +31,8 @@ export default function RescueOrganizationSection() {
               {EMERGENCY_CONTACT.agent_tel1}{" "}
               <span className="font-bold"> OU </span>
               {EMERGENCY_CONTACT.agent_tel2}{" "}
+              <span className="font-bold"> OU </span>
+              {EMERGENCY_CONTACT.agent_tel3}{" "}
             </div>
             <div className="text-sm mb-1">
               <span className="underline">Horaires d'ouverture</span> : 24h /
