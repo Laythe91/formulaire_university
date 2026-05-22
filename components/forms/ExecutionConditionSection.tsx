@@ -1,7 +1,42 @@
+import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
 export default function ExecutionConditionSection() {
-  const { register, watch } = useFormContext();
+  const { register, watch, setValue } = useFormContext();
+  const existante = watch("Condition.1.state");
+  const inexistante = watch("Condition.2.state");
+
+  const cond1 = watch("Condition.1.state");
+  const cond2 = watch("Condition.2.state");
+  const cond3 = watch("Condition.3.state");
+
+  useEffect(() => {
+    const valid = (cond1 || cond2) && cond3;
+
+    setValue("Condition.state", valid, {
+      shouldDirty: false,
+    });
+  }, [cond1, cond2, cond3, setValue]);
+
+  const handleExclusive = (
+    field: "existante" | "inexistante",
+    value: boolean,
+  ) => {
+    if (field === "existante") {
+      setValue("Condition.1.state", value);
+      if (value) {
+        setValue("Condition.2.state", false);
+      }
+    }
+
+    if (field === "inexistante") {
+      setValue("Condition.2.state", value);
+      if (value) {
+        setValue("Condition.1.state", false);
+      }
+    }
+  };
+
   return (
     <table className="w-full border-2 border-black border-collapse table-fixed mt-1">
       <tbody>
@@ -20,7 +55,10 @@ export default function ExecutionConditionSection() {
               <label className="text-sm flex items-start pl-20 leading-snug">
                 <input
                   type="checkbox"
-                  {...register("Condition.1.state")}
+                  checked={existante}
+                  onChange={(e) =>
+                    handleExclusive("existante", e.target.checked)
+                  }
                   className="scale-75 accent-black mt-1 w-4 shrink-0"
                 />
                 Protections collectives existantes
@@ -29,7 +67,10 @@ export default function ExecutionConditionSection() {
               <label className="text-sm flex items-start pl-20 leading-snug">
                 <input
                   type="checkbox"
-                  {...register("Condition.2.state")}
+                  checked={inexistante}
+                  onChange={(e) =>
+                    handleExclusive("inexistante", e.target.checked)
+                  }
                   className="scale-75 accent-black mt-1 w-4 shrink-0"
                 />
                 Protections collectives inexistantes
@@ -78,7 +119,7 @@ export default function ExecutionConditionSection() {
               <label className="text-sm flex items-start pl-20 leading-snug">
                 <input
                   type="checkbox"
-                  {...register("condition.6.state")}
+                  {...register("Condition.6.state")}
                   className="scale-75 accent-black mt-1 w-4 shrink-0"
                 />
                 Sauveteur Secouriste du Travail – SST (Cf Décret n° 2004-924 du

@@ -16,32 +16,37 @@ export default function BioChimRisk() {
           <Image
             src="/pictograms/produit-corrosif.svg"
             alt="Chute de plain pied"
-            width={50}
-            height={50}
+            width={128}
+            height={128}
+            className="h-12.5 w-auto"
           />
           <Image
             src="/pictograms/produit-nocif.svg"
             alt="Chute de plain pied"
-            width={50}
-            height={50}
+            width={128}
+            height={128}
+            className="h-12.5 w-auto"
           />
           <Image
             src="/pictograms/produit-inflammable.svg"
             alt="Chute de plain pied"
-            width={50}
-            height={50}
+            width={128}
+            height={128}
+            className="h-12.5 w-auto"
           />
           <Image
             src="/pictograms/produit-toxique.svg"
             alt="Chute de plain pied"
-            width={50}
-            height={50}
+            width={128}
+            height={128}
+            className="h-12.5 w-auto"
           />
           <Image
             src="/pictograms/produit-explosif.svg"
             alt="Chute de plain pied"
-            width={50}
-            height={50}
+            width={128}
+            height={128}
+            className="h-12.5 w-auto"
           />
         </div>
       </div>

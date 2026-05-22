@@ -12,8 +12,9 @@ export default function MachineRisk() {
         <Image
           src="/pictograms/machine.svg"
           alt="machine"
-          width={50}
-          height={50}
+          width={128}
+          height={128}
+          className="h-12.5 w-auto"
         />
       </div>
 

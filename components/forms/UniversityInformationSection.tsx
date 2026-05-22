@@ -1,8 +1,27 @@
 import { PRESIDENT_CONTACT } from "@/app/const/const";
 import { useFormContext } from "react-hook-form";
+import { useEffect } from "react";
 
 export default function UniversityInformationSection() {
-  const { register, watch } = useFormContext();
+  const { register, watch, setValue } = useFormContext();
+
+  const nom = watch("UniversityInformation.nom");
+  const phone1 = watch("UniversityInformation.phone1");
+  const phone2 = watch("UniversityInformation.phone2");
+
+  const phoneRegex = /^(\d{2}\.){4}\d{2}$/;
+
+  useEffect(() => {
+    const isValid =
+      (nom?.trim().length ?? 0) > 0 &&
+      phoneRegex.test(phone1 || "") &&
+      phoneRegex.test(phone2 || "");
+
+    setValue("UniversityInformation.state", isValid, {
+      shouldDirty: false,
+    });
+  }, [nom, phone1, phone2, setValue]);
+
   return (
     <table className="w-full border-2 border-black border-collapse table-fixed mt-1">
       <tbody>
@@ -31,7 +50,7 @@ export default function UniversityInformationSection() {
                 différente du donneur d’ordre) :{" "}
               </span>
               <input
-                {...register("commentaire")}
+                {...register("UniversityInformation.nom")}
                 className="border px-2 py-0.5 text-center text-sm"
                 placeholder="Donneur d'ordre"
                 type="text"
@@ -41,7 +60,7 @@ export default function UniversityInformationSection() {
               <div className="pl-2">
                 Tél :{" "}
                 <input
-                  {...register("commentaire")}
+                  {...register("UniversityInformation.phone1")}
                   className="border px-2 py-0.5 text-center text-sm"
                   placeholder="format 01.49.40.00.00"
                   type="text"
@@ -50,7 +69,7 @@ export default function UniversityInformationSection() {
               <div className="">
                 Portable :{" "}
                 <input
-                  {...register("commentaire")}
+                  {...register("UniversityInformation.phone2")}
                   className="border px-2 py-0.5 text-center text-sm"
                   placeholder="format 06.00.00.00.00"
                   type="text"

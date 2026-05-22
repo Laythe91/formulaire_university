@@ -9,7 +9,13 @@ export default function BruitRisk() {
       {/* En-tête du Risque */}
       <div className="bg-yellow-100 border-black border-2 flex flex-col justify-center items-center text-center uppercase mt-3 h-20">
         <span className="font-semibold">Bruit</span>
-        <Image src="/pictograms/bruit.svg" alt="Bruit" width={50} height={50} />
+        <Image
+          src="/pictograms/bruit.svg"
+          alt="Bruit"
+          width={128}
+          height={128}
+          className="h-12.5 w-auto"
+        />
       </div>
 
       {/* Tableau Unique Structuré */}

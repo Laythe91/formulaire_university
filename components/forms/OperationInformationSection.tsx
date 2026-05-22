@@ -1,9 +1,66 @@
+import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
+type Props = {
+  date: string;
+};
 
-export default function OperationInformationSection() {
-  const { register, watch } = useFormContext();
+export default function OperationInformationSection({ date }: Props) {
+  const { register, watch, setValue } = useFormContext();
+  const dateRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
+  const yearRegex = /^\d{4}$/;
   const annuel = watch("Operation.annuel.state");
   const ponctuel = watch("Operation.ponctuel.state");
+  const start = watch("Operation.date.start");
+  const end = watch("Operation.date.end");
+  const objet = watch("Operation.objet");
+  const year = date.split("/")[2];
+
+  const handleExclusive = (field: "annuel" | "ponctuel", value: boolean) => {
+    if (field === "annuel") {
+      setValue("Operation.annuel.state", value);
+      if (value) {
+        setValue("Operation.ponctuel.state", false);
+        setValue("Operation.date.start", year);
+        setValue("Operation.date.end", year);
+      }
+    }
+
+    if (field === "ponctuel") {
+      setValue("Operation.ponctuel.state", value);
+      if (value) {
+        setValue("Operation.annuel.state", false);
+        setValue("Operation.date.start", "");
+        setValue("Operation.date.end", "");
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (!annuel) return;
+    if (!start) return;
+
+    setValue("Operation.date.end", start, {
+      shouldDirty: true,
+      shouldValidate: true,
+    });
+  }, [start, annuel, setValue]);
+
+  useEffect(() => {
+    const hasType = annuel || ponctuel;
+
+    const validDate = annuel
+      ? yearRegex.test(start) && yearRegex.test(end)
+      : dateRegex.test(start) && dateRegex.test(end);
+
+    const validObjet = (objet ?? "").trim().length >= 6;
+
+    const isValid = hasType && validDate && validObjet;
+
+    setValue("Operation.state", isValid, {
+      shouldDirty: false,
+    });
+  }, [annuel, ponctuel, start, end, objet, setValue]);
+
   return (
     <table className="w-full border-2 border-black border-collapse table-fixed mt-3">
       <tbody>
@@ -21,8 +78,9 @@ export default function OperationInformationSection() {
 
               <label className="text-sm flex items-center gap-1 leading-snug">
                 <input
-                  {...register("Operation.annuel.state")}
                   type="checkbox"
+                  checked={annuel}
+                  onChange={(e) => handleExclusive("annuel", e.target.checked)}
                   className="scale-75 accent-black w-4 shrink-0"
                 />
                 Annuelle
@@ -30,7 +88,7 @@ export default function OperationInformationSection() {
 
               <label className="text-sm flex items-center gap-1 leading-snug">
                 <input
-                  {...register("Operation.400.state")}
+                  {...register("Operation.plus400h.state")}
                   type="checkbox"
                   className="scale-75 accent-black w-4 shrink-0"
                 />
@@ -41,8 +99,11 @@ export default function OperationInformationSection() {
 
               <label className="text-sm flex items-center gap-1 leading-snug">
                 <input
-                  {...register("Operation.ponctuel.state")}
                   type="checkbox"
+                  checked={ponctuel}
+                  onChange={(e) =>
+                    handleExclusive("ponctuel", e.target.checked)
+                  }
                   className="scale-75 accent-black w-4 shrink-0"
                 />
                 Ponctuelle
@@ -71,29 +132,60 @@ export default function OperationInformationSection() {
                 </div>
               </td>
 
-              <td className="border border-black p-2 w-1/3 text-center">
-                <div className="font-semibold text-sm">
-                  Date prévisible de début :
-                  <input
-                    {...register("Operation.date.start")}
-                    className="border px-2 py-0.5 w-full text-center uppercase text-sm"
-                    placeholder="JJ/MM/AAA"
-                    type="text"
-                  />
-                </div>
-              </td>
+              {ponctuel && (
+                <>
+                  <td className="border border-black p-2 w-1/3 text-center">
+                    <div className="font-semibold text-sm">
+                      Date prévisible de début :
+                      <input
+                        {...register("Operation.date.start")}
+                        className="border px-2 py-0.5 w-full text-center uppercase text-sm"
+                        placeholder="JJ/MM/AAAA"
+                        type="text"
+                      />
+                    </div>
+                  </td>
 
-              <td className="border border-black p-2 w-1/3 text-center">
-                <div className="font-semibold text-sm">
-                  Date prévisible de fin :
-                  <input
-                    {...register("Operation.date.end")}
-                    className="border px-2 py-0.5 w-full text-center uppercase text-sm"
-                    placeholder="JJ/MM/AAA"
-                    type="text"
-                  />
-                </div>
-              </td>
+                  <td className="border border-black p-2 w-1/3 text-center">
+                    <div className="font-semibold text-sm">
+                      Date prévisible de fin :
+                      <input
+                        {...register("Operation.date.end")}
+                        className="border px-2 py-0.5 w-full text-center uppercase text-sm"
+                        placeholder="JJ/MM/AAAA"
+                        type="text"
+                      />
+                    </div>
+                  </td>
+                </>
+              )}
+              {annuel && (
+                <>
+                  <td className="border border-black p-2 w-1/3 text-center">
+                    <div className="font-semibold text-sm">
+                      Date prévisible de début :
+                      <input
+                        {...register("Operation.date.start")}
+                        className="border px-2 py-0.5 w-full text-center uppercase text-sm"
+                        placeholder="AAAA"
+                        type="text"
+                      />
+                    </div>
+                  </td>
+
+                  <td className="border border-black p-2 w-1/3 text-center">
+                    <div className="font-semibold text-sm">
+                      Date prévisible de fin :
+                      <input
+                        {...register("Operation.date.end")}
+                        className="border px-2 py-0.5 w-full text-center uppercase text-sm"
+                        placeholder="AAAA"
+                        type="text"
+                      />
+                    </div>
+                  </td>
+                </>
+              )}
             </tr>
             <tr>
               <td className="border p-1" colSpan={3}>

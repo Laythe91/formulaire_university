@@ -10,10 +10,11 @@ export default function EspaceConfinesRisk() {
       <div className="bg-yellow-100 border-black border-2 flex flex-col justify-center items-center text-center uppercase mt-3 h-20">
         <span className="font-semibold">Espace confinés</span>
         <Image
-          src="/pictograms/chute.svg"
+          src="/pictograms/confines.svg"
           alt="Chute de plain pied"
-          width={50}
-          height={50}
+          width={128}
+          height={128}
+          className="h-12.5 w-auto"
         />
       </div>
 

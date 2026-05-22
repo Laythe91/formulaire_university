@@ -1,7 +1,12 @@
 import { useFormContext } from "react-hook-form";
 
-export default function HeaderSection() {
+type Props = {
+  date: string;
+};
+
+export default function HeaderSection({ date }: Props) {
   const { register, watch } = useFormContext();
+  const ponctuel = watch("Operation.ponctuel.state");
   return (
     <table className="w-full border-2 border-black border-collapse table-fixed">
       <tbody>
@@ -27,14 +32,18 @@ export default function HeaderSection() {
             <div className="space-y-2 text-center">
               <div className="flex flex-col">
                 <span className=" text-gray-600">Plan</span>
-                <span className="font-semibold">Plan de prévention A1</span>
+                <div className="w-6 mx-16">
+                  <span
+                    className={`font-semibold ${!ponctuel ? "invisible" : ""}`}
+                  >
+                    P-
+                  </span>
+                </div>
               </div>
 
               <div className="flex flex-col">
                 <span className=" text-gray-600">Date</span>
-                <span className="font-semibold">
-                  {new Date().toLocaleDateString()}
-                </span>
+                <span className="font-semibold">{date}</span>
               </div>
             </div>
           </td>
