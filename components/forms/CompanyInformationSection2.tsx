@@ -1,10 +1,10 @@
 import { useFormContext } from "react-hook-form";
-import CompanyInformationSubSection1 from "./CompanyInformationSubSection1";
-import CompanyInformationSubSection2 from "./CompanyInformationSubSection2";
+import EntrepriseTitulaireInformation from "./EntrepriseTitulaireInformation";
+import EntrepriseSousTraitanteInformation from "./EntrepriseSousTraitanteInformation";
 
 export default function CompanyInformationSection2() {
   const { register, watch } = useFormContext();
-  const EntrepriseTitulaire = watch("Entreprise.titulaire.state");
+  const EntrepriseTitulaire = watch("Entreprise.titulaire.checkbox.state");
   return (
     <table className="w-full border-2 border-black border-collapse table-fixed mt-3">
       <tbody>
@@ -17,14 +17,14 @@ export default function CompanyInformationSection2() {
               </span>
 
               <input
-                {...register("Entreprise.titulaire.state")}
+                {...register("Entreprise.titulaire.checkbox.state")}
                 type="checkbox"
-                className="w-4 h-4"
+                className="w-4 h-4  accent-black"
               />
             </div>
           </td>
         </tr>
-        <CompanyInformationSubSection1 />
+        <EntrepriseTitulaireInformation />
 
         {EntrepriseTitulaire && (
           <>
@@ -36,15 +36,15 @@ export default function CompanyInformationSection2() {
                   </span>
 
                   <input
-                    {...register("Entreprise.soustraitant.state")}
+                    {...register("Entreprise.soustraitant.checkbox.state")}
                     type="checkbox"
-                    className="w-4 h-4"
+                    className="w-4 h-4  accent-black"
                   />
                 </div>
               </td>
             </tr>
 
-            <CompanyInformationSubSection2 />
+            <EntrepriseSousTraitanteInformation />
           </>
         )}
       </tbody>

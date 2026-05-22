@@ -7,7 +7,7 @@ export default function CompanyInformationSection1() {
       <tbody>
         {/* Ligne titre */}
         <tr>
-          <td className="border p-2" colSpan={3}>
+          <td className="border border-black p-2" colSpan={3}>
             {/* Titre */}
             <div className="font-bold uppercase underline text-sm mb-3">
               Renseignements sur L’Entreprise (Entreprise extérieure)
@@ -16,9 +16,9 @@ export default function CompanyInformationSection1() {
               <div className="text-sm mb-1">
                 <span className="font-bold">Effectif total prévu : </span>
                 <input
-                  {...register("commentaire")}
-                  className="border px-2 py-0.5 text-center text-sm w-3.5"
-                  placeholder="nombre de personnes"
+                  {...register("Entreprise.titulaire.effectif1")}
+                  className="border px-2 py-0.5 text-center text-sm w-13"
+                  placeholder=""
                   type="text"
                 />
                 <span className="font-bold"> personnes </span>
@@ -26,9 +26,9 @@ export default function CompanyInformationSection1() {
               <div className="text-sm mb-1">
                 <span className="font-bold">dont encadrement : </span>
                 <input
-                  {...register("commentaire")}
-                  className="border px-2 py-0.5 text-center text-sm w-3.5"
-                  placeholder="nombre de personnes"
+                  {...register("Entreprise.titulaire.effectif2")}
+                  className="border px-2 py-0.5 text-center text-sm w-13"
+                  placeholder=""
                   type="text"
                 />
                 <span className="font-bold"> personnes </span>

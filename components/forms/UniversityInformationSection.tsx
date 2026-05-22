@@ -27,7 +27,7 @@ export default function UniversityInformationSection() {
       <tbody>
         {/* Ligne titre */}
         <tr>
-          <td className="border p-2" colSpan={3}>
+          <td className="border border-black p-2" colSpan={3}>
             {/* Titre */}
             <div className="font-bold uppercase underline text-sm mb-3">
               RENSEIGNEMENTS SUR L’UNIVERSITE PARIS VIII (Entreprise

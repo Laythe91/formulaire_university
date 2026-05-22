@@ -42,7 +42,7 @@ export default function ExecutionConditionSection() {
       <tbody>
         {/* Ligne titre */}
         <tr>
-          <td className="border p-2" colSpan={3}>
+          <td className="border border-black p-2" colSpan={3}>
             {/* Titre */}
             <div className="font-bold uppercase underline text-sm mb-1">
               Condition d'éxécution

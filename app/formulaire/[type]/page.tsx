@@ -11,7 +11,6 @@ import {
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import GeneralSection from "@/components/forms/GeneralSection";
 import RiskSection from "@/components/forms/RiskSection";
 import HeaderSection from "@/components/forms/HeaderSection";
 import BottomHeaderSection from "@/components/forms/BottomHeaderSection";
@@ -32,7 +31,57 @@ import { schema } from "@/schema/form.schema";
 type FormData = {
   Entreprise: {
     titulaire: {
+      state: boolean;
+
+      checkbox: {
+        state: boolean;
+      };
+
       name: string;
+      address: string;
+      effectif: string;
+
+      tel: string;
+      fax: string;
+
+      representant: {
+        name: string;
+        tel: string;
+        mail: string;
+      };
+
+      responsable: {
+        name: string;
+        tel: string;
+        mail: string;
+      };
+    };
+
+    soustraitante: {
+      state: boolean;
+
+      checkbox: {
+        state: boolean;
+      };
+
+      name: string;
+      address: string;
+      effectif: string;
+
+      tel: string;
+      fax: string;
+
+      representant: {
+        name: string;
+        tel: string;
+        mail: string;
+      };
+
+      responsable: {
+        name: string;
+        tel: string;
+        mail: string;
+      };
     };
   };
 
@@ -77,7 +126,57 @@ export default function Page({
     defaultValues: {
       Entreprise: {
         titulaire: {
+          state: false,
+
+          checkbox: {
+            state: false,
+          },
+
           name: "",
+          address: "",
+          effectif: "",
+
+          tel: "",
+          fax: "",
+
+          representant: {
+            name: "",
+            tel: "",
+            mail: "",
+          },
+
+          responsable: {
+            name: "",
+            tel: "",
+            mail: "",
+          },
+        },
+
+        soustraitante: {
+          state: false,
+
+          checkbox: {
+            state: false,
+          },
+
+          name: "",
+          address: "",
+          effectif: "",
+
+          tel: "",
+          fax: "",
+
+          representant: {
+            name: "",
+            tel: "",
+            mail: "",
+          },
+
+          responsable: {
+            name: "",
+            tel: "",
+            mail: "",
+          },
         },
       },
       Operation: {

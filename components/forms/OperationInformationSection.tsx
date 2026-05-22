@@ -188,7 +188,7 @@ export default function OperationInformationSection({ date }: Props) {
               )}
             </tr>
             <tr>
-              <td className="border p-1" colSpan={3}>
+              <td className="border border-black p-1" colSpan={3}>
                 <div className=" font-bold text-sm ">
                   Nature/Objet de l'opération :
                 </div>

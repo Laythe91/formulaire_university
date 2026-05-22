@@ -8,7 +8,7 @@ export default function JointInspectionSection() {
       <tbody>
         {/* Ligne titre */}
         <tr>
-          <td className="border p-2" colSpan={3}>
+          <td className="border border-black p-2" colSpan={3}>
             {/* Titre */}
             <div className="font-bold underline text-sm mb-5">
               INSPECTION COMMUNE (préalable au début de l'opération)
