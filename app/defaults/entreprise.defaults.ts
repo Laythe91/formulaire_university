@@ -6,6 +6,9 @@ export const entrepriseDefaults: EntrepriseType = {
     effectif1: "",
     effectif2: "",
   },
+  information: {
+    state: false,
+  },
 
   titulaire: {
     state: false,

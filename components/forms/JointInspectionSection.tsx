@@ -9,7 +9,7 @@ export default function JointInspectionSection() {
   const university = watch("Inspection.university");
   const titulaire = watch("Inspection.titulaire");
   const soustraitant = watch("Inspection.soustraitant");
-  const soutaitraitantCare = watch("Entreprise.soustraitant.checkbox.state"); // Si checkBox sous traitant coché ou non
+  const soutraitantCare = watch("Entreprise.soustraitant.checkbox.state"); // Si checkBox sous traitant coché ou non
   useEffect(() => {
     let isValid = false;
 
@@ -19,7 +19,7 @@ export default function JointInspectionSection() {
     const validTitulaire = (titulaire ?? "").trim().length >= 3;
     const validSoustraitant = (soustraitant ?? "").trim().length >= 3;
 
-    if (soutaitraitantCare) {
+    if (soutraitantCare) {
       isValid =
         validUniversity && validTitulaire && validSoustraitant && validDate;
     } else {
@@ -29,10 +29,10 @@ export default function JointInspectionSection() {
     setValue("Inspection.state", isValid, {
       shouldDirty: false,
     });
-  }, [university, titulaire, soustraitant, date, soutaitraitantCare, setValue]);
+  }, [university, titulaire, soustraitant, date, soutraitantCare, setValue]);
 
   return (
-    <table className="w-full border-2 border-black border-collapse table-fixed mt-1">
+    <table className="w-full border-2 border-black border-collapse table-fixed mt-4">
       <tbody>
         {/* Ligne titre */}
         <tr>
@@ -85,7 +85,7 @@ export default function JointInspectionSection() {
                     />
                   </div>
                 </div>
-                {soutaitraitantCare && (
+                {soutraitantCare && (
                   <div className="flex flex-row items-center space-x-3">
                     <div className=" text-sm ">
                       Pour l'Entreprise sous-traitante :

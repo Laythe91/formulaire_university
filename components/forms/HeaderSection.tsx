@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
 type Props = {
@@ -5,8 +6,18 @@ type Props = {
 };
 
 export default function HeaderSection({ date }: Props) {
-  const { register, watch } = useFormContext();
+  const { register, watch, setValue } = useFormContext();
   const ponctuel = watch("Operation.ponctuel.state");
+  const nomSociete = watch("Entreprise.titulaire.name");
+
+  useEffect(() => {
+    const isValid = nomSociete && nomSociete.trim().length >= 2;
+
+    setValue("Header.state", isValid, {
+      shouldDirty: false,
+    });
+  }, [nomSociete, setValue]);
+
   return (
     <table className="w-full border-2 border-black border-collapse table-fixed">
       <tbody>

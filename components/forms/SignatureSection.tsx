@@ -32,6 +32,7 @@ export default function SignatureSection() {
                 <span className="font-semibold">
                   Pour l'Université de Paris VIII :
                 </span>{" "}
+                <br />
                 représentée par:
               </div>
               <div className="mt-10">

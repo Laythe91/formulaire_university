@@ -43,21 +43,43 @@ export default function Page({
   });
 
   // 1. On écoute la valeur de l'input "Nom de société"
-  const nomSociete = methods.watch("Entreprise.titulaire.name");
+  const HeaderState = methods.watch("Header.state");
   const OperationSectionState = methods.watch("Operation.state");
-
-  // 2. On vérifie si la valeur existe et fait au moins 2 caractères
-  const afficheBottomOperation = nomSociete && nomSociete.trim().length >= 2;
-
   const ExecutionConditionState = methods.watch("Condition.state");
-
   const universityState = methods.watch("UniversityInformation.state");
-  const EntrepriseRenseignement = methods.watch(
+  const EntrepriseRenseignementState = methods.watch(
     "Entreprise.renseignement.state",
   );
-  const Inspection = methods.watch("Inspection.state");
+  const CompanyInformationState = methods.watch("Entreprise.information.state");
+  const InspectionState = methods.watch("Inspection.state");
+  const DocumentState = methods.watch("Document.state");
+  const GlobalState = methods.watch("Global.state");
 
-  const Document = methods.watch("Document.state");
+  useEffect(() => {
+    const isValid = [
+      HeaderState,
+      OperationSectionState,
+      ExecutionConditionState,
+      universityState,
+      EntrepriseRenseignementState,
+      CompanyInformationState,
+      InspectionState,
+      DocumentState,
+    ].every(Boolean);
+
+    methods.setValue("Global.state", isValid, {
+      shouldDirty: false,
+    });
+  }, [
+    HeaderState,
+    OperationSectionState,
+    ExecutionConditionState,
+    universityState,
+    EntrepriseRenseignementState,
+    CompanyInformationState,
+    InspectionState,
+    DocumentState,
+  ]);
 
   const onSubmit = (data: FormData) => {
     console.log(data);
@@ -81,26 +103,28 @@ export default function Page({
         <form onSubmit={methods.handleSubmit(onSubmit)}>
           <HeaderSection date={date} />
 
-          {afficheBottomOperation && (
+          {HeaderState && (
             <>
               <BottomHeaderSection />
               <OperationInformationSection date={date} />
             </>
           )}
+
           {OperationSectionState && <ExecutionConditionSection />}
 
           {ExecutionConditionState && <UniversityInformationSection />}
 
           {universityState && <RescueOrganizationSection />}
           {universityState && <CompanyInformationSection1 />}
-          {EntrepriseRenseignement && <CompanyInformationSection2 />}
+          {EntrepriseRenseignementState && <CompanyInformationSection2 />}
 
-          <JointInspectionSection />
-          {Inspection && <RiskSection />}
+          {CompanyInformationState && <JointInspectionSection />}
+
+          {InspectionState && <RiskSection />}
 
           <CovidSection />
           <FilesToCompanySection />
-          {Document && (
+          {DocumentState && (
             <>
               {" "}
               <SocialOfficeSection />
@@ -109,9 +133,14 @@ export default function Page({
             </>
           )}
 
-          <Button type="submit" className="bg-blue-600 text-white px-4 py-2">
-            Valider
-          </Button>
+          {GlobalState && (
+            <Button
+              type="submit"
+              className="bg-blue-600 flex text-white px-4 py-2 mt-10 mb-10 mx-auto"
+            >
+              Valider
+            </Button>
+          )}
         </form>
       </FormProvider>
     </div>

@@ -28,26 +28,33 @@ export default function EntrepriseSousTraitanteInformation() {
 
   const mailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+  const numberRegex = /^\d+$/;
+
   useEffect(() => {
     if (!SousTraitant) {
       setValue("Entreprise.soustraitante.state", false);
       return;
     }
 
-    const valid =
-      name?.trim().length >= 2 &&
-      address?.trim().length >= 5 &&
-      effectif?.trim().length >= 1 &&
+    const validPhones =
       phoneRegex.test(tel || "") &&
       phoneRegex.test(fax || "") &&
-      representantName?.trim().length >= 2 &&
       phoneRegex.test(representantTel || "") &&
+      phoneRegex.test(responsableTel || "");
+
+    const validMails =
       mailRegex.test(representantMail || "") &&
-      responsableName?.trim().length >= 2 &&
-      phoneRegex.test(responsableTel || "") &&
       mailRegex.test(responsableMail || "");
 
-    setValue("Entreprise.soustraitante.state", valid, {
+    const validText =
+      address?.trim().length > 0 &&
+      numberRegex.test(effectif || "") &&
+      representantName?.trim().length > 0 &&
+      responsableName?.trim().length > 0;
+
+    const isValid = validPhones && validMails && validText;
+
+    setValue("Entreprise.soustraitante.state", isValid, {
       shouldDirty: false,
     });
   }, [

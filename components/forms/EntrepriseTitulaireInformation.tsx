@@ -24,6 +24,7 @@ export default function EntrepriseTitulaireInformation() {
   const responsableMail = watch("Entreprise.titulaire.responsable.mail");
   const phoneRegex = /^(\d{2}\.){4}\d{2}$/;
   const mailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const numberRegex = /^\d+$/;
 
   useEffect(() => {
     const validPhones =
@@ -38,7 +39,7 @@ export default function EntrepriseTitulaireInformation() {
 
     const validText =
       address?.trim().length > 0 &&
-      effectif?.trim().length > 0 &&
+      numberRegex.test(effectif || "") &&
       representantName?.trim().length > 0 &&
       responsableName?.trim().length > 0;
 
