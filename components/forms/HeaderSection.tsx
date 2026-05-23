@@ -28,7 +28,10 @@ export default function HeaderSection({ date }: Props) {
           </td>
 
           {/* Colonne droite (2 lignes fusionnées) */}
-          <td className="border p-1 align-middle w-1/3" rowSpan={2}>
+          <td
+            className="border  border-black p-1 align-middle w-1/3"
+            rowSpan={2}
+          >
             <div className="space-y-2 text-center">
               <div className="flex flex-col">
                 <span className=" text-gray-600">Plan</span>
