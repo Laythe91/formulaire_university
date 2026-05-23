@@ -5,6 +5,7 @@ export default function SignatureSection() {
   const { register, watch } = useFormContext();
   const NomPresident = PRESIDENT_CONTACT.name;
   const Societe = watch("Entreprise.titulaire.name");
+  const soutaitraitantCare = watch("Entreprise.soustraitant.checkbox.state"); // Si checkBox sous traitant coché ou non
   return (
     <>
       <div className="text-sm">
@@ -76,30 +77,32 @@ export default function SignatureSection() {
             </td>
 
             {/* Colonne 3 */}
-            <td
-              className="border border-black p-3 align-top"
-              style={{ height: "350px" }}
-            >
-              {/* Espace blanc forcé pour le PDF */}
+            {soutaitraitantCare && (
+              <td
+                className="border border-black p-3 align-top"
+                style={{ height: "350px" }}
+              >
+                {/* Espace blanc forcé pour le PDF */}
 
-              <div className=" mb-2">
-                <span className="font-semibold">
-                  Pour la Société sous- traitante :
-                </span>{" "}
-                représentée par:
-              </div>
-              <div className="mt-10">
-                <span className="font-semibold">Nom :</span>
-              </div>
-              <div className=" mt-5">
-                <span className="font-semibold">Fonction :</span>
-              </div>
+                <div className=" mb-2">
+                  <span className="font-semibold">
+                    Pour la Société sous- traitante :
+                  </span>{" "}
+                  représentée par:
+                </div>
+                <div className="mt-10">
+                  <span className="font-semibold">Nom :</span>
+                </div>
+                <div className=" mt-5">
+                  <span className="font-semibold">Fonction :</span>
+                </div>
 
-              {/* Espace blanc forcé pour le PDF */}
-              <div className="mt-10">
-                <span className="font-semibold">Visa :</span>
-              </div>
-            </td>
+                {/* Espace blanc forcé pour le PDF */}
+                <div className="mt-10">
+                  <span className="font-semibold">Visa :</span>
+                </div>
+              </td>
+            )}
           </tr>
         </tbody>
       </table>

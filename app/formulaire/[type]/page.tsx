@@ -27,93 +27,9 @@ import SocialOfficeSection from "@/components/forms/SocialOfficeSection";
 import InstructionsSection from "@/components/forms/InstructionsSection";
 import SignatureSection from "@/components/forms/SignatureSection";
 import { schema } from "@/schema/form.schema";
-
-type FormData = {
-  Entreprise: {
-    titulaire: {
-      state: boolean;
-
-      checkbox: {
-        state: boolean;
-      };
-
-      name: string;
-      address: string;
-      effectif: string;
-
-      tel: string;
-      fax: string;
-
-      representant: {
-        name: string;
-        tel: string;
-        mail: string;
-      };
-
-      responsable: {
-        name: string;
-        tel: string;
-        mail: string;
-      };
-    };
-
-    soustraitante: {
-      state: boolean;
-
-      checkbox: {
-        state: boolean;
-      };
-
-      name: string;
-      address: string;
-      effectif: string;
-
-      tel: string;
-      fax: string;
-
-      representant: {
-        name: string;
-        tel: string;
-        mail: string;
-      };
-
-      responsable: {
-        name: string;
-        tel: string;
-        mail: string;
-      };
-    };
-  };
-
-  Operation: {
-    state: boolean;
-    annuel: { state: boolean };
-    ponctuel: { state: boolean };
-    plus400h: { state: boolean };
-    danger: { state: boolean };
-    date: {
-      start: string;
-      end: string;
-    };
-    objet: string;
-  };
-  Condition: {
-    state: boolean;
-
-    "1": { state: boolean };
-    "2": { state: boolean };
-    "3": { state: boolean };
-    "4": { state: boolean };
-    "5": { state: boolean };
-    "6": { state: boolean };
-  };
-  UniversityInformation: {
-    state: boolean;
-    nom: string;
-    phone1: string;
-    phone2: string;
-  };
-};
+import { formDefaults } from "@/app/defaults/form.defaults";
+import { FormData } from "@/types/form.type";
+import { Button } from "@/components/ui/button";
 
 export default function Page({
   params,
@@ -123,93 +39,9 @@ export default function Page({
   const { type } = use(params);
   const methods = useForm<FormData>({
     resolver: zodResolver(schema) as any,
-    defaultValues: {
-      Entreprise: {
-        titulaire: {
-          state: false,
-
-          checkbox: {
-            state: false,
-          },
-
-          name: "",
-          address: "",
-          effectif: "",
-
-          tel: "",
-          fax: "",
-
-          representant: {
-            name: "",
-            tel: "",
-            mail: "",
-          },
-
-          responsable: {
-            name: "",
-            tel: "",
-            mail: "",
-          },
-        },
-
-        soustraitante: {
-          state: false,
-
-          checkbox: {
-            state: false,
-          },
-
-          name: "",
-          address: "",
-          effectif: "",
-
-          tel: "",
-          fax: "",
-
-          representant: {
-            name: "",
-            tel: "",
-            mail: "",
-          },
-
-          responsable: {
-            name: "",
-            tel: "",
-            mail: "",
-          },
-        },
-      },
-      Operation: {
-        state: false,
-        annuel: { state: false },
-        ponctuel: { state: false },
-        plus400h: { state: false },
-        danger: { state: false },
-        date: {
-          start: "",
-          end: "",
-        },
-        objet: "",
-      },
-      Condition: {
-        state: false,
-
-        "1": { state: false },
-        "2": { state: false },
-        "3": { state: false },
-        "4": { state: false },
-        "5": { state: false },
-        "6": { state: false },
-      },
-
-      UniversityInformation: {
-        state: false,
-        nom: "",
-        phone1: "",
-        phone2: "",
-      },
-    },
+    defaultValues: formDefaults,
   });
+
   // 1. On écoute la valeur de l'input "Nom de société"
   const nomSociete = methods.watch("Entreprise.titulaire.name");
   const OperationSectionState = methods.watch("Operation.state");
@@ -220,6 +52,12 @@ export default function Page({
   const ExecutionConditionState = methods.watch("Condition.state");
 
   const universityState = methods.watch("UniversityInformation.state");
+  const EntrepriseRenseignement = methods.watch(
+    "Entreprise.renseignement.state",
+  );
+  const Inspection = methods.watch("Inspection.state");
+
+  const Document = methods.watch("Document.state");
 
   const onSubmit = (data: FormData) => {
     console.log(data);
@@ -255,20 +93,25 @@ export default function Page({
 
           {universityState && <RescueOrganizationSection />}
           {universityState && <CompanyInformationSection1 />}
+          {EntrepriseRenseignement && <CompanyInformationSection2 />}
 
-          <CompanyInformationSection2 />
           <JointInspectionSection />
+          {Inspection && <RiskSection />}
 
-          <RiskSection />
           <CovidSection />
           <FilesToCompanySection />
-          <SocialOfficeSection />
-          <InstructionsSection />
-          <SignatureSection />
+          {Document && (
+            <>
+              {" "}
+              <SocialOfficeSection />
+              <InstructionsSection />
+              <SignatureSection />
+            </>
+          )}
 
-          <button type="submit" className="bg-blue-600 text-white px-4 py-2">
+          <Button type="submit" className="bg-blue-600 text-white px-4 py-2">
             Valider
-          </button>
+          </Button>
         </form>
       </FormProvider>
     </div>

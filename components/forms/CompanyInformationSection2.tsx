@@ -5,6 +5,7 @@ import EntrepriseSousTraitanteInformation from "./EntrepriseSousTraitanteInforma
 export default function CompanyInformationSection2() {
   const { register, watch } = useFormContext();
   const EntrepriseTitulaire = watch("Entreprise.titulaire.checkbox.state");
+  const EntrepriseTitulaireState = watch("Entreprise.titulaire.state");
   return (
     <table className="w-full border-2 border-black border-collapse table-fixed mt-3">
       <tbody>
@@ -26,7 +27,7 @@ export default function CompanyInformationSection2() {
         </tr>
         <EntrepriseTitulaireInformation />
 
-        {EntrepriseTitulaire && (
+        {EntrepriseTitulaire && EntrepriseTitulaireState && (
           <>
             <tr>
               <td className="border border-black p-2">

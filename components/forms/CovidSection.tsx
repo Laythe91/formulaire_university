@@ -1,6 +1,12 @@
 export default function CovidSection() {
   return (
     <>
+      <div className="mt-4">
+        {" "}
+        <h2 className="font-bold underline uppercase text-center text-xl">
+          COVID 19 – Mise à jour du Plan de Prévention
+        </h2>
+      </div>
       <table className="w-full border-2 border-black border-collapse table-fixed mt-3 text-sm">
         <thead>
           <tr className="bg-gray-100">

@@ -1,7 +1,23 @@
+import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
 export default function CompanyInformationSection1() {
-  const { register, watch } = useFormContext();
+  const { register, watch, setValue } = useFormContext();
+
+  const effectif1 = watch("Entreprise.renseignement.effectif1");
+  const effectif2 = watch("Entreprise.renseignement.effectif2");
+
+  const numberRegex = /^\d+$/;
+
+  useEffect(() => {
+    const valid =
+      numberRegex.test(effectif1 || "") && numberRegex.test(effectif2 || "");
+
+    setValue("Entreprise.renseignement.state", valid, {
+      shouldDirty: false,
+    });
+  }, [effectif1, effectif2, setValue]);
+
   return (
     <table className="w-full border-2 border-black border-collapse table-fixed mt-1">
       <tbody>
@@ -16,7 +32,7 @@ export default function CompanyInformationSection1() {
               <div className="text-sm mb-1">
                 <span className="font-bold">Effectif total prévu : </span>
                 <input
-                  {...register("Entreprise.titulaire.effectif1")}
+                  {...register("Entreprise.renseignement.effectif1")}
                   className="border px-2 py-0.5 text-center text-sm w-13"
                   placeholder=""
                   type="text"
@@ -26,7 +42,7 @@ export default function CompanyInformationSection1() {
               <div className="text-sm mb-1">
                 <span className="font-bold">dont encadrement : </span>
                 <input
-                  {...register("Entreprise.titulaire.effectif2")}
+                  {...register("Entreprise.renseignement.effectif2")}
                   className="border px-2 py-0.5 text-center text-sm w-13"
                   placeholder=""
                   type="text"

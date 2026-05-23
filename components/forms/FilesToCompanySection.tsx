@@ -1,8 +1,17 @@
+import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
 export default function FilesToCompanySection() {
-  const { register, watch } = useFormContext();
+  const { register, watch, setValue } = useFormContext();
+  const prevention = watch("Document.planPrevention.state");
+  const consigne = watch("Document.consigne.state");
+  useEffect(() => {
+    const isValid = prevention && consigne;
 
+    setValue("Document.state", isValid, {
+      shouldDirty: false,
+    });
+  }, [consigne, prevention, setValue]);
   return (
     <>
       <table className="w-full border-2 border-black border-collapse table-fixed mt-3">
@@ -20,7 +29,7 @@ export default function FilesToCompanySection() {
                 <label className="text-sm flex items-center gap-1 leading-snug">
                   <input
                     type="checkbox"
-                    {...register("document.1.state")}
+                    {...register("Document.planPrevention.state")}
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Plan de prévention
@@ -29,7 +38,7 @@ export default function FilesToCompanySection() {
                 <label className="text-sm flex items-center gap-1 leading-snug">
                   <input
                     type="checkbox"
-                    {...register("document.2.state")}
+                    {...register("Document.consigne.state")}
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Consignes générales de sécurité
@@ -38,7 +47,7 @@ export default function FilesToCompanySection() {
                 <label className="text-sm flex items-center gap-1 leading-snug">
                   <input
                     type="checkbox"
-                    {...register("document.3.state")}
+                    {...register("Document.planSite.state")}
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Plan du site (plan de masse)
@@ -47,7 +56,7 @@ export default function FilesToCompanySection() {
                 <label className="text-sm flex items-center gap-1 leading-snug">
                   <input
                     type="checkbox"
-                    {...register("document.4.state")}
+                    {...register("Document.permisFeu.state")}
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Permis de feu (à demander au poste de sécurité incendie)
@@ -56,7 +65,7 @@ export default function FilesToCompanySection() {
                 <label className="text-sm flex items-center gap-1 leading-snug">
                   <input
                     type="checkbox"
-                    {...register("document.5.state")}
+                    {...register("Document.dta.state")}
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Dossier Amiante DTA
