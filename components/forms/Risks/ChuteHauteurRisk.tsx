@@ -312,7 +312,7 @@ export default function ChuteHauteurRisk() {
         </label>
         <textarea
           {...register("Risk.chuteHauteur.observations")}
-          placeholder="Renseigner ici les observations ou précisions concernant les mesures..."
+          placeholder="Renseigner ici les observations ou précisions concernant les mesures ... SI AUCUNE OBSERVATION METTRE AU MINIMUM RAS"
           className="w-full min-h-15 h-20 border border-gray-300 p-2 text-sm outline-none resize-none focus:border-black transition-colors"
         />
       </div>

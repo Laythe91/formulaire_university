@@ -31,20 +31,89 @@ export function validateRiskSection({
   /**
    * 2. RÈGLE : validation des mesures
    *
-   * - Une mesure NON cochée est ignorée (ne bloque pas la validation)
-   * - Une mesure cochée doit être validée par :
-   *      → Université OU EE
+   * Chaque ligne du tableau doit être cohérente.
    *
-   * Exemple :
-   * - mesure = false → OK automatiquement
-   * - mesure = true + universite/ee = true → OK
-   * - mesure = true + universite/ee = false → KO
+   * Règles métier :
+   *
+   * ✅ Cas autorisés :
+   *
+   * - rien coché
+   *      mesure = false
+   *      universite = false
+   *      ee = false
+   *
+   * - mesure cochée + université cochée
+   *      mesure = true
+   *      universite = true
+   *
+   * - mesure cochée + EE cochée
+   *      mesure = true
+   *      ee = true
+   *
+   * - mesure cochée + université + EE cochés
+   *      mesure = true
+   *      universite = true
+   *      ee = true
+   *
+   *
+   * ❌ Cas interdits :
+   *
+   * - université cochée sans mesure
+   * - EE cochée sans mesure
+   * - mesure cochée sans université ni EE
+   *
+   *
+   * La validation est faite ligne par ligne grâce à `.every()`
+   * :
+   * → toutes les lignes doivent être valides
+   * → sinon le formulaire global devient invalide
    */
   const mesuresValid = mesures.every((checked, i) => {
-    if (!checked) return true;
-    return universite[i] || ee[i];
-  });
+    /**
+     * Vérifie si au moins une mise en œuvre
+     * (Université ou EE) est cochée
+     */
+    const hasImplementation = universite[i] || ee[i];
 
+    /**
+     * CAS 1
+     * Rien n'est coché sur la ligne
+     *
+     * → ligne ignorée
+     * → valide
+     */
+    if (!checked && !hasImplementation) {
+      return true;
+    }
+
+    /**
+     * CAS 2
+     * Mesure cochée MAIS aucune mise en œuvre
+     *
+     * → invalide
+     */
+    if (checked && !hasImplementation) {
+      return false;
+    }
+
+    /**
+     * CAS 3
+     * Mise en œuvre cochée MAIS mesure absente
+     *
+     * → invalide
+     */
+    if (!checked && hasImplementation) {
+      return false;
+    }
+
+    /**
+     * CAS 4
+     * Mesure + mise en œuvre cohérentes
+     *
+     * → valide
+     */
+    return true;
+  });
   /**
    * 3. RÈGLE : observations obligatoires
    * → minimum 3 caractères (évite champ vide ou inutile)
