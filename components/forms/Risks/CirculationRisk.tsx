@@ -1,8 +1,84 @@
 import { useFormContext } from "react-hook-form";
 import Image from "next/image";
+import { useEffect } from "react";
 
 export default function CirculationRisk() {
-  const { register } = useFormContext();
+  const { register, watch, setValue } = useFormContext();
+
+  const phase1 = watch("Risk.circulation.phase.1");
+  const phase2 = watch("Risk.circulation.phase.2");
+  const phase3 = watch("Risk.circulation.phase.3");
+
+  const mesure1 = watch("Risk.circulation.mesure.1");
+  const mesure2 = watch("Risk.circulation.mesure.2");
+  const mesure3 = watch("Risk.circulation.mesure.3");
+
+  const universite1 = watch("Risk.circulation.universite.1");
+  const universite2 = watch("Risk.circulation.universite.2");
+  const universite3 = watch("Risk.circulation.universite.3");
+
+  const ee1 = watch("Risk.circulation.ee.1");
+  const ee2 = watch("Risk.circulation.ee.2");
+  const ee3 = watch("Risk.circulation.ee.3");
+
+  const observations = watch("Risk.circulation.observations");
+
+  useEffect(() => {
+    // =========================
+    // PHASES
+    // =========================
+
+    const hasPhase = phase1 || phase2 || phase3;
+
+    // =========================
+    // MESURES
+    // =========================
+
+    const mesure1Valid = !mesure1 || universite1 || ee1;
+
+    const mesure2Valid = !mesure2 || universite2 || ee2;
+
+    const mesure3Valid = !mesure3 || universite3 || ee3;
+
+    // =========================
+    // OBSERVATIONS
+    // =========================
+
+    const observationsValid = observations?.trim().length >= 3;
+
+    // =========================
+    // GLOBAL
+    // =========================
+
+    const globalValid =
+      hasPhase &&
+      mesure1Valid &&
+      mesure2Valid &&
+      mesure3Valid &&
+      observationsValid;
+
+    setValue("Risk.circulation.global.state", globalValid);
+  }, [
+    phase1,
+    phase2,
+    phase3,
+
+    mesure1,
+    mesure2,
+    mesure3,
+
+    universite1,
+    universite2,
+    universite3,
+
+    ee1,
+    ee2,
+    ee3,
+
+    observations,
+
+    setValue,
+  ]);
 
   return (
     <>

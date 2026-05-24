@@ -13,22 +13,81 @@ import IncendieRisk from "./Risks/IncendieRisk";
 import BioChimRisk from "./Risks/BioChimRisk";
 import EspaceConfinesRisk from "./Risks/EspacesConfinesRisk";
 import AmianteRisk from "./Risks/AmianteRisk";
+import { useEffect } from "react";
 
 export default function RiskSection() {
-  const { register, watch } = useFormContext();
-  const circulation = watch("risques.circulation.state");
-  const bruit = watch("risques.bruit.state");
-  const chutePlainPied = watch("risques.chutePied.state");
-  const chuteHauteur = watch("risques.chuteHauteur.state");
-  const chuteMateriel = watch("risques.chuteMateriel.state");
-  const manutention = watch("risques.manuelMeca.state");
-  const machine = watch("risques.machine.state");
-  const electric = watch("risques.electrique.state");
-  const outillage = watch("risques.outillage.state");
-  const incendie = watch("risques.incendie.state");
-  const bioChim = watch("risques.bioChim.state");
-  const espaceconfine = watch("risques.espaceconfine.state");
-  const amiante = watch("risques.amiante.state");
+  const { register, watch, setValue } = useFormContext();
+
+  //Risque coché
+  const amianteChecked = watch("Risk.amiante.checkbox.state");
+  const circulationChecked = watch("Risk.circulation.checkbox.state");
+  const bioChimChecked = watch("Risk.bioChim.checkbox.state");
+  const bruitChecked = watch("Risk.bruit.checkbox.state");
+  const chuteHauteurChecked = watch("Risk.chuteHauteur.checkbox.state");
+  const chuteMaterielChecked = watch("Risk.chuteMateriel.checkbox.state");
+  const chutePiedChecked = watch("Risk.chutePied.checkbox.state");
+  const electricChecked = watch("Risk.electrique.checkbox.state");
+  const espaceconfineChecked = watch("Risk.espaceconfine.checkbox.state");
+  const incendieChecked = watch("Risk.incendie.checkbox.state");
+  const machineChecked = watch("Risk.machine.checkbox.state");
+  const manutentionChecked = watch("Risk.manuelMeca.checkbox.state");
+  const outillageChecked = watch("Risk.outillage.checkbox.state");
+
+  const amianteValid = watch("Risk.amiante.global.state");
+  const bruitValid = watch("Risk.bruit.global.state");
+  const circulationValid = watch("Risk.circulation.global.state");
+  const chuteHauteurValid = watch("Risk.chuteHauteur.global.state");
+  const chuteMaterielValid = watch("Risk.chuteMateriel.global.state");
+  const chutePiedValid = watch("Risk.chutePied.global.state");
+  const electricValid = watch("Risk.electrique.global.state");
+  const espaceconfineValid = watch("Risk.espaceconfine.global.state");
+  const incendieValid = watch("Risk.incendie.global.state");
+  const machineValid = watch("Risk.machine.global.state");
+
+  useEffect(() => {
+    const validations = [];
+
+    if (amianteChecked) {
+      validations.push(amianteValid);
+    }
+
+    if (bruitChecked) validations.push(bruitValid);
+
+    if (circulationChecked) validations.push(circulationValid);
+
+    if (chuteHauteurChecked) {
+      validations.push(chuteHauteurValid);
+    }
+
+    if (chuteMaterielChecked) {
+      validations.push(chuteMaterielValid);
+    }
+
+    if (chutePiedChecked) {
+      validations.push(chutePiedValid);
+    }
+
+    if (electricChecked) {
+      validations.push(electricValid);
+    }
+
+    if (espaceconfineChecked) {
+      validations.push(espaceconfineValid);
+    }
+
+    if (incendieChecked) {
+      validations.push(incendieValid);
+    }
+
+    if (machineChecked) validations.push(machineValid);
+
+    // etc...
+
+    const riskSectionValid =
+      validations.length > 0 && validations.every(Boolean);
+
+    setValue("Risk.state", riskSectionValid);
+  }, [bruitChecked, bruitValid, machineChecked, machineValid, setValue]);
 
   return (
     <div className="mt-5 ">
@@ -37,19 +96,19 @@ export default function RiskSection() {
       </h2>
       <RiskChoices />
 
-      {bruit && <BruitRisk />}
-      {chuteHauteur && <ChuteHauteurRisk />}
-      {chuteMateriel && <ChuteMaterielRisk />}
-      {chutePlainPied && <ChutePlainPiedRisk />}
-      {circulation && <CirculationRisk />}
-      {electric && <ElectricRisk />}
-      {espaceconfine && <EspaceConfinesRisk />}
-      {incendie && <IncendieRisk />}
-      {machine && <MachineRisk />}
-      {manutention && <Manutention />}
-      {outillage && <OutillageRisk />}
-      {bioChim && <BioChimRisk />}
-      {amiante && <AmianteRisk />}
+      {bruitChecked && <BruitRisk />}
+      {chuteHauteurChecked && <ChuteHauteurRisk />}
+      {chuteMaterielChecked && <ChuteMaterielRisk />}
+      {chutePiedChecked && <ChutePlainPiedRisk />}
+      {circulationChecked && <CirculationRisk />}
+      {electricChecked && <ElectricRisk />}
+      {espaceconfineChecked && <EspaceConfinesRisk />}
+      {incendieChecked && <IncendieRisk />}
+      {machineChecked && <MachineRisk />}
+      {manutentionChecked && <Manutention />}
+      {outillageChecked && <OutillageRisk />}
+      {bioChimChecked && <BioChimRisk />}
+      {amianteChecked && <AmianteRisk />}
     </div>
   );
 }

@@ -1,8 +1,120 @@
 import { useFormContext } from "react-hook-form";
 import Image from "next/image";
+import { useEffect } from "react";
 
 export default function ElectricRisk() {
-  const { register } = useFormContext();
+  const { register, watch, setValue } = useFormContext();
+
+  // PHASE
+  const phase1 = watch("Risk.electrique.phase.1");
+  const phase2 = watch("Risk.electrique.phase.2");
+  const phase3 = watch("Risk.electrique.phase.3");
+  const phase4 = watch("Risk.electrique.phase.4");
+  const phase5 = watch("Risk.electrique.phase.5");
+
+  // MESURE
+  const mesure1 = watch("Risk.electrique.mesure.1");
+  const mesure2 = watch("Risk.electrique.mesure.2");
+  const mesure3 = watch("Risk.electrique.mesure.3");
+  const mesure4 = watch("Risk.electrique.mesure.4");
+  const mesure5 = watch("Risk.electrique.mesure.5");
+  const mesure6 = watch("Risk.electrique.mesure.6");
+
+  // UNIVERSITE
+  const universite1 = watch("Risk.electrique.universite.1");
+  const universite2 = watch("Risk.electrique.universite.2");
+  const universite3 = watch("Risk.electrique.universite.3");
+  const universite4 = watch("Risk.electrique.universite.4");
+  const universite5 = watch("Risk.electrique.universite.5");
+  const universite6 = watch("Risk.electrique.universite.6");
+
+  // EE
+  const ee1 = watch("Risk.electrique.ee.1");
+  const ee2 = watch("Risk.electrique.ee.2");
+  const ee3 = watch("Risk.electrique.ee.3");
+  const ee4 = watch("Risk.electrique.ee.4");
+  const ee5 = watch("Risk.electrique.ee.5");
+  const ee6 = watch("Risk.electrique.ee.6");
+
+  // OBS
+  const observations = watch("Risk.electrique.observations");
+
+  useEffect(() => {
+    // =========================
+    // PHASES
+    // =========================
+
+    const hasPhase = phase1 || phase2 || phase3 || phase4 || phase5;
+
+    // =========================
+    // MESURES
+    // =========================
+
+    const mesure1Valid = !mesure1 || universite1 || ee1;
+
+    const mesure2Valid = !mesure2 || universite2 || ee2;
+
+    const mesure3Valid = !mesure3 || universite3 || ee3;
+
+    const mesure4Valid = !mesure4 || universite4 || ee4;
+
+    const mesure5Valid = !mesure5 || universite5 || ee5;
+
+    const mesure6Valid = !mesure6 || universite6 || ee6;
+
+    // =========================
+    // OBSERVATIONS
+    // =========================
+
+    const observationsValid = observations?.trim().length >= 3;
+
+    // =========================
+    // GLOBAL
+    // =========================
+
+    const globalValid =
+      hasPhase &&
+      mesure1Valid &&
+      mesure2Valid &&
+      mesure3Valid &&
+      mesure4Valid &&
+      mesure5Valid &&
+      mesure6Valid &&
+      observationsValid;
+
+    setValue("Risk.electrique.global.state", globalValid);
+  }, [
+    phase1,
+    phase2,
+    phase3,
+    phase4,
+    phase5,
+
+    mesure1,
+    mesure2,
+    mesure3,
+    mesure4,
+    mesure5,
+    mesure6,
+
+    universite1,
+    universite2,
+    universite3,
+    universite4,
+    universite5,
+    universite6,
+
+    ee1,
+    ee2,
+    ee3,
+    ee4,
+    ee5,
+    ee6,
+
+    observations,
+
+    setValue,
+  ]);
 
   return (
     <>
@@ -86,7 +198,7 @@ export default function ElectricRisk() {
                 </label>
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                   <input
-                    {...register("Risk.electrique.phase.2")}
+                    {...register("Risk.electrique.phase.3")}
                     type="checkbox"
                     className="scale-75 accent-black w-4 shrink-0 mt-1"
                   />
@@ -95,7 +207,7 @@ export default function ElectricRisk() {
 
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                   <input
-                    {...register("Risk.electrique.phase.2")}
+                    {...register("Risk.electrique.phase.4")}
                     type="checkbox"
                     className="scale-75 accent-black w-4 shrink-0 mt-1"
                   />
@@ -104,7 +216,7 @@ export default function ElectricRisk() {
 
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                   <input
-                    {...register("Risk.electrique.phase.2")}
+                    {...register("Risk.electrique.phase.5")}
                     type="checkbox"
                     className="scale-75 accent-black w-4 shrink-0 mt-1"
                   />

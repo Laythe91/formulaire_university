@@ -6,6 +6,7 @@ import { InspectionType } from "./inspection.type";
 import { DocumentType } from "./document.type";
 import { HeaderType } from "./header.type";
 import { GlobalStateType } from "./globalState.type";
+import { RiskType } from "./risk.types";
 
 export type FormData = {
   Header: HeaderType;
@@ -14,6 +15,7 @@ export type FormData = {
   Condition: ConditionType;
   UniversityInformation: UniversityInformationType;
   Inspection: InspectionType;
+  Risk: RiskType;
   Document: DocumentType;
   Global: GlobalStateType;
 };

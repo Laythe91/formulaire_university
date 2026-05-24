@@ -1,8 +1,49 @@
 import { useFormContext } from "react-hook-form";
 import Image from "next/image";
+import { useEffect } from "react";
 
 export default function BruitRisk() {
-  const { register } = useFormContext();
+  const { register, watch, setValue } = useFormContext();
+
+  const phase1 = watch("Risk.bruit.phase.1");
+  const phase2 = watch("Risk.bruit.phase.2");
+
+  const mesure1 = watch("Risk.bruit.mesure.1");
+  const mesure2 = watch("Risk.bruit.mesure.2");
+
+  const universite1 = watch("Risk.bruit.universite.1");
+  const universite2 = watch("Risk.bruit.universite.2");
+
+  const ee1 = watch("Risk.bruit.ee.1");
+  const ee2 = watch("Risk.bruit.ee.2");
+
+  const observations = watch("Risk.bruit.observations");
+
+  useEffect(() => {
+    const hasPhase = phase1 || phase2;
+
+    const mesure1Valid = !mesure1 || universite1 || ee1;
+
+    const mesure2Valid = !mesure2 || universite2 || ee2;
+
+    const observationValid = observations?.trim().length >= 3;
+
+    const globalValid =
+      hasPhase && mesure1Valid && mesure2Valid && observationValid;
+
+    setValue("Risk.bruit.global.state", globalValid);
+  }, [
+    phase1,
+    phase2,
+    mesure1,
+    mesure2,
+    universite1,
+    universite2,
+    ee1,
+    ee2,
+    observations,
+    setValue,
+  ]);
 
   return (
     <>

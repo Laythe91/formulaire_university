@@ -21,7 +21,7 @@ export default function RiskChoices() {
                 <label className="text-sm flex items-center gap-1 leading-snug">
                   <input
                     type="checkbox"
-                    {...register("risques.bruit.state")}
+                    {...register("Risk.bruit.checkbox.state")}
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Bruit
@@ -30,7 +30,7 @@ export default function RiskChoices() {
                 <label className="text-sm flex items-center gap-1 leading-snug">
                   <input
                     type="checkbox"
-                    {...register("risques.chuteHauteur.state")}
+                    {...register("Risk.chuteHauteur.checkbox.state")}
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Chute de hauteur
@@ -40,7 +40,7 @@ export default function RiskChoices() {
                 <label className="text-sm flex items-center gap-1 leading-snug">
                   <input
                     type="checkbox"
-                    {...register("risques.chuteMateriel.state")}
+                    {...register("Risk.chuteMateriel.checkbox.state")}
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Chute de matériel
@@ -49,7 +49,7 @@ export default function RiskChoices() {
                 <label className="text-sm flex items-center gap-1 leading-snug">
                   <input
                     type="checkbox"
-                    {...register("risques.chutePied.state")}
+                    {...register("Risk.chutePied.checkbox.state")}
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Chute de plain pied
@@ -60,7 +60,7 @@ export default function RiskChoices() {
                 <label className="text-sm flex items-center gap-1 leading-snug">
                   <input
                     type="checkbox"
-                    {...register("risques.circulation.state")}
+                    {...register("Risk.circulation.checkbox.state")}
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Circulation
@@ -69,7 +69,7 @@ export default function RiskChoices() {
                 <label className="text-sm flex items-center gap-1 leading-snug">
                   <input
                     type="checkbox"
-                    {...register("risques.electrique.state")}
+                    {...register("Risk.electrique.checkbox.state")}
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Electrique
@@ -80,7 +80,7 @@ export default function RiskChoices() {
                 <label className="text-sm flex items-center gap-1 leading-snug">
                   <input
                     type="checkbox"
-                    {...register("risques.espaceconfine.state")}
+                    {...register("Risk.espaceconfine.checkbox.state")}
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Espaces confines
@@ -89,7 +89,7 @@ export default function RiskChoices() {
                 <label className="text-sm flex items-center gap-1 leading-snug">
                   <input
                     type="checkbox"
-                    {...register("risques.incendie.state")}
+                    {...register("Risk.incendie.checkbox.state")}
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Incendie
@@ -100,7 +100,7 @@ export default function RiskChoices() {
                 <label className="text-sm flex items-center gap-1 leading-snug">
                   <input
                     type="checkbox"
-                    {...register("risques.machine.state")}
+                    {...register("Risk.machine.checkbox.state")}
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Machine
@@ -109,7 +109,7 @@ export default function RiskChoices() {
                 <label className="text-sm flex items-center gap-1 leading-snug">
                   <input
                     type="checkbox"
-                    {...register("risques.manuelMeca.state")}
+                    {...register("risques.manuelMeca.checkbox.state")}
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Manutention manuelle ou mecanique
@@ -119,7 +119,7 @@ export default function RiskChoices() {
                 <label className="text-sm flex items-center gap-1 leading-snug">
                   <input
                     type="checkbox"
-                    {...register("risques.outillage.state")}
+                    {...register("risques.outillage.checkbox.state")}
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Outillage
@@ -128,7 +128,7 @@ export default function RiskChoices() {
                 <label className="text-sm flex items-center gap-1 leading-snug ">
                   <input
                     type="checkbox"
-                    {...register("risques.bioChim.state")}
+                    {...register("risques.bioChim.checkbox.state")}
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Risque de contamination biologique <br />
@@ -138,7 +138,7 @@ export default function RiskChoices() {
                 <label className="text-sm flex items-center gap-1 leading-snug ">
                   <input
                     type="checkbox"
-                    {...register("risques.amiante.state")}
+                    {...register("risques.amiante.checkbox.state")}
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Risque à l'amiante
