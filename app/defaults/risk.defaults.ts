@@ -9,6 +9,8 @@ import { electriqueDefaults } from "./risk/electrique.defaults";
 import { espaceConfineDefaults } from "./risk/espaceConfine.defaults";
 import { incendieDefaults } from "./risk/incendie.defaults";
 import { machineDefaults } from "./risk/machine.defaults";
+import { manutentionDefaults } from "./risk/manutention.defaults";
+import { outillageDefaults } from "./risk/outillage.defaults";
 
 export const riskDefaults: RiskType = {
   state: false,
@@ -22,4 +24,6 @@ export const riskDefaults: RiskType = {
   espaceconfine: espaceConfineDefaults,
   incendie: incendieDefaults,
   machine: machineDefaults,
+  manutention: manutentionDefaults,
+  outillage: outillageDefaults,
 };

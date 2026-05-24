@@ -5,7 +5,6 @@ import BruitRisk from "./Risks/BruitRisk";
 import ChutePlainPiedRisk from "./Risks/ChutePlainPiedRisk";
 import ChuteHauteurRisk from "./Risks/ChuteHauteurRisk";
 import ChuteMaterielRisk from "./Risks/ChuteMaterielRisk";
-import Manutention from "./Risks/ManutentionManuelMecanique";
 import MachineRisk from "./Risks/MachineRisk";
 import ElectricRisk from "./Risks/ElectricRisk";
 import OutillageRisk from "./Risks/OutillageRisk";
@@ -14,6 +13,7 @@ import BioChimRisk from "./Risks/BioChimRisk";
 import EspaceConfinesRisk from "./Risks/EspacesConfinesRisk";
 import AmianteRisk from "./Risks/AmianteRisk";
 import { useEffect } from "react";
+import Manutention from "./Risks/ManutentionManuelMecanique";
 
 export default function RiskSection() {
   const { register, watch, setValue } = useFormContext();
@@ -30,7 +30,7 @@ export default function RiskSection() {
   const espaceconfineChecked = watch("Risk.espaceconfine.checkbox.state");
   const incendieChecked = watch("Risk.incendie.checkbox.state");
   const machineChecked = watch("Risk.machine.checkbox.state");
-  const manutentionChecked = watch("Risk.manuelMeca.checkbox.state");
+  const manutentionChecked = watch("Risk.manutention.checkbox.state");
   const outillageChecked = watch("Risk.outillage.checkbox.state");
 
   const amianteValid = watch("Risk.amiante.global.state");
@@ -43,12 +43,19 @@ export default function RiskSection() {
   const espaceconfineValid = watch("Risk.espaceconfine.global.state");
   const incendieValid = watch("Risk.incendie.global.state");
   const machineValid = watch("Risk.machine.global.state");
+  const manutentionValid = watch("Risk.manutention.global.state");
+  const outillageValid = watch("Risk.outillage.global.state");
+  const bioChimValid = watch("Risk.bioChim.global.state");
 
   useEffect(() => {
     const validations = [];
 
     if (amianteChecked) {
       validations.push(amianteValid);
+    }
+
+    if (bioChimChecked) {
+      validations.push(bioChimValid);
     }
 
     if (bruitChecked) validations.push(bruitValid);
@@ -81,13 +88,54 @@ export default function RiskSection() {
 
     if (machineChecked) validations.push(machineValid);
 
-    // etc...
+    if (manutentionChecked) {
+      validations.push(manutentionValid);
+    }
+
+    if (outillageChecked) {
+      validations.push(outillageValid);
+    }
 
     const riskSectionValid =
       validations.length > 0 && validations.every(Boolean);
 
     setValue("Risk.state", riskSectionValid);
-  }, [bruitChecked, bruitValid, machineChecked, machineValid, setValue]);
+  }, [
+    // =========================
+    // CHECKED
+    // =========================
+    amianteChecked,
+    bioChimChecked,
+    bruitChecked,
+    circulationChecked,
+    chuteHauteurChecked,
+    chuteMaterielChecked,
+    chutePiedChecked,
+    electricChecked,
+    espaceconfineChecked,
+    incendieChecked,
+    machineChecked,
+    manutentionChecked,
+    outillageChecked,
+
+    // =========================
+    // VALID
+    // =========================
+    amianteValid,
+    bioChimValid,
+    bruitValid,
+    circulationValid,
+    chuteHauteurValid,
+    chuteMaterielValid,
+    chutePiedValid,
+    electricValid,
+    espaceconfineValid,
+    incendieValid,
+    machineValid,
+    manutentionValid,
+    outillageValid,
+    setValue,
+  ]);
 
   return (
     <div className="mt-5 ">

@@ -1,6 +1,7 @@
 import { useFormContext } from "react-hook-form";
 import Image from "next/image";
 import { useEffect } from "react";
+import { validateRiskSection } from "@/app/utils/risk/validateRiskSection";
 
 export default function BruitRisk() {
   const { register, watch, setValue } = useFormContext();
@@ -20,28 +21,34 @@ export default function BruitRisk() {
   const observations = watch("Risk.bruit.observations");
 
   useEffect(() => {
-    const hasPhase = phase1 || phase2;
+    const globalValid = validateRiskSection({
+      phases: [phase1, phase2],
 
-    const mesure1Valid = !mesure1 || universite1 || ee1;
+      mesures: [mesure1, mesure2],
 
-    const mesure2Valid = !mesure2 || universite2 || ee2;
+      universite: [universite1, universite2],
 
-    const observationValid = observations?.trim().length >= 3;
+      ee: [ee1, ee2],
 
-    const globalValid =
-      hasPhase && mesure1Valid && mesure2Valid && observationValid;
+      observations,
+    });
 
     setValue("Risk.bruit.global.state", globalValid);
   }, [
     phase1,
     phase2,
+
     mesure1,
     mesure2,
+
     universite1,
     universite2,
+
     ee1,
     ee2,
+
     observations,
+
     setValue,
   ]);
 

@@ -1,6 +1,7 @@
 import { useFormContext } from "react-hook-form";
 import Image from "next/image";
 import { useEffect } from "react";
+import { validateRiskSection } from "@/app/utils/risk/validateRiskSection";
 
 export default function AmianteRisk() {
   const { register, watch, setValue } = useFormContext();
@@ -30,44 +31,23 @@ export default function AmianteRisk() {
   const observations = watch("Risk.amiante.observations");
 
   useEffect(() => {
-    // =========================
-    // AU MOINS UNE PHASE
-    // =========================
+    const globalValid = validateRiskSection({
+      phases: [phase1, phase2, phase3],
 
-    const hasPhase = phase1 || phase2 || phase3;
+      mesures: [mesure1, mesure2, mesure3, mesure4, mesure5],
 
-    // =========================
-    // VALIDATION MESURES
-    // =========================
+      universite: [
+        universite1,
+        universite2,
+        universite3,
+        universite4,
+        universite5,
+      ],
 
-    const mesure1Valid = !mesure1 || universite1 || ee1;
+      ee: [ee1, ee2, ee3, ee4, ee5],
 
-    const mesure2Valid = !mesure2 || universite2 || ee2;
-
-    const mesure3Valid = !mesure3 || universite3 || ee3;
-
-    const mesure4Valid = !mesure4 || universite4 || ee4;
-
-    const mesure5Valid = !mesure5 || universite5 || ee5;
-
-    // =========================
-    // OBSERVATIONS
-    // =========================
-
-    const observationsValid = observations?.trim().length >= 3;
-
-    // =========================
-    // GLOBAL
-    // =========================
-
-    const globalValid =
-      hasPhase &&
-      mesure1Valid &&
-      mesure2Valid &&
-      mesure3Valid &&
-      mesure4Valid &&
-      mesure5Valid &&
-      observationsValid;
+      observations,
+    });
 
     setValue("Risk.amiante.global.state", globalValid);
   }, [

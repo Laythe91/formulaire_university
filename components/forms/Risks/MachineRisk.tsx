@@ -1,6 +1,7 @@
 import { useFormContext } from "react-hook-form";
 import Image from "next/image";
 import { useEffect } from "react";
+import { validateRiskSection } from "@/app/utils/risk/validateRiskSection";
 
 export default function MachineRisk() {
   const { register, watch, setValue } = useFormContext();
@@ -20,27 +21,17 @@ export default function MachineRisk() {
   const observations = watch("Risk.machine.observations");
 
   useEffect(() => {
-    // =========================
-    // PHASES
-    // =========================
-    const hasPhase = phase1 || phase2;
+    const globalValid = validateRiskSection({
+      phases: [phase1, phase2],
 
-    // =========================
-    // MESURES
-    // =========================
-    const mesure1Valid = !mesure1 || universite1 || ee1;
-    const mesure2Valid = !mesure2 || universite2 || ee2;
+      mesures: [mesure1, mesure2],
 
-    // =========================
-    // OBSERVATIONS
-    // =========================
-    const observationsValid = observations?.trim().length >= 3;
+      universite: [universite1, universite2],
 
-    // =========================
-    // GLOBAL
-    // =========================
-    const globalValid =
-      hasPhase && mesure1Valid && mesure2Valid && observationsValid;
+      ee: [ee1, ee2],
+
+      observations,
+    });
 
     setValue("Risk.machine.global.state", globalValid);
   }, [
@@ -57,7 +48,6 @@ export default function MachineRisk() {
     ee2,
 
     observations,
-
     setValue,
   ]);
 

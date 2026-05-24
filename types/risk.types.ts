@@ -1,4 +1,5 @@
 import { AmianteRiskType } from "./risk/amiante.type";
+import { BioChimRiskType } from "./risk/bioChim.type";
 import { BruitRiskType } from "./risk/bruit.type";
 import { ChuteHauteurRiskType } from "./risk/chuteHauteur.type";
 import { ChuteMaterielRiskType } from "./risk/chuteMateriel.type";
@@ -8,6 +9,8 @@ import { ElectriqueRiskType } from "./risk/electrique.type";
 import { EspaceConfineRiskType } from "./risk/espaceConfine.type";
 import { IncendieRiskType } from "./risk/incendie.type";
 import { MachineRiskType } from "./risk/machine.type";
+import { ManutentionRiskType } from "./risk/manutention.type";
+import { OutillageRiskType } from "./risk/outillage.type";
 
 export type RiskType = {
   state: boolean;
@@ -21,4 +24,7 @@ export type RiskType = {
   espaceconfine: EspaceConfineRiskType;
   incendie: IncendieRiskType;
   machine: MachineRiskType;
+  manutention: ManutentionRiskType;
+  outillage: OutillageRiskType;
+  bioChim: BioChimRiskType;
 };

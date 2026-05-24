@@ -1,8 +1,71 @@
 import { useFormContext } from "react-hook-form";
 import Image from "next/image";
+import { useEffect } from "react";
+import { validateRiskSection } from "@/app/utils/risk/validateRiskSection";
 
 export default function Manutention() {
-  const { register } = useFormContext();
+  const { register, watch, setValue } = useFormContext();
+
+  const phase1 = watch("Risk.manutention.phase.1");
+  const phase2 = watch("Risk.manutention.phase.2");
+  const phase3 = watch("Risk.manutention.phase.3");
+  const phase4 = watch("Risk.manutention.phase.4");
+
+  const mesure1 = watch("Risk.manutention.mesure.1");
+  const mesure2 = watch("Risk.manutention.mesure.2");
+  const mesure3 = watch("Risk.manutention.mesure.3");
+  const mesure4 = watch("Risk.manutention.mesure.4");
+
+  const universite1 = watch("Risk.manutention.universite.1");
+  const universite2 = watch("Risk.manutention.universite.2");
+  const universite3 = watch("Risk.manutention.universite.3");
+  const universite4 = watch("Risk.manutention.universite.4");
+
+  const ee1 = watch("Risk.manutention.ee.1");
+  const ee2 = watch("Risk.manutention.ee.2");
+  const ee3 = watch("Risk.manutention.ee.3");
+  const ee4 = watch("Risk.manutention.ee.4");
+
+  const observations = watch("Risk.manutention.observations");
+
+  useEffect(() => {
+    const globalValid = validateRiskSection({
+      phases: [phase1, phase2, phase3, phase4],
+
+      mesures: [mesure1, mesure2, mesure3, mesure4],
+
+      universite: [universite1, universite2, universite3, universite4],
+
+      ee: [ee1, ee2, ee3, ee4],
+
+      observations,
+    });
+
+    setValue("Risk.manutention.global.state", globalValid);
+  }, [
+    phase1,
+    phase2,
+    phase3,
+    phase4,
+
+    mesure1,
+    mesure2,
+    mesure3,
+    mesure4,
+
+    universite1,
+    universite2,
+    universite3,
+    universite4,
+
+    ee1,
+    ee2,
+    ee3,
+    ee4,
+
+    observations,
+    setValue,
+  ]);
 
   return (
     <>
@@ -68,7 +131,7 @@ export default function Manutention() {
               <div className="flex flex-col gap-4">
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                   <input
-                    {...register("Risk.manuelMeca.phase.1")}
+                    {...register("Risk.manutention.phase.1")}
                     type="checkbox"
                     className="scale-75 accent-black w-4 shrink-0 mt-1"
                   />
@@ -77,7 +140,7 @@ export default function Manutention() {
 
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                   <input
-                    {...register("Risk.manuelMeca.phase.2")}
+                    {...register("Risk.manutention.phase.2")}
                     type="checkbox"
                     className="scale-75 accent-black w-4 shrink-0 mt-1"
                   />
@@ -86,7 +149,7 @@ export default function Manutention() {
 
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                   <input
-                    {...register("Risk.manuelMeca.phase.3")}
+                    {...register("Risk.manutention.phase.3")}
                     type="checkbox"
                     className="scale-75 accent-black w-4 shrink-0 mt-1"
                   />
@@ -95,7 +158,7 @@ export default function Manutention() {
 
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                   <input
-                    {...register("Risk.manuelMeca.phase.4")}
+                    {...register("Risk.manutention.phase.4")}
                     type="checkbox"
                     className="scale-75 accent-black w-4 shrink-0 mt-1"
                   />
@@ -108,7 +171,7 @@ export default function Manutention() {
             <td className="border-x border-t border-black align-top p-3 pb-1">
               <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                 <input
-                  {...register("Risk.manuelMeca.mesure.1")}
+                  {...register("Risk.manutention.mesure.1")}
                   type="checkbox"
                   className="scale-75 accent-black w-4 shrink-0 mt-1"
                 />
@@ -119,7 +182,7 @@ export default function Manutention() {
             {/* Université 1 */}
             <td className="border-x border-t border-black align-top p-3 pb-1 text-center">
               <input
-                {...register("Risk.manuelMeca.universite.1")}
+                {...register("Risk.manutention.universite.1")}
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -128,7 +191,7 @@ export default function Manutention() {
             {/* EE 1 */}
             <td className="border-x border-t border-black align-top p-3 pb-1 text-center">
               <input
-                {...register("Risk.manuelMeca.ee.1")}
+                {...register("Risk.manutention.ee.1")}
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -141,7 +204,7 @@ export default function Manutention() {
             <td className="border-x border-black align-top p-3 py-1">
               <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                 <input
-                  {...register("Risk.manuelMeca.mesure.2")}
+                  {...register("Risk.manutention.mesure.2")}
                   type="checkbox"
                   className="scale-75 accent-black w-4 shrink-0 mt-1"
                 />
@@ -153,7 +216,7 @@ export default function Manutention() {
             {/* Université 2 */}
             <td className="border-x border-black align-top p-3 py-1 text-center">
               <input
-                {...register("Risk.manuelMeca.universite.2")}
+                {...register("Risk.manutention.universite.2")}
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -162,7 +225,7 @@ export default function Manutention() {
             {/* EE 2 */}
             <td className="border-x border-black align-top p-3 py-1 text-center">
               <input
-                {...register("Risk.manuelMeca.ee.2")}
+                {...register("Risk.manutention.ee.2")}
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -175,7 +238,7 @@ export default function Manutention() {
             <td className="border-x border-black align-top p-3 py-1">
               <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                 <input
-                  {...register("Risk.manuelMeca.mesure.3")}
+                  {...register("Risk.manutention.mesure.3")}
                   type="checkbox"
                   className="scale-75 accent-black w-4 shrink-0 mt-1"
                 />
@@ -186,7 +249,7 @@ export default function Manutention() {
             {/* Université 3 */}
             <td className="border-x border-black align-top p-3 py-1 text-center">
               <input
-                {...register("Risk.manuelMeca.universite.3")}
+                {...register("Risk.manutention.universite.3")}
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -195,7 +258,7 @@ export default function Manutention() {
             {/* EE 3 */}
             <td className="border-x border-black align-top p-3 py-1 text-center">
               <input
-                {...register("Risk.manuelMeca.ee.3")}
+                {...register("Risk.manutention.ee.3")}
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -208,7 +271,7 @@ export default function Manutention() {
             <td className="border-x border-black align-top p-3 py-1">
               <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                 <input
-                  {...register("Risk.manuelMeca.mesure.4")}
+                  {...register("Risk.manutention.mesure.4")}
                   type="checkbox"
                   className="scale-75 accent-black w-4 shrink-0 mt-1"
                 />
@@ -219,7 +282,7 @@ export default function Manutention() {
             {/* Université 4 */}
             <td className="border-x border-black align-top p-3 py-1 text-center">
               <input
-                {...register("Risk.manuelMeca.universite.4")}
+                {...register("Risk.manutention.universite.4")}
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -228,7 +291,7 @@ export default function Manutention() {
             {/* EE 4 */}
             <td className="border-x border-black align-top p-3 py-1 text-center">
               <input
-                {...register("Risk.manuelMeca.ee.4")}
+                {...register("Risk.manutention.ee.4")}
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -243,7 +306,7 @@ export default function Manutention() {
           Observations :
         </label>
         <textarea
-          {...register("Risk.manuelMeca.observations")}
+          {...register("Risk.manutention.observations")}
           placeholder="Renseigner ici les observations ou précisions concernant les mesures..."
           className="w-full min-h-15 h-20 border border-gray-300 p-2 text-sm outline-none resize-none focus:border-black transition-colors"
         />

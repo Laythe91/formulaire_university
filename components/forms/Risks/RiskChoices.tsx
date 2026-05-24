@@ -109,7 +109,7 @@ export default function RiskChoices() {
                 <label className="text-sm flex items-center gap-1 leading-snug">
                   <input
                     type="checkbox"
-                    {...register("risques.manuelMeca.checkbox.state")}
+                    {...register("risques.manutention.checkbox.state")}
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Manutention manuelle ou mecanique

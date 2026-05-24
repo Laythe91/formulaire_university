@@ -52,6 +52,7 @@ export default function Page({
   );
   const CompanyInformationState = methods.watch("Entreprise.information.state");
   const InspectionState = methods.watch("Inspection.state");
+  const RiskState = methods.watch("Risk.state");
   const DocumentState = methods.watch("Document.state");
   const GlobalState = methods.watch("Global.state");
 
@@ -121,9 +122,9 @@ export default function Page({
           {CompanyInformationState && <JointInspectionSection />}
 
           {InspectionState && <RiskSection />}
+          {RiskState && <CovidSection />}
+          {RiskState && <FilesToCompanySection />}
 
-          <CovidSection />
-          <FilesToCompanySection />
           {DocumentState && (
             <>
               {" "}

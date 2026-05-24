@@ -1,6 +1,7 @@
 import { useFormContext } from "react-hook-form";
 import Image from "next/image";
 import { useEffect } from "react";
+import { validateRiskSection } from "@/app/utils/risk/validateRiskSection";
 
 export default function ChutePlainPiedRisk() {
   const { register, watch, setValue } = useFormContext();
@@ -31,41 +32,17 @@ export default function ChutePlainPiedRisk() {
   const observations = watch("Risk.chutePied.observations");
 
   useEffect(() => {
-    // =========================
-    // PHASES
-    // =========================
+    const globalValid = validateRiskSection({
+      phases: [phase1, phase2],
 
-    const hasPhase = phase1 || phase2;
+      mesures: [mesure1, mesure2, mesure3, mesure4],
 
-    // =========================
-    // MESURES
-    // =========================
+      universite: [universite1, universite2, universite3, universite4],
 
-    const mesure1Valid = !mesure1 || universite1 || ee1;
+      ee: [ee1, ee2, ee3, ee4],
 
-    const mesure2Valid = !mesure2 || universite2 || ee2;
-
-    const mesure3Valid = !mesure3 || universite3 || ee3;
-
-    const mesure4Valid = !mesure4 || universite4 || ee4;
-
-    // =========================
-    // OBSERVATIONS
-    // =========================
-
-    const observationsValid = observations?.trim().length >= 3;
-
-    // =========================
-    // GLOBAL
-    // =========================
-
-    const globalValid =
-      hasPhase &&
-      mesure1Valid &&
-      mesure2Valid &&
-      mesure3Valid &&
-      mesure4Valid &&
-      observationsValid;
+      observations,
+    });
 
     setValue("Risk.chutePied.global.state", globalValid);
   }, [
@@ -88,7 +65,6 @@ export default function ChutePlainPiedRisk() {
     ee4,
 
     observations,
-
     setValue,
   ]);
 
