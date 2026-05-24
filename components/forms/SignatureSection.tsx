@@ -100,7 +100,7 @@ export default function SignatureSection() {
 
                 {/* Espace blanc forcé pour le PDF */}
                 <div className="mt-10">
-                  <span className="font-semibold">Visas :</span>
+                  <span className="font-semibold">Visa :</span>
                 </div>
               </td>
             )}
