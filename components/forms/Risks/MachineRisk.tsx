@@ -1,55 +1,15 @@
 import { useFormContext } from "react-hook-form";
 import Image from "next/image";
-import { useEffect } from "react";
-import { validateRiskSection } from "@/app/utils/risk/validateRiskSection";
+import { useRiskValidation } from "@/app/utils/risk/useRiskValidationHooks";
 
 export default function MachineRisk() {
-  const { register, watch, setValue } = useFormContext();
+  const { register } = useFormContext();
 
-  const phase1 = watch("Risk.machine.phase.1");
-  const phase2 = watch("Risk.machine.phase.2");
-
-  const mesure1 = watch("Risk.machine.mesure.1");
-  const mesure2 = watch("Risk.machine.mesure.2");
-
-  const universite1 = watch("Risk.machine.universite.1");
-  const universite2 = watch("Risk.machine.universite.2");
-
-  const ee1 = watch("Risk.machine.ee.1");
-  const ee2 = watch("Risk.machine.ee.2");
-
-  const observations = watch("Risk.machine.observations");
-
-  useEffect(() => {
-    const globalValid = validateRiskSection({
-      phases: [phase1, phase2],
-
-      mesures: [mesure1, mesure2],
-
-      universite: [universite1, universite2],
-
-      ee: [ee1, ee2],
-
-      observations,
-    });
-
-    setValue("Risk.machine.global.state", globalValid);
-  }, [
-    phase1,
-    phase2,
-
-    mesure1,
-    mesure2,
-
-    universite1,
-    universite2,
-
-    ee1,
-    ee2,
-
-    observations,
-    setValue,
-  ]);
+  useRiskValidation({
+    path: "Risk.machine",
+    phaseCount: 2,
+    mesureCount: 2,
+  });
 
   return (
     <>

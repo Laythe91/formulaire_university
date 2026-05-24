@@ -1,95 +1,15 @@
 import { useFormContext } from "react-hook-form";
 import Image from "next/image";
-import { useEffect } from "react";
-import { validateRiskSection } from "@/app/utils/risk/validateRiskSection";
+import { useRiskValidation } from "@/app/utils/risk/useRiskValidationHooks";
 
 export default function IncendieRisk() {
-  const { register, watch, setValue } = useFormContext();
+  const { register } = useFormContext();
 
-  const phase1 = watch("Risk.incendie.phase.1");
-  const phase2 = watch("Risk.incendie.phase.2");
-  const phase3 = watch("Risk.incendie.phase.3");
-
-  const mesure1 = watch("Risk.incendie.mesure.1");
-  const mesure2 = watch("Risk.incendie.mesure.2");
-  const mesure3 = watch("Risk.incendie.mesure.3");
-  const mesure4 = watch("Risk.incendie.mesure.4");
-  const mesure5 = watch("Risk.incendie.mesure.5");
-  const mesure6 = watch("Risk.incendie.mesure.6");
-  const mesure7 = watch("Risk.incendie.mesure.7");
-
-  const universite1 = watch("Risk.incendie.universite.1");
-  const universite2 = watch("Risk.incendie.universite.2");
-  const universite3 = watch("Risk.incendie.universite.3");
-  const universite4 = watch("Risk.incendie.universite.4");
-  const universite5 = watch("Risk.incendie.universite.5");
-  const universite6 = watch("Risk.incendie.universite.6");
-  const universite7 = watch("Risk.incendie.universite.7");
-
-  const ee1 = watch("Risk.incendie.ee.1");
-  const ee2 = watch("Risk.incendie.ee.2");
-  const ee3 = watch("Risk.incendie.ee.3");
-  const ee4 = watch("Risk.incendie.ee.4");
-  const ee5 = watch("Risk.incendie.ee.5");
-  const ee6 = watch("Risk.incendie.ee.6");
-  const ee7 = watch("Risk.incendie.ee.7");
-
-  const observations = watch("Risk.incendie.observations");
-
-  useEffect(() => {
-    const globalValid = validateRiskSection({
-      phases: [phase1, phase2, phase3],
-
-      mesures: [mesure1, mesure2, mesure3, mesure4, mesure5, mesure6, mesure7],
-
-      universite: [
-        universite1,
-        universite2,
-        universite3,
-        universite4,
-        universite5,
-        universite6,
-        universite7,
-      ],
-
-      ee: [ee1, ee2, ee3, ee4, ee5, ee6, ee7],
-
-      observations,
-    });
-
-    setValue("Risk.incendie.global.state", globalValid);
-  }, [
-    phase1,
-    phase2,
-    phase3,
-
-    mesure1,
-    mesure2,
-    mesure3,
-    mesure4,
-    mesure5,
-    mesure6,
-    mesure7,
-
-    universite1,
-    universite2,
-    universite3,
-    universite4,
-    universite5,
-    universite6,
-    universite7,
-
-    ee1,
-    ee2,
-    ee3,
-    ee4,
-    ee5,
-    ee6,
-    ee7,
-
-    observations,
-    setValue,
-  ]);
+  useRiskValidation({
+    path: "Risk.incendie",
+    phaseCount: 3,
+    mesureCount: 7,
+  });
 
   return (
     <>

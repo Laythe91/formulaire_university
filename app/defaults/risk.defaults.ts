@@ -11,6 +11,7 @@ import { incendieDefaults } from "./risk/incendie.defaults";
 import { machineDefaults } from "./risk/machine.defaults";
 import { manutentionDefaults } from "./risk/manutention.defaults";
 import { outillageDefaults } from "./risk/outillage.defaults";
+import { bioChimDefaults } from "./risk/bioChim.defaults";
 
 export const riskDefaults: RiskType = {
   state: false,
@@ -26,4 +27,5 @@ export const riskDefaults: RiskType = {
   machine: machineDefaults,
   manutention: manutentionDefaults,
   outillage: outillageDefaults,
+  bioChim: bioChimDefaults,
 };

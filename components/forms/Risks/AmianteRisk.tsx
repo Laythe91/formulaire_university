@@ -1,81 +1,15 @@
 import { useFormContext } from "react-hook-form";
 import Image from "next/image";
-import { useEffect } from "react";
-import { validateRiskSection } from "@/app/utils/risk/validateRiskSection";
+import { useRiskValidation } from "@/app/utils/risk/useRiskValidationHooks";
 
 export default function AmianteRisk() {
-  const { register, watch, setValue } = useFormContext();
+  const { register } = useFormContext();
 
-  const phase1 = watch("Risk.amiante.phase.1");
-  const phase2 = watch("Risk.amiante.phase.2");
-  const phase3 = watch("Risk.amiante.phase.3");
-
-  const mesure1 = watch("Risk.amiante.mesure.1");
-  const mesure2 = watch("Risk.amiante.mesure.2");
-  const mesure3 = watch("Risk.amiante.mesure.3");
-  const mesure4 = watch("Risk.amiante.mesure.4");
-  const mesure5 = watch("Risk.amiante.mesure.5");
-
-  const universite1 = watch("Risk.amiante.universite.1");
-  const universite2 = watch("Risk.amiante.universite.2");
-  const universite3 = watch("Risk.amiante.universite.3");
-  const universite4 = watch("Risk.amiante.universite.4");
-  const universite5 = watch("Risk.amiante.universite.5");
-
-  const ee1 = watch("Risk.amiante.ee.1");
-  const ee2 = watch("Risk.amiante.ee.2");
-  const ee3 = watch("Risk.amiante.ee.3");
-  const ee4 = watch("Risk.amiante.ee.4");
-  const ee5 = watch("Risk.amiante.ee.5");
-
-  const observations = watch("Risk.amiante.observations");
-
-  useEffect(() => {
-    const globalValid = validateRiskSection({
-      phases: [phase1, phase2, phase3],
-
-      mesures: [mesure1, mesure2, mesure3, mesure4, mesure5],
-
-      universite: [
-        universite1,
-        universite2,
-        universite3,
-        universite4,
-        universite5,
-      ],
-
-      ee: [ee1, ee2, ee3, ee4, ee5],
-
-      observations,
-    });
-
-    setValue("Risk.amiante.global.state", globalValid);
-  }, [
-    phase1,
-    phase2,
-    phase3,
-
-    mesure1,
-    mesure2,
-    mesure3,
-    mesure4,
-    mesure5,
-
-    universite1,
-    universite2,
-    universite3,
-    universite4,
-    universite5,
-
-    ee1,
-    ee2,
-    ee3,
-    ee4,
-    ee5,
-
-    observations,
-    setValue,
-  ]);
+  useRiskValidation({
+    path: "Risk.amiante",
+    phaseCount: 3,
+    mesureCount: 5,
+  });
 
   return (
     <>
@@ -165,7 +99,7 @@ export default function AmianteRisk() {
           {/* MESURE 1 (Haut du bloc) */}
           <tr>
             {/* Colonne Phases (Fusionnée sur les 4 lignes de mesures) */}
-            <td rowSpan={6} className="border border-black align-top p-3">
+            <td rowSpan={5} className="border border-black align-top p-3">
               <div className="flex flex-col gap-4">
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                   <input

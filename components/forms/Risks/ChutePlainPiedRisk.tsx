@@ -1,72 +1,15 @@
 import { useFormContext } from "react-hook-form";
 import Image from "next/image";
-import { useEffect } from "react";
-import { validateRiskSection } from "@/app/utils/risk/validateRiskSection";
+import { useRiskValidation } from "@/app/utils/risk/useRiskValidationHooks";
 
 export default function ChutePlainPiedRisk() {
-  const { register, watch, setValue } = useFormContext();
-  const phase1 = watch("Risk.chutePied.phase.1");
-  const phase2 = watch("Risk.chutePied.phase.2");
+  const { register } = useFormContext();
 
-  const mesure1 = watch("Risk.chutePied.mesure.1");
-  const mesure2 = watch("Risk.chutePied.mesure.2");
-  const mesure3 = watch("Risk.chutePied.mesure.3");
-  const mesure4 = watch("Risk.chutePied.mesure.4");
-
-  const universite1 = watch("Risk.chutePied.universite.1");
-
-  const universite2 = watch("Risk.chutePied.universite.2");
-
-  const universite3 = watch("Risk.chutePied.universite.3");
-
-  const universite4 = watch("Risk.chutePied.universite.4");
-
-  const ee1 = watch("Risk.chutePied.ee.1");
-
-  const ee2 = watch("Risk.chutePied.ee.2");
-
-  const ee3 = watch("Risk.chutePied.ee.3");
-
-  const ee4 = watch("Risk.chutePied.ee.4");
-
-  const observations = watch("Risk.chutePied.observations");
-
-  useEffect(() => {
-    const globalValid = validateRiskSection({
-      phases: [phase1, phase2],
-
-      mesures: [mesure1, mesure2, mesure3, mesure4],
-
-      universite: [universite1, universite2, universite3, universite4],
-
-      ee: [ee1, ee2, ee3, ee4],
-
-      observations,
-    });
-
-    setValue("Risk.chutePied.global.state", globalValid);
-  }, [
-    phase1,
-    phase2,
-
-    mesure1,
-    mesure2,
-    mesure3,
-    mesure4,
-
-    universite1,
-    universite2,
-    universite3,
-    universite4,
-
-    ee1,
-    ee2,
-    ee3,
-    ee4,
-
-    observations,
-    setValue,
-  ]);
+  useRiskValidation({
+    path: "Risk.chutePied",
+    phaseCount: 2,
+    mesureCount: 4,
+  });
 
   return (
     <>

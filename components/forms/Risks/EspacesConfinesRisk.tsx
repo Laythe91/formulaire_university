@@ -1,81 +1,15 @@
 import { useFormContext } from "react-hook-form";
 import Image from "next/image";
-import { useEffect } from "react";
-import { validateRiskSection } from "@/app/utils/risk/validateRiskSection";
+import { useRiskValidation } from "@/app/utils/risk/useRiskValidationHooks";
 
 export default function EspaceConfinesRisk() {
-  const { register, watch, setValue } = useFormContext();
+  const { register } = useFormContext();
 
-  const phase1 = watch("Risk.espaceconfine.phase.1");
-  const phase2 = watch("Risk.espaceconfine.phase.2");
-  const phase3 = watch("Risk.espaceconfine.phase.3");
-
-  const mesure1 = watch("Risk.espaceconfine.mesure.1");
-  const mesure2 = watch("Risk.espaceconfine.mesure.2");
-  const mesure3 = watch("Risk.espaceconfine.mesure.3");
-  const mesure4 = watch("Risk.espaceconfine.mesure.4");
-  const mesure5 = watch("Risk.espaceconfine.mesure.5");
-
-  const universite1 = watch("Risk.espaceconfine.universite.1");
-  const universite2 = watch("Risk.espaceconfine.universite.2");
-  const universite3 = watch("Risk.espaceconfine.universite.3");
-  const universite4 = watch("Risk.espaceconfine.universite.4");
-  const universite5 = watch("Risk.espaceconfine.universite.5");
-
-  const ee1 = watch("Risk.espaceconfine.ee.1");
-  const ee2 = watch("Risk.espaceconfine.ee.2");
-  const ee3 = watch("Risk.espaceconfine.ee.3");
-  const ee4 = watch("Risk.espaceconfine.ee.4");
-  const ee5 = watch("Risk.espaceconfine.ee.5");
-
-  const observations = watch("Risk.espaceconfine.observations");
-
-  useEffect(() => {
-    const globalValid = validateRiskSection({
-      phases: [phase1, phase2, phase3],
-
-      mesures: [mesure1, mesure2, mesure3, mesure4, mesure5],
-
-      universite: [
-        universite1,
-        universite2,
-        universite3,
-        universite4,
-        universite5,
-      ],
-
-      ee: [ee1, ee2, ee3, ee4, ee5],
-
-      observations,
-    });
-
-    setValue("Risk.espaceconfine.global.state", globalValid);
-  }, [
-    phase1,
-    phase2,
-    phase3,
-
-    mesure1,
-    mesure2,
-    mesure3,
-    mesure4,
-    mesure5,
-
-    universite1,
-    universite2,
-    universite3,
-    universite4,
-    universite5,
-
-    ee1,
-    ee2,
-    ee3,
-    ee4,
-    ee5,
-
-    observations,
-    setValue,
-  ]);
+  useRiskValidation({
+    path: "Risk.espaceconfine",
+    phaseCount: 3,
+    mesureCount: 5,
+  });
 
   return (
     <>

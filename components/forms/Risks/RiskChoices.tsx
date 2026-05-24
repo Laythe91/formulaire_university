@@ -109,7 +109,7 @@ export default function RiskChoices() {
                 <label className="text-sm flex items-center gap-1 leading-snug">
                   <input
                     type="checkbox"
-                    {...register("risques.manutention.checkbox.state")}
+                    {...register("Risk.manutention.checkbox.state")}
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Manutention manuelle ou mecanique
@@ -119,7 +119,7 @@ export default function RiskChoices() {
                 <label className="text-sm flex items-center gap-1 leading-snug">
                   <input
                     type="checkbox"
-                    {...register("risques.outillage.checkbox.state")}
+                    {...register("Risk.outillage.checkbox.state")}
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Outillage
@@ -128,7 +128,7 @@ export default function RiskChoices() {
                 <label className="text-sm flex items-center gap-1 leading-snug ">
                   <input
                     type="checkbox"
-                    {...register("risques.bioChim.checkbox.state")}
+                    {...register("Risk.bioChim.checkbox.state")}
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Risque de contamination biologique <br />
@@ -138,7 +138,7 @@ export default function RiskChoices() {
                 <label className="text-sm flex items-center gap-1 leading-snug ">
                   <input
                     type="checkbox"
-                    {...register("risques.amiante.checkbox.state")}
+                    {...register("Risk.amiante.checkbox.state")}
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Risque à l'amiante

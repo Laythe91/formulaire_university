@@ -1,203 +1,15 @@
 import { useFormContext } from "react-hook-form";
 import Image from "next/image";
-import { useEffect } from "react";
-import { validateRiskSection } from "@/app/utils/risk/validateRiskSection";
+import { useRiskValidation } from "@/app/utils/risk/useRiskValidationHooks";
 
 export default function BioChimRisk() {
-  const { register, watch, setValue } = useFormContext();
+  const { register } = useFormContext();
 
-  /* =========================
-   PHASES
-========================= */
-  const phase1 = watch("Risk.bioChim.phase.1");
-  const phase2 = watch("Risk.bioChim.phase.2");
-  const phase3 = watch("Risk.bioChim.phase.3");
-  const phase4 = watch("Risk.bioChim.phase.4");
-  const phase5 = watch("Risk.bioChim.phase.5");
-  const phase6 = watch("Risk.bioChim.phase.6");
-  const phase7 = watch("Risk.bioChim.phase.7");
-  const phase8 = watch("Risk.bioChim.phase.8");
-  const phase9 = watch("Risk.bioChim.phase.9");
-  const phase10 = watch("Risk.bioChim.phase.10");
-  const phase11 = watch("Risk.bioChim.phase.11");
-  const phase12 = watch("Risk.bioChim.phase.12");
-  const phase13 = watch("Risk.bioChim.phase.13");
-
-  /* =========================
-   MESURES
-========================= */
-  const mesure1 = watch("Risk.bioChim.mesure.1");
-  const mesure2 = watch("Risk.bioChim.mesure.2");
-  const mesure3 = watch("Risk.bioChim.mesure.3");
-  const mesure4 = watch("Risk.bioChim.mesure.4");
-  const mesure5 = watch("Risk.bioChim.mesure.5");
-  const mesure6 = watch("Risk.bioChim.mesure.6");
-  const mesure7 = watch("Risk.bioChim.mesure.7");
-  const mesure8 = watch("Risk.bioChim.mesure.8");
-  const mesure9 = watch("Risk.bioChim.mesure.9");
-  const mesure10 = watch("Risk.bioChim.mesure.10");
-  const mesure11 = watch("Risk.bioChim.mesure.11");
-  const mesure12 = watch("Risk.bioChim.mesure.12");
-  const mesure13 = watch("Risk.bioChim.mesure.13");
-
-  /* =========================
-   UNIVERSITE
-========================= */
-  const universite1 = watch("Risk.bioChim.universite.1");
-  const universite2 = watch("Risk.bioChim.universite.2");
-  const universite3 = watch("Risk.bioChim.universite.3");
-  const universite4 = watch("Risk.bioChim.universite.4");
-  const universite5 = watch("Risk.bioChim.universite.5");
-  const universite6 = watch("Risk.bioChim.universite.6");
-  const universite7 = watch("Risk.bioChim.universite.7");
-  const universite8 = watch("Risk.bioChim.universite.8");
-  const universite9 = watch("Risk.bioChim.universite.9");
-  const universite10 = watch("Risk.bioChim.universite.10");
-  const universite11 = watch("Risk.bioChim.universite.11");
-  const universite12 = watch("Risk.bioChim.universite.12");
-  const universite13 = watch("Risk.bioChim.universite.13");
-
-  /* =========================
-   EE
-========================= */
-  const ee1 = watch("Risk.bioChim.ee.1");
-  const ee2 = watch("Risk.bioChim.ee.2");
-  const ee3 = watch("Risk.bioChim.ee.3");
-  const ee4 = watch("Risk.bioChim.ee.4");
-  const ee5 = watch("Risk.bioChim.ee.5");
-  const ee6 = watch("Risk.bioChim.ee.6");
-  const ee7 = watch("Risk.bioChim.ee.7");
-  const ee8 = watch("Risk.bioChim.ee.8");
-  const ee9 = watch("Risk.bioChim.ee.9");
-  const ee10 = watch("Risk.bioChim.ee.10");
-  const ee11 = watch("Risk.bioChim.ee.11");
-  const ee12 = watch("Risk.bioChim.ee.12");
-  const ee13 = watch("Risk.bioChim.ee.13");
-
-  /* =========================
-   OBSERVATIONS
-========================= */
-  const observations = watch("Risk.bioChim.observations");
-
-  /* =========================
-   VALIDATION
-========================= */
-  useEffect(() => {
-    const globalValid = validateRiskSection({
-      phases: [
-        phase1,
-        phase2,
-        phase3,
-        phase4,
-        phase5,
-        phase6,
-        phase7,
-        phase8,
-        phase9,
-        phase10,
-        phase11,
-        phase12,
-        phase13,
-      ],
-
-      mesures: [
-        mesure1,
-        mesure2,
-        mesure3,
-        mesure4,
-        mesure5,
-        mesure6,
-        mesure7,
-        mesure8,
-        mesure9,
-        mesure10,
-        mesure11,
-        mesure12,
-        mesure13,
-      ],
-
-      universite: [
-        universite1,
-        universite2,
-        universite3,
-        universite4,
-        universite5,
-        universite6,
-        universite7,
-        universite8,
-        universite9,
-        universite10,
-        universite11,
-        universite12,
-        universite13,
-      ],
-
-      ee: [ee1, ee2, ee3, ee4, ee5, ee6, ee7, ee8, ee9, ee10, ee11, ee12, ee13],
-
-      observations,
-    });
-
-    setValue("Risk.bioChim.global.state", globalValid);
-  }, [
-    phase1,
-    phase2,
-    phase3,
-    phase4,
-    phase5,
-    phase6,
-    phase7,
-    phase8,
-    phase9,
-    phase10,
-    phase11,
-    phase12,
-    phase13,
-
-    mesure1,
-    mesure2,
-    mesure3,
-    mesure4,
-    mesure5,
-    mesure6,
-    mesure7,
-    mesure8,
-    mesure9,
-    mesure10,
-    mesure11,
-    mesure12,
-    mesure13,
-
-    universite1,
-    universite2,
-    universite3,
-    universite4,
-    universite5,
-    universite6,
-    universite7,
-    universite8,
-    universite9,
-    universite10,
-    universite11,
-    universite12,
-    universite13,
-
-    ee1,
-    ee2,
-    ee3,
-    ee4,
-    ee5,
-    ee6,
-    ee7,
-    ee8,
-    ee9,
-    ee10,
-    ee11,
-    ee12,
-    ee13,
-
-    observations,
-    setValue,
-  ]);
+  useRiskValidation({
+    path: "Risk.bioChim",
+    phaseCount: 11,
+    mesureCount: 13,
+  });
 
   return (
     <>
@@ -401,7 +213,7 @@ export default function BioChimRisk() {
 
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                   <input
-                    {...register("Risk.bioChim.phase.13")}
+                    {...register("Risk.bioChim.phase.11")}
                     type="checkbox"
                     className="scale-75 accent-black w-4 shrink-0 mt-1"
                   />
