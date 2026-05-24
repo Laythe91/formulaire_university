@@ -7,16 +7,42 @@ type Props = {
 
 export default function HeaderSection({ date }: Props) {
   const { register, watch, setValue } = useFormContext();
+
   const ponctuel = watch("Operation.ponctuel.state");
+
+  const planNumber = watch("Header.planNumber");
+
   const nomSociete = watch("Entreprise.titulaire.name");
 
   useEffect(() => {
-    const isValid = nomSociete && nomSociete.trim().length >= 2;
+    // =========================
+    // VALIDATION PLAN NUMBER
+    // =========================
 
-    setValue("Header.state", isValid, {
+    let planValid = false;
+
+    const value = planNumber || "";
+
+    // ponctuel => P-123 obligatoire
+    if (ponctuel) {
+      planValid = /^P-\d+$/.test(value);
+    }
+
+    // annuel => 123 uniquement
+    else {
+      planValid = /^\d+$/.test(value);
+    }
+
+    setValue("Header.planNumber.state", planValid);
+
+    const societeValid = nomSociete?.trim().length >= 2;
+
+    const headerValid = societeValid;
+
+    setValue("Header.state", headerValid, {
       shouldDirty: false,
     });
-  }, [nomSociete, setValue]);
+  }, [planNumber, ponctuel, nomSociete, setValue]);
 
   return (
     <table className="w-full border-2 border-black border-collapse table-fixed">
@@ -46,12 +72,15 @@ export default function HeaderSection({ date }: Props) {
             <div className="space-y-2 text-center">
               <div className="flex flex-col">
                 <span className=" text-gray-600">Plan</span>
-                <div className="w-6 mx-16">
-                  <span
-                    className={`font-semibold ${!ponctuel ? "invisible" : ""}`}
-                  >
-                    P-
-                  </span>
+                <div className="flex items-center justify-center gap-1">
+                  {/* PREFIXE P- uniquement si ponctuel */}
+
+                  <input
+                    {...register("Header.planNumber")}
+                    placeholder={ponctuel ? "P-Numéro" : "Numéro"}
+                    className="border border-black px-2 py-0.5 w-24 text-center text-sm font-semibold"
+                    type="text"
+                  />
                 </div>
               </div>
 

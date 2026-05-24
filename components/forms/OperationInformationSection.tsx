@@ -13,6 +13,8 @@ export default function OperationInformationSection({ date }: Props) {
   const start = watch("Operation.date.start");
   const end = watch("Operation.date.end");
   const objet = watch("Operation.objet");
+  const planNumberValid = watch("Header.planNumber.state");
+  const planNumber = watch("Header.planNumber");
   const year = date.split("/")[2];
 
   const handleExclusive = (field: "annuel" | "ponctuel", value: boolean) => {
@@ -22,6 +24,7 @@ export default function OperationInformationSection({ date }: Props) {
         setValue("Operation.ponctuel.state", false);
         setValue("Operation.date.start", year);
         setValue("Operation.date.end", year);
+        setValue("Header.planNumber", "");
       }
     }
 
@@ -31,6 +34,7 @@ export default function OperationInformationSection({ date }: Props) {
         setValue("Operation.annuel.state", false);
         setValue("Operation.date.start", "");
         setValue("Operation.date.end", "");
+        setValue("Header.planNumber", "");
       }
     }
   };
@@ -54,12 +58,12 @@ export default function OperationInformationSection({ date }: Props) {
 
     const validObjet = (objet ?? "").trim().length >= 6;
 
-    const isValid = hasType && validDate && validObjet;
+    const isValid = hasType && validDate && validObjet && planNumberValid;
 
     setValue("Operation.state", isValid, {
       shouldDirty: false,
     });
-  }, [annuel, ponctuel, start, end, objet, setValue]);
+  }, [annuel, ponctuel, start, end, objet, planNumber, setValue]);
 
   return (
     <table className="w-full border-2 border-black border-collapse table-fixed mt-3">

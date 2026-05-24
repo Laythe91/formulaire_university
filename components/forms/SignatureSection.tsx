@@ -11,8 +11,8 @@ export default function SignatureSection() {
       <div className="text-sm">
         Les signatures du représentant de l'entreprise utilisatrice et des
         représentants mandatés de toutes les entreprises intervenantes
-        entérinent l'accord de chacun sur le contenu de ce document comportant 8
-        pages.{" "}
+        entérinent l'accord de chacun sur le contenu de ce document comportant
+        plusieurs pages.{" "}
         <span className="font-semibold">
           Elles engagent chacun, pour ce qui le concerne, au respect de toutes
           les obligations et mesures de prévention qu'il contient.

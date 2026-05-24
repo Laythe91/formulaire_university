@@ -102,45 +102,107 @@ export default function Page({
     <div className="w-[210mm] mx-auto mt-4">
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
+          {/* =========================
+            HEADER
+        ========================= */}
           <HeaderSection date={date} />
 
+          {/* =========================
+            OPERATION
+        ========================= */}
           {HeaderState && (
             <>
               <BottomHeaderSection />
               <OperationInformationSection date={date} />
+
+              {/* =========================
+                EXECUTION
+            ========================= */}
+              {OperationSectionState && (
+                <>
+                  <ExecutionConditionSection />
+
+                  {/* =========================
+                    UNIVERSITY
+                ========================= */}
+                  {ExecutionConditionState && (
+                    <>
+                      <UniversityInformationSection />
+
+                      {/* =========================
+                        ENTREPRISE
+                    ========================= */}
+                      {universityState && (
+                        <>
+                          <RescueOrganizationSection />
+                          <CompanyInformationSection1 />
+
+                          {/* =========================
+                            ENTREPRISE INFOS
+                        ========================= */}
+                          {EntrepriseRenseignementState && (
+                            <>
+                              <CompanyInformationSection2 />
+
+                              {/* =========================
+                                INSPECTION
+                            ========================= */}
+                              {CompanyInformationState && (
+                                <>
+                                  <JointInspectionSection />
+
+                                  {/* =========================
+                                    RISKS
+                                ========================= */}
+                                  {InspectionState && (
+                                    <>
+                                      <RiskSection />
+
+                                      {/* =========================
+                                        DOCUMENTS
+                                    ========================= */}
+                                      {RiskState && (
+                                        <>
+                                          <CovidSection />
+                                          <FilesToCompanySection />
+
+                                          {/* =========================
+                                            FINAL PART
+                                        ========================= */}
+                                          {DocumentState && (
+                                            <>
+                                              <SocialOfficeSection />
+                                              <InstructionsSection />
+                                              <SignatureSection />
+
+                                              {/* =========================
+                                                SUBMIT
+                                            ========================= */}
+                                              {GlobalState && (
+                                                <Button
+                                                  type="submit"
+                                                  className="bg-blue-600 flex text-white px-4 py-2 mt-10 mb-10 mx-auto"
+                                                >
+                                                  Valider
+                                                </Button>
+                                              )}
+                                            </>
+                                          )}
+                                        </>
+                                      )}
+                                    </>
+                                  )}
+                                </>
+                              )}
+                            </>
+                          )}
+                        </>
+                      )}
+                    </>
+                  )}
+                </>
+              )}
             </>
-          )}
-
-          {OperationSectionState && <ExecutionConditionSection />}
-
-          {ExecutionConditionState && <UniversityInformationSection />}
-
-          {universityState && <RescueOrganizationSection />}
-          {universityState && <CompanyInformationSection1 />}
-          {EntrepriseRenseignementState && <CompanyInformationSection2 />}
-
-          {CompanyInformationState && <JointInspectionSection />}
-
-          {InspectionState && <RiskSection />}
-          {RiskState && <CovidSection />}
-          {RiskState && <FilesToCompanySection />}
-
-          {DocumentState && (
-            <>
-              {" "}
-              <SocialOfficeSection />
-              <InstructionsSection />
-              <SignatureSection />
-            </>
-          )}
-
-          {GlobalState && (
-            <Button
-              type="submit"
-              className="bg-blue-600 flex text-white px-4 py-2 mt-10 mb-10 mx-auto"
-            >
-              Valider
-            </Button>
           )}
         </form>
       </FormProvider>
