@@ -4,7 +4,7 @@ import { useFormContext } from "react-hook-form";
 
 export default function SignatureSection() {
   const { watch } = useFormContext();
-  const { count } = useSousTraitants();
+  const { count, soustraitants } = useSousTraitants();
   const NomPresident = PRESIDENT_CONTACT.name;
   const Societe = watch("Entreprise.titulaire.name");
   return (
@@ -25,13 +25,14 @@ export default function SignatureSection() {
           <tr>
             {/* Université */}
             <td
-              className="border border-black p-3 align-top"
+              className="border border-black p-3 align-top wrap-break-words whitespace-normal"
               style={{ height: "350px" }}
             >
-              <div className=" mb-2">
+              <div className=" mb-2 whitespace-pre-wrap wrap-break-words">
                 <span className="font-semibold">
                   Pour l'Université de Paris VIII :
                 </span>
+                <br />
                 <br />
                 représentée par:
               </div>
@@ -52,14 +53,15 @@ export default function SignatureSection() {
 
             {/* Titulaire */}
             <td
-              className="border border-black p-3 align-top"
+              className="border border-black p-3 align-top wrap-break-words whitespace-normal"
               style={{ height: "350px" }}
             >
-              <div className=" mb-2">
+              <div className=" mb-2 whitespace-pre-wrap wrap-break-words">
                 <span className="font-semibold">
                   Pour la Société Titulaire :
                 </span>{" "}
                 {Societe}
+                <br />
                 <br />
                 représentée par:
               </div>
@@ -80,13 +82,14 @@ export default function SignatureSection() {
             {/* Si un seul sous-traitant → colonne sur la même ligne */}
             {count === 1 && (
               <td
-                className="border border-black p-3 align-top"
+                className="border border-black p-3 align-top wrap-break-words whitespace-normal"
                 style={{ height: "350px" }}
               >
-                <div className=" mb-2">
+                <div className=" mb-2 whitespace-pre-wrap wrap-break-words">
                   <span className="font-semibold">
-                    Pour la Société sous-traitante :
+                    Pour la Société sous-traitante : {soustraitants?.[0]?.name}
                   </span>
+                  <br />
                   <br />
                   représentée par:
                 </div>
@@ -116,13 +119,15 @@ export default function SignatureSection() {
                 <tr key={rowIndex}>
                   {/* Sous-traitant gauche */}
                   <td
-                    className="border border-black p-3 align-top"
+                    className="border border-black p-3 align-top wrap-break-words whitespace-normal"
                     style={{ height: "350px" }}
                   >
-                    <div className=" mb-2">
+                    <div className=" mb-2 whitespace-pre-wrap wrap-break-words">
                       <span className="font-semibold">
-                        Pour la Société sous-traitante {firstIndex + 1} :
+                        Pour la Société sous-traitante {firstIndex + 1} :{" "}
+                        {soustraitants?.[firstIndex]?.name}
                       </span>
+                      <br />
                       <br />
                       représentée par:
                     </div>
@@ -143,13 +148,15 @@ export default function SignatureSection() {
                   {/* Sous-traitant droite */}
                   {secondIndex < count ? (
                     <td
-                      className="border border-black p-3 align-top"
+                      className="border border-black p-3 align-top wrap-break-words whitespace-normal"
                       style={{ height: "350px" }}
                     >
-                      <div className=" mb-2">
+                      <div className=" mb-2 whitespace-pre-wrap wrap-break-words">
                         <span className="font-semibold">
-                          Pour la Société sous-traitante {secondIndex + 1} :
+                          Pour la Société sous-traitante {secondIndex + 1} :{" "}
+                          {soustraitants?.[secondIndex]?.name}
                         </span>
+                        <br />
                         <br />
                         représentée par:
                       </div>
