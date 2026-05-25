@@ -3,5 +3,5 @@ export type InspectionType = {
   date: string;
   university: string;
   titulaire: string;
-  soustraitant: string;
+  soustraitant: string[];
 };

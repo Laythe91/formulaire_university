@@ -10,7 +10,9 @@ export default function JointInspectionSection() {
   const date = watch("Inspection.date");
   const university = watch("Inspection.university");
   const titulaire = watch("Inspection.titulaire");
-  const soustraitants = watch("Inspection.soustraitant");
+  const soustraitants = Array.from({ length: count }).map((_, index) =>
+    watch(`Inspection.soustraitant.${index}`),
+  );
 
   useEffect(() => {
     let isValid = false;

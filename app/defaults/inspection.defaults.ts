@@ -5,5 +5,5 @@ export const inspectionDefaults: InspectionType = {
   date: "",
   university: "",
   titulaire: "",
-  soustraitant: "",
+  soustraitant: [],
 };

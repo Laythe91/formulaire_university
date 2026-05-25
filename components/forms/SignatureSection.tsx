@@ -1,11 +1,12 @@
 import { PRESIDENT_CONTACT } from "@/app/const/const";
+import { useSousTraitants } from "@/app/hooks/useSousTraitans";
 import { useFormContext } from "react-hook-form";
 
 export default function SignatureSection() {
-  const { register, watch } = useFormContext();
+  const { watch } = useFormContext();
+  const { count } = useSousTraitants();
   const NomPresident = PRESIDENT_CONTACT.name;
   const Societe = watch("Entreprise.titulaire.name");
-  const soutaitraitantCare = watch("Entreprise.soustraitant.checkbox.state"); // Si checkBox sous traitant coché ou non
   return (
     <>
       <div className="text-sm">
@@ -20,42 +21,40 @@ export default function SignatureSection() {
       </div>
       <table className="w-full border-2 border-black border-collapse table-fixed mt-3 text-sm">
         <tbody>
+          {/* Ligne principale */}
           <tr>
-            {/* Colonne 1 */}
+            {/* Université */}
             <td
               className="border border-black p-3 align-top"
               style={{ height: "350px" }}
             >
-              {/* Espace blanc forcé pour le PDF */}
-
               <div className=" mb-2">
                 <span className="font-semibold">
                   Pour l'Université de Paris VIII :
-                </span>{" "}
+                </span>
                 <br />
                 représentée par:
               </div>
+
               <div className="mt-10">
                 <span className="font-semibold">Nom :</span> {NomPresident}
               </div>
+
               <div className=" mt-5">
-                <span className="font-semibold">Fonction :</span> Président de
-                l’Université
+                <span className="font-semibold">Fonction :</span>
+                Président de l’Université
               </div>
 
-              {/* Espace blanc forcé pour le PDF */}
               <div className="mt-10">
                 <span className="font-semibold">Visa :</span>
               </div>
             </td>
 
-            {/* Colonne 2 */}
+            {/* Titulaire */}
             <td
               className="border border-black p-3 align-top"
               style={{ height: "350px" }}
             >
-              {/* Espace blanc forcé pour le PDF */}
-
               <div className=" mb-2">
                 <span className="font-semibold">
                   Pour la Société Titulaire :
@@ -64,47 +63,115 @@ export default function SignatureSection() {
                 <br />
                 représentée par:
               </div>
+
               <div className="mt-10">
                 <span className="font-semibold">Nom :</span>
               </div>
+
               <div className=" mt-5">
                 <span className="font-semibold">Fonction :</span>
               </div>
 
-              {/* Espace blanc forcé pour le PDF */}
               <div className="mt-10">
                 <span className="font-semibold">Visa :</span>
               </div>
             </td>
 
-            {/* Colonne 3 */}
-            {soutaitraitantCare && (
+            {/* Si un seul sous-traitant → colonne sur la même ligne */}
+            {count === 1 && (
               <td
                 className="border border-black p-3 align-top"
                 style={{ height: "350px" }}
               >
-                {/* Espace blanc forcé pour le PDF */}
-
                 <div className=" mb-2">
                   <span className="font-semibold">
-                    Pour la Société sous- traitante :
-                  </span>{" "}
+                    Pour la Société sous-traitante :
+                  </span>
+                  <br />
                   représentée par:
                 </div>
+
                 <div className="mt-10">
                   <span className="font-semibold">Nom :</span>
                 </div>
+
                 <div className=" mt-5">
                   <span className="font-semibold">Fonction :</span>
                 </div>
 
-                {/* Espace blanc forcé pour le PDF */}
                 <div className="mt-10">
                   <span className="font-semibold">Visa :</span>
                 </div>
               </td>
             )}
           </tr>
+
+          {/* Si plusieurs sous-traitants → une ligne par sous-traitant */}
+          {count > 1 &&
+            Array.from({ length: Math.ceil(count / 2) }).map((_, rowIndex) => {
+              const firstIndex = rowIndex * 2;
+              const secondIndex = firstIndex + 1;
+
+              return (
+                <tr key={rowIndex}>
+                  {/* Sous-traitant gauche */}
+                  <td
+                    className="border border-black p-3 align-top"
+                    style={{ height: "350px" }}
+                  >
+                    <div className=" mb-2">
+                      <span className="font-semibold">
+                        Pour la Société sous-traitante {firstIndex + 1} :
+                      </span>
+                      <br />
+                      représentée par:
+                    </div>
+
+                    <div className="mt-10">
+                      <span className="font-semibold">Nom :</span>
+                    </div>
+
+                    <div className=" mt-5">
+                      <span className="font-semibold">Fonction :</span>
+                    </div>
+
+                    <div className="mt-10">
+                      <span className="font-semibold">Visa :</span>
+                    </div>
+                  </td>
+
+                  {/* Sous-traitant droite */}
+                  {secondIndex < count ? (
+                    <td
+                      className="border border-black p-3 align-top"
+                      style={{ height: "350px" }}
+                    >
+                      <div className=" mb-2">
+                        <span className="font-semibold">
+                          Pour la Société sous-traitante {secondIndex + 1} :
+                        </span>
+                        <br />
+                        représentée par:
+                      </div>
+
+                      <div className="mt-10">
+                        <span className="font-semibold">Nom :</span>
+                      </div>
+
+                      <div className=" mt-5">
+                        <span className="font-semibold">Fonction :</span>
+                      </div>
+
+                      <div className="mt-10">
+                        <span className="font-semibold">Visa :</span>
+                      </div>
+                    </td>
+                  ) : (
+                    <td className="border border-black"></td>
+                  )}
+                </tr>
+              );
+            })}
         </tbody>
       </table>
     </>
