@@ -71,7 +71,9 @@ export default function EntrepriseTitulaireInformation() {
               <div className=" font-bold text-sm ">
                 Nom de l'entreprise Titulaire : {"  "}
               </div>
-              <div>{EntrepriseTitulaireNom}</div>
+              <div className="break-word whitespace-pre-wrap w-140">
+                {EntrepriseTitulaireNom}
+              </div>
             </div>
             <div className="flex flex-row gap-3 mt-3">
               <div className=" font-bold text-sm mt-2">
@@ -81,7 +83,12 @@ export default function EntrepriseTitulaireInformation() {
                 <textarea
                   {...register("Entreprise.titulaire.address")}
                   placeholder="Adresse entreprise titulaire"
-                  className="w-full min-h-15 h-20 border border-gray-300 p-2 text-sm outline-none resize-none focus:border-black transition-colors"
+                  rows={3}
+                  onInput={(e) => {
+                    e.currentTarget.style.height = "auto";
+                    e.currentTarget.style.height = `${e.currentTarget.scrollHeight}px`;
+                  }}
+                  className="w-full min-h-15 border p-2 text-sm resize-none overflow-hidden wrap-break-words whitespace-pre-wrap"
                 />
               </div>
             </div>
@@ -93,6 +100,7 @@ export default function EntrepriseTitulaireInformation() {
                 <div>
                   <input
                     {...register("Entreprise.titulaire.effectif")}
+                    maxLength={6}
                     className="border px-2 py-0.5 w-full text-center text-sm"
                     placeholder="Nombre effectif prévu"
                     type="text"
@@ -104,6 +112,7 @@ export default function EntrepriseTitulaireInformation() {
                 <div>
                   <input
                     {...register("Entreprise.titulaire.tel")}
+                    maxLength={14}
                     className="border px-2 py-0.5 w-full text-center text-sm"
                     placeholder="format 01.00.00.00.00"
                     type="text"
@@ -115,6 +124,7 @@ export default function EntrepriseTitulaireInformation() {
                 <div>
                   <input
                     {...register("Entreprise.titulaire.fax")}
+                    maxLength={14}
                     className="border px-2 py-0.5 w-full text-center text-sm"
                     placeholder="format 01.00.00.00.00"
                     type="text"
@@ -128,11 +138,15 @@ export default function EntrepriseTitulaireInformation() {
                   Nom du représentant de l'entreprise : {"  "}
                 </div>
                 <div>
-                  <input
+                  <textarea
                     {...register("Entreprise.titulaire.representant.name")}
-                    className="border px-2 py-0.5 w-full text-center text-sm"
+                    rows={1}
+                    onInput={(e) => {
+                      e.currentTarget.style.height = "auto";
+                      e.currentTarget.style.height = `${e.currentTarget.scrollHeight}px`;
+                    }}
+                    className="border px-2 py-1 w-125 text-sm resize-none overflow-hidden wrap-break-words whitespace-pre-wrap leading-tight"
                     placeholder="Nom ici"
-                    type="text"
                   />
                 </div>
               </div>
@@ -141,6 +155,7 @@ export default function EntrepriseTitulaireInformation() {
                 <div>
                   <input
                     {...register("Entreprise.titulaire.representant.tel")}
+                    maxLength={14}
                     className="border px-2 py-0.5 w-full text-center text-sm"
                     placeholder="format 06.00.00.00.00"
                     type="text"
@@ -152,7 +167,8 @@ export default function EntrepriseTitulaireInformation() {
                 <div>
                   <input
                     {...register("Entreprise.titulaire.representant.mail")}
-                    className="border px-2 py-0.5 w-full text-center text-sm"
+                    maxLength={100}
+                    className="border px-2 py-0.5 w-170 text-sm"
                     placeholder="Mail ici"
                     type="text"
                   />
@@ -165,11 +181,15 @@ export default function EntrepriseTitulaireInformation() {
                   Nom du responsable du suivi des travaux: {"  "}
                 </div>
                 <div>
-                  <input
+                  <textarea
                     {...register("Entreprise.titulaire.responsable.name")}
-                    className="border px-2 py-0.5 w-full text-center text-sm"
+                    rows={1}
+                    onInput={(e) => {
+                      e.currentTarget.style.height = "auto";
+                      e.currentTarget.style.height = `${e.currentTarget.scrollHeight}px`;
+                    }}
+                    className="border px-2 py-1 w-120 text-sm resize-none overflow-hidden wrap-break-words whitespace-pre-wrap leading-tight"
                     placeholder="Nom ici"
-                    type="text"
                   />
                 </div>
               </div>
@@ -178,6 +198,7 @@ export default function EntrepriseTitulaireInformation() {
                 <div>
                   <input
                     {...register("Entreprise.titulaire.responsable.tel")}
+                    maxLength={14}
                     className="border px-2 py-0.5 w-full text-center text-sm"
                     placeholder="format 06.00.00.00.00"
                     type="text"
@@ -189,7 +210,8 @@ export default function EntrepriseTitulaireInformation() {
                 <div>
                   <input
                     {...register("Entreprise.titulaire.responsable.mail")}
-                    className="border px-2 py-0.5 w-full text-center text-sm"
+                    maxLength={100}
+                    className="border px-2 py-0.5 w-170 text-sm"
                     placeholder="Mail ici"
                     type="text"
                   />

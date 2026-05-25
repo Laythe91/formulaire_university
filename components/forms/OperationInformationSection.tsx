@@ -162,6 +162,7 @@ export default function OperationInformationSection({ date }: Props) {
                       Date prévisible de début :
                       <input
                         {...register("Operation.date.start")}
+                        maxLength={10}
                         className="border px-2 py-0.5 w-full text-center uppercase text-sm"
                         placeholder="JJ/MM/AAAA"
                         type="text"
@@ -174,6 +175,7 @@ export default function OperationInformationSection({ date }: Props) {
                       Date prévisible de fin :
                       <input
                         {...register("Operation.date.end")}
+                        maxLength={10}
                         className="border px-2 py-0.5 w-full text-center uppercase text-sm"
                         placeholder="JJ/MM/AAAA"
                         type="text"
@@ -192,6 +194,7 @@ export default function OperationInformationSection({ date }: Props) {
                       <span>Année de prévention</span>{" "}
                       <input
                         {...register("Operation.date.start")}
+                        maxLength={4}
                         className="border px-2 py-0.5 w-1/3 text-center uppercase text-sm"
                         placeholder="AAAA"
                         type="text"
@@ -206,13 +209,17 @@ export default function OperationInformationSection({ date }: Props) {
                 <div className=" font-bold text-sm ">
                   Nature/Objet de l'opération :
                 </div>
-                <div>
+                <div className="mt-1">
                   {" "}
-                  <input
+                  <textarea
                     {...register("Operation.objet")}
-                    className="border px-2 py-0.5 w-full text-center text-sm"
+                    rows={2}
+                    onInput={(e) => {
+                      e.currentTarget.style.height = "auto";
+                      e.currentTarget.style.height = `${e.currentTarget.scrollHeight}px`;
+                    }}
+                    className="border px-2 py-1 w-full  text-sm resize-none overflow-hidden wrap-break-words whitespace-pre-wrap leading-tight"
                     placeholder="Nature/Objet de l'opération à indiquer ici"
-                    type="text"
                   />
                 </div>
               </td>

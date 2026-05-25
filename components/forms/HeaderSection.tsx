@@ -102,11 +102,15 @@ export default function HeaderSection({ date }: Props) {
             <div className="flex flex-col items-center gap-1">
               <span className="font-semibold text-sm">PLAN DE PREVENTION</span>
 
-              <input
+              <textarea
                 {...register("Entreprise.titulaire.name")}
-                className="border px-2 py-0.5 w-full text-center uppercase text-sm font-semibold"
+                rows={1}
+                onInput={(e) => {
+                  e.currentTarget.style.height = "auto";
+                  e.currentTarget.style.height = `${e.currentTarget.scrollHeight}px`;
+                }}
+                className="border px-2 py-1 w-full text-center uppercase text-sm font-semibold resize-none overflow-hidden leading-tight"
                 placeholder="Nom de société"
-                type="text"
               />
             </div>
           </td>

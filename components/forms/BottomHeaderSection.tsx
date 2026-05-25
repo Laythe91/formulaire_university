@@ -16,7 +16,9 @@ export default function BottomHeaderSection() {
         </div>
       </div>
 
-      <div className="text-center font-bold uppercase mt-1">{Societe}</div>
+      <div className="text-center font-bold uppercase mt-1 break-word whitespace-normal">
+        {Societe}
+      </div>
 
       <div className="text-xs leading-relaxed text-justify">
         En application de l'article R237-8 du décret n°92-158 du 20 février 1992

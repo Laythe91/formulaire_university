@@ -32,11 +32,12 @@ export default function CompanyInformationSection1() {
               Renseignements sur L’Entreprise (Entreprise extérieure)
             </div>
             <div className="flex flex-row gap-10">
-              <div className="text-sm mb-1">
+              <div className="text-sm mb-1 ">
                 <span className="font-bold">Effectif total prévu : </span>
                 <input
                   {...register("Entreprise.renseignement.effectif1")}
-                  className="border px-2 py-0.5 text-center text-sm w-13"
+                  maxLength={6}
+                  className="border px-2 py-0.5 text-center text-sm w-20"
                   placeholder=""
                   type="text"
                 />
@@ -46,7 +47,8 @@ export default function CompanyInformationSection1() {
                 <span className="font-bold">dont encadrement : </span>
                 <input
                   {...register("Entreprise.renseignement.effectif2")}
-                  className="border px-2 py-0.5 text-center text-sm w-13"
+                  maxLength={6}
+                  className="border px-2 py-0.5 text-center text-sm w-24"
                   placeholder=""
                   type="text"
                 />
@@ -55,11 +57,13 @@ export default function CompanyInformationSection1() {
             </div>
             <div className="text-sm mb-1">
               <span className="font-bold">
-                Nombre d'entreprises sous-traitantes (mettre 0 si aucune) :{" "}
+                Nombre d'entreprises sous-traitantes (mettre 0 si aucune) :
+                {"   "}
               </span>
               <input
                 {...register("Entreprise.renseignement.soustraitant")}
-                className="border px-2 py-0.5 text-center text-sm w-13"
+                maxLength={3}
+                className="border px-3 py-0.5 text-center text-sm w-20"
                 placeholder=""
                 type="text"
               />

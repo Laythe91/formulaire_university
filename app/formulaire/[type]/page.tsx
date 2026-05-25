@@ -92,12 +92,12 @@ export default function Page({
     setDate(new Date().toLocaleDateString("fr-FR"));
   }, []);
 
-  const values = methods.watch();
+  /*const values = methods.watch();
 
   useEffect(() => {
     console.log("FORM VALUES:", values);
   }, [values]);
-
+*/
   return (
     <div className="w-[210mm] mx-auto mt-4">
       <FormProvider {...methods}>
@@ -204,6 +204,7 @@ export default function Page({
               )}
             </>
           )}
+          <div className="mt-10"></div>
         </form>
       </FormProvider>
     </div>

@@ -49,11 +49,15 @@ export default function UniversityInformationSection() {
                 Nom de la personne chargée du suivi de l’opération (si
                 différente du donneur d’ordre) :{" "}
               </span>
-              <input
+              <textarea
                 {...register("UniversityInformation.nom")}
-                className="border px-2 py-0.5 text-center text-sm"
+                rows={1}
+                onInput={(e) => {
+                  e.currentTarget.style.height = "auto";
+                  e.currentTarget.style.height = `${e.currentTarget.scrollHeight}px`;
+                }}
+                className="border px-2 py-1 text-sm resize-none overflow-hidden break-all whitespace-pre-wrap align-middle ml-1  w-60"
                 placeholder="Donneur d'ordre"
-                type="text"
               />
             </div>
             <div className="text-sm mb-1 grid grid-cols-2 w-full">
@@ -61,6 +65,7 @@ export default function UniversityInformationSection() {
                 Tél :{" "}
                 <input
                   {...register("UniversityInformation.phone1")}
+                  maxLength={14}
                   className="border px-2 py-0.5 text-center text-sm"
                   placeholder="format 01.49.40.00.00"
                   type="text"
@@ -70,6 +75,7 @@ export default function UniversityInformationSection() {
                 Portable :{" "}
                 <input
                   {...register("UniversityInformation.phone2")}
+                  maxLength={14}
                   className="border px-2 py-0.5 text-center text-sm"
                   placeholder="format 06.00.00.00.00"
                   type="text"
