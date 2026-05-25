@@ -5,5 +5,6 @@ export const headerDefaults: HeaderType = {
 
   planNumber: {
     state: false,
+    value: "",
   },
 };

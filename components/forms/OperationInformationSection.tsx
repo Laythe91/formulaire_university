@@ -6,15 +6,14 @@ type Props = {
 
 export default function OperationInformationSection({ date }: Props) {
   const { register, watch, setValue } = useFormContext();
-  const dateRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
-  const yearRegex = /^\d{4}$/;
+  // const dateRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
+  // const yearRegex = /^\d{4}$/;
   const annuel = watch("Operation.annuel.state");
   const ponctuel = watch("Operation.ponctuel.state");
   const start = watch("Operation.date.start");
   const end = watch("Operation.date.end");
   const objet = watch("Operation.objet");
-  const planNumberValid = watch("Header.planNumber.state");
-  const planNumber = watch("Header.planNumber");
+  const planValid = watch("Header.planNumber.state");
   const year = date.split("/")[2];
 
   const handleExclusive = (field: "annuel" | "ponctuel", value: boolean) => {
@@ -24,7 +23,7 @@ export default function OperationInformationSection({ date }: Props) {
         setValue("Operation.ponctuel.state", false);
         setValue("Operation.date.start", year);
         setValue("Operation.date.end", year);
-        setValue("Header.planNumber", "");
+        setValue("Header.planNumber.value", "");
       }
     }
 
@@ -34,7 +33,7 @@ export default function OperationInformationSection({ date }: Props) {
         setValue("Operation.annuel.state", false);
         setValue("Operation.date.start", "");
         setValue("Operation.date.end", "");
-        setValue("Header.planNumber", "");
+        setValue("Header.planNumber.value", "");
       }
     }
   };
@@ -51,19 +50,39 @@ export default function OperationInformationSection({ date }: Props) {
 
   useEffect(() => {
     const hasType = annuel || ponctuel;
+    const currentYear = new Date().getFullYear();
+    // =========================
+    // VALIDATION DATE
+    // =========================
+    let validDate = false;
 
-    const validDate = annuel
-      ? yearRegex.test(start) && yearRegex.test(end)
-      : dateRegex.test(start) && dateRegex.test(end);
+    if (annuel) {
+      const startYear = Number(start);
 
+      validDate = /^\d{4}$/.test(start || "") && startYear >= currentYear;
+    }
+
+    if (ponctuel) {
+      const dateRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
+
+      const startValid = dateRegex.test(start || "");
+      const endValid = dateRegex.test(end || "");
+
+      const parseDate = (d: string) => {
+        const [day, month, year] = d.split("/").map(Number);
+        return new Date(year, month - 1, day).getTime();
+      };
+
+      validDate = startValid && endValid && parseDate(end) >= parseDate(start);
+    }
     const validObjet = (objet ?? "").trim().length >= 6;
 
-    const isValid = hasType && validDate && validObjet && planNumberValid;
+    const isValid = hasType && validDate && validObjet && planValid;
 
     setValue("Operation.state", isValid, {
       shouldDirty: false,
     });
-  }, [annuel, ponctuel, start, end, objet, planNumber, setValue]);
+  }, [annuel, ponctuel, planValid, start, end, objet, setValue]);
 
   return (
     <table className="w-full border-2 border-black border-collapse table-fixed mt-3">
@@ -165,24 +184,15 @@ export default function OperationInformationSection({ date }: Props) {
               )}
               {annuel && (
                 <>
-                  <td className="border border-black p-2 w-1/3 text-center">
-                    <div className="font-semibold text-sm">
-                      Date prévisible de début :
+                  <td
+                    colSpan={2}
+                    className="border border-black p-2 text-center"
+                  >
+                    <div className="font-semibold flex flex-col items-center text-sm">
+                      <span>Année de prévention</span>{" "}
                       <input
                         {...register("Operation.date.start")}
-                        className="border px-2 py-0.5 w-full text-center uppercase text-sm"
-                        placeholder="AAAA"
-                        type="text"
-                      />
-                    </div>
-                  </td>
-
-                  <td className="border border-black p-2 w-1/3 text-center">
-                    <div className="font-semibold text-sm">
-                      Date prévisible de fin :
-                      <input
-                        {...register("Operation.date.end")}
-                        className="border px-2 py-0.5 w-full text-center uppercase text-sm"
+                        className="border px-2 py-0.5 w-1/3 text-center uppercase text-sm"
                         placeholder="AAAA"
                         type="text"
                       />

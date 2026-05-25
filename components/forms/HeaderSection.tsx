@@ -10,7 +10,7 @@ export default function HeaderSection({ date }: Props) {
 
   const ponctuel = watch("Operation.ponctuel.state");
 
-  const planNumber = watch("Header.planNumber");
+  const planNumber = watch("Header.planNumber.value");
 
   const nomSociete = watch("Entreprise.titulaire.name");
 
@@ -34,6 +34,10 @@ export default function HeaderSection({ date }: Props) {
     }
 
     setValue("Header.planNumber.state", planValid);
+
+    // =========================
+    // HEADER GLOBAL
+    // =========================
 
     const societeValid = nomSociete?.trim().length >= 2;
 
@@ -76,7 +80,7 @@ export default function HeaderSection({ date }: Props) {
                   {/* PREFIXE P- uniquement si ponctuel */}
 
                   <input
-                    {...register("Header.planNumber")}
+                    {...register("Header.planNumber.value")}
                     placeholder={ponctuel ? "P-Numéro" : "Numéro"}
                     className="border border-black px-2 py-0.5 w-24 text-center text-sm font-semibold"
                     type="text"
