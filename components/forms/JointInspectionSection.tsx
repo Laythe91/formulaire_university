@@ -4,14 +4,14 @@ import { useFormContext } from "react-hook-form";
 
 export default function JointInspectionSection() {
   const { register, watch, setValue } = useFormContext();
-  const { count, allValid } = useSousTraitants();
+  const { count } = useSousTraitants();
   const Societe = watch("Entreprise.titulaire.name");
   const dateRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
   const date = watch("Inspection.date");
   const university = watch("Inspection.university");
   const titulaire = watch("Inspection.titulaire");
-  const soustraitant = watch("Inspection.soustraitant");
-  const soutraitantCare = watch("Entreprise.soustraitant.checkbox.state"); // Si checkBox sous traitant coché ou non
+  const soustraitants = watch("Inspection.soustraitant");
+
   useEffect(() => {
     let isValid = false;
 
@@ -19,11 +19,14 @@ export default function JointInspectionSection() {
 
     const validUniversity = (university ?? "").trim().length >= 3;
     const validTitulaire = (titulaire ?? "").trim().length >= 3;
-    const validSoustraitant = (soustraitant ?? "").trim().length >= 3;
+    //const validSoustraitant = (soustraitant ?? "").trim().length >= 3;
+    const validSoustraitant =
+      count === 0 ||
+      (soustraitants ?? []).every((v: string) => (v ?? "").trim().length >= 3);
 
-    if (soutraitantCare) {
+    if (count > 0) {
       isValid =
-        validUniversity && validTitulaire && validSoustraitant && validDate;
+        validUniversity && validTitulaire && validDate && validSoustraitant;
     } else {
       isValid = validUniversity && validTitulaire && validDate;
     }
@@ -31,7 +34,7 @@ export default function JointInspectionSection() {
     setValue("Inspection.state", isValid, {
       shouldDirty: false,
     });
-  }, [university, titulaire, soustraitant, date, soutraitantCare, setValue]);
+  }, [university, titulaire, soustraitants, date, count, setValue]);
 
   return (
     <table className="w-full border-2 border-black border-collapse table-fixed mt-4">
@@ -87,22 +90,26 @@ export default function JointInspectionSection() {
                     />
                   </div>
                 </div>
-                {soutraitantCare && (
-                  <div className="flex flex-row items-center space-x-3">
-                    <div className=" text-sm ">
-                      Pour l'Entreprise sous-traitante :
-                    </div>
+                {count > 0 &&
+                  Array.from({ length: count }).map((_, index) => (
+                    <div
+                      key={index}
+                      className="flex flex-row items-center space-x-3"
+                    >
+                      <div className="text-sm">
+                        Pour l'Entreprise sous-traitante {index + 1} :
+                      </div>
 
-                    <div>
-                      <input
-                        {...register("Inspection.soustraitant")}
-                        className="border px-2 py-0.5 w-full text-center text-sm"
-                        placeholder=""
-                        type="text"
-                      />
+                      <div>
+                        <input
+                          {...register(`Inspection.soustraitant.${index}`)}
+                          className="border px-2 py-0.5 w-full text-center text-sm"
+                          placeholder=""
+                          type="text"
+                        />
+                      </div>
                     </div>
-                  </div>
-                )}
+                  ))}
               </div>
             </div>
           </td>
