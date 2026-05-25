@@ -1,37 +1,57 @@
-import { useFormContext } from "react-hook-form";
+import { useFieldArray, useFormContext } from "react-hook-form";
 import EntrepriseTitulaireInformation from "./EntrepriseTitulaireInformation";
 import EntrepriseSousTraitanteInformation from "./EntrepriseSousTraitanteInformation";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
 export default function CompanyInformationSection2() {
-  const { register, watch, setValue } = useFormContext();
+  const { register, watch, setValue, control } = useFormContext();
   const entrepriseTitulaire = watch("Entreprise.titulaire.checkbox.state");
   const entrepriseTitulaireState = watch("Entreprise.titulaire.state");
   const soutraitantCare = watch("Entreprise.soustraitant.checkbox.state");
   const soustraitantState = watch("Entreprise.soustraitante.state");
 
+  const count = watch("Entreprise.renseignement.soustraitant");
+
+  const { fields, append, remove, replace } = useFieldArray({
+    control,
+    name: "Entreprise.soustraitante",
+  });
+
   useEffect(() => {
-    let isValid = false;
-    if (soutraitantCare) {
-      isValid =
-        entrepriseTitulaire &&
-        entrepriseTitulaireState &&
-        soutraitantCare &&
-        soustraitantState;
-    } else {
-      isValid = entrepriseTitulaire && entrepriseTitulaireState;
-    }
+    const nb = Number(count || 0);
+    if (nb < 0) return;
+
+    const newArray = Array.from({ length: nb }, (_, i) => ({
+      state: false,
+      checkbox: { state: false },
+      name: "",
+      address: "",
+      effectif: "",
+      tel: "",
+      fax: "",
+      representant: { name: "", tel: "", mail: "" },
+      responsable: { name: "", tel: "", mail: "" },
+    }));
+
+    replace(newArray);
+  }, [count]);
+
+  useEffect(() => {
+    const hasTitulaire = entrepriseTitulaire && entrepriseTitulaireState;
+
+    const allSousTraitantsValid =
+      fields.length === 0
+        ? true
+        : fields.every((_, index) =>
+            watch(`Entreprise.soustraitante.${index}.state`),
+          );
+
+    const isValid = hasTitulaire && allSousTraitantsValid;
 
     setValue("Entreprise.information.state", isValid, {
       shouldDirty: false,
     });
-  }, [
-    entrepriseTitulaire,
-    entrepriseTitulaireState,
-    soutraitantCare,
-    soustraitantState,
-    setValue,
-  ]);
+  }, [entrepriseTitulaire, entrepriseTitulaireState, fields, watch, setValue]);
 
   return (
     <table className="w-full border-2 border-black border-collapse table-fixed mt-3">
@@ -54,25 +74,28 @@ export default function CompanyInformationSection2() {
         </tr>
         <EntrepriseTitulaireInformation />
 
-        <>
-          <tr>
-            <td className="border border-black p-2">
-              <div className="flex items-center  gap-2">
-                <span className="font-bold uppercase text-sm">
-                  Entreprise sous-traitante N°1
-                </span>
+        {fields.map((field, index) => (
+          <React.Fragment key={field.id}>
+            <tr key={field.id}>
+              <td className="border border-black p-2">
+                <div className="flex items-center gap-2">
+                  <span className="font-bold uppercase text-sm">
+                    Entreprise sous-traitante N°{index + 1}
+                  </span>
 
-                <input
-                  {...register("Entreprise.soustraitant.checkbox.state")}
-                  type="checkbox"
-                  className="w-4 h-4  accent-black"
-                />
-              </div>
-            </td>
-          </tr>
-
-          <EntrepriseSousTraitanteInformation />
-        </>
+                  <input
+                    {...register(
+                      `Entreprise.soustraitante.${index}.checkbox.state`,
+                    )}
+                    type="checkbox"
+                    className="w-4 h-4 accent-black"
+                  />
+                </div>
+              </td>
+            </tr>
+            <EntrepriseSousTraitanteInformation index={index} />
+          </React.Fragment>
+        ))}
       </tbody>
     </table>
   );

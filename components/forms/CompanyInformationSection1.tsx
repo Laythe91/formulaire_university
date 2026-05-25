@@ -6,17 +6,20 @@ export default function CompanyInformationSection1() {
 
   const effectif1 = watch("Entreprise.renseignement.effectif1");
   const effectif2 = watch("Entreprise.renseignement.effectif2");
+  const soustraitant = watch("Entreprise.renseignement.soustraitant");
 
   const numberRegex = /^\d+$/;
 
   useEffect(() => {
     const valid =
-      numberRegex.test(effectif1 || "") && numberRegex.test(effectif2 || "");
+      numberRegex.test(effectif1 || "") &&
+      numberRegex.test(effectif2 || "") &&
+      numberRegex.test(soustraitant || "");
 
     setValue("Entreprise.renseignement.state", valid, {
       shouldDirty: false,
     });
-  }, [effectif1, effectif2, setValue]);
+  }, [effectif1, effectif2, soustraitant, setValue]);
 
   return (
     <table className="w-full border-2 border-black border-collapse table-fixed mt-1">
@@ -49,6 +52,17 @@ export default function CompanyInformationSection1() {
                 />
                 <span className="font-bold"> personnes </span>
               </div>
+            </div>
+            <div className="text-sm mb-1">
+              <span className="font-bold">
+                Nombre d'entreprises sous-traitantes (mettre 0 si aucune) :{" "}
+              </span>
+              <input
+                {...register("Entreprise.renseignement.soustraitant")}
+                className="border px-2 py-0.5 text-center text-sm w-13"
+                placeholder=""
+                type="text"
+              />
             </div>
             <div className="text-sm ">
               {" "}

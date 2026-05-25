@@ -2,6 +2,7 @@ export type EntrepriseRenseignement = {
   state: boolean;
   effectif1: string;
   effectif2: string;
+  soustraitant: string;
 };
 
 export type EntrepriseInformation = {
@@ -38,6 +39,6 @@ export type EntreprisePersonne = {
 export type EntrepriseType = {
   renseignement: EntrepriseRenseignement;
   titulaire: EntreprisePersonne;
-  soustraitante: EntreprisePersonne;
+  soustraitante: EntreprisePersonne[];
   information: EntrepriseInformation;
 };

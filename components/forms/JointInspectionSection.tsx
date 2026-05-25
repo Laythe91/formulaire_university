@@ -1,8 +1,10 @@
+import { useSousTraitants } from "@/app/hooks/useSousTraitans";
 import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
 export default function JointInspectionSection() {
   const { register, watch, setValue } = useFormContext();
+  const { count, allValid } = useSousTraitants();
   const Societe = watch("Entreprise.titulaire.name");
   const dateRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
   const date = watch("Inspection.date");

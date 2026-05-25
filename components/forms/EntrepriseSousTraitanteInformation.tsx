@@ -1,38 +1,51 @@
 import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
-export default function EntrepriseSousTraitanteInformation() {
+export default function EntrepriseSousTraitanteInformation({
+  index,
+}: {
+  index: number;
+}) {
   const { register, watch, setValue } = useFormContext();
-  const SousTraitant = watch("Entreprise.soustraitant.checkbox.state");
 
-  const name = watch("Entreprise.soustraitante.name");
-  const address = watch("Entreprise.soustraitante.address");
-  const effectif = watch("Entreprise.soustraitante.effectif");
+  const SousTraitant = watch(
+    `Entreprise.soustraitante.${index}.checkbox.state`,
+  );
 
-  const tel = watch("Entreprise.soustraitante.tel");
-  const fax = watch("Entreprise.soustraitante.fax");
+  const name = watch(`Entreprise.soustraitante.${index}.name`);
+  const address = watch(`Entreprise.soustraitante.${index}.address`);
+  const effectif = watch(`Entreprise.soustraitante.${index}.effectif`);
 
-  const representantName = watch("Entreprise.soustraitante.representant.name");
+  const tel = watch(`Entreprise.soustraitante.${index}.tel`);
+  const fax = watch(`Entreprise.soustraitante.${index}.fax`);
 
-  const representantTel = watch("Entreprise.soustraitante.representant.tel");
+  const representantName = watch(
+    `Entreprise.soustraitante.${index}.representant.name`,
+  );
+  const representantTel = watch(
+    `Entreprise.soustraitante.${index}.representant.tel`,
+  );
+  const representantMail = watch(
+    `Entreprise.soustraitante.${index}.representant.mail`,
+  );
 
-  const representantMail = watch("Entreprise.soustraitante.representant.mail");
-
-  const responsableName = watch("Entreprise.soustraitante.responsable.name");
-
-  const responsableTel = watch("Entreprise.soustraitante.responsable.tel");
-
-  const responsableMail = watch("Entreprise.soustraitante.responsable.mail");
+  const responsableName = watch(
+    `Entreprise.soustraitante.${index}.responsable.name`,
+  );
+  const responsableTel = watch(
+    `Entreprise.soustraitante.${index}.responsable.tel`,
+  );
+  const responsableMail = watch(
+    `Entreprise.soustraitante.${index}.responsable.mail`,
+  );
 
   const phoneRegex = /^(\d{2}\.){4}\d{2}$/;
-
   const mailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
   const numberRegex = /^\d+$/;
 
   useEffect(() => {
     if (!SousTraitant) {
-      setValue("Entreprise.soustraitante.state", false);
+      setValue(`Entreprise.soustraitante.${index}.state`, false);
       return;
     }
 
@@ -52,31 +65,27 @@ export default function EntrepriseSousTraitanteInformation() {
       representantName?.trim().length > 0 &&
       responsableName?.trim().length > 0;
 
-    const isValid = validPhones && validMails && validText;
-
-    setValue("Entreprise.soustraitante.state", isValid, {
-      shouldDirty: false,
-    });
+    setValue(
+      `Entreprise.soustraitante.${index}.state`,
+      validPhones && validMails && validText,
+    );
   }, [
     SousTraitant,
-
     name,
     address,
     effectif,
-
     tel,
     fax,
-
     representantName,
     representantTel,
     representantMail,
-
     responsableName,
     responsableTel,
     responsableMail,
-
     setValue,
+    index,
   ]);
+
   return (
     <>
       {SousTraitant && (
@@ -88,7 +97,7 @@ export default function EntrepriseSousTraitanteInformation() {
               </div>
               <div className="w-120">
                 <input
-                  {...register("Entreprise.soustraitante.name")}
+                  {...register(`Entreprise.soustraitante.${index}.name`)}
                   className="border px-2 py-0.5 w-full text-start text-sm"
                   placeholder="Nom de l'entreprise soustraitante ici"
                   type="text"
@@ -101,7 +110,7 @@ export default function EntrepriseSousTraitanteInformation() {
               </div>
               <div className="w-100">
                 <textarea
-                  {...register("Entreprise.soustraitante.address")}
+                  {...register(`Entreprise.soustraitante.${index}.address`)}
                   placeholder="Adresse entreprise soustraitante"
                   className="w-full min-h-15 h-20 border border-gray-300 p-2 text-sm outline-none resize-none focus:border-black transition-colors"
                 />
@@ -114,7 +123,7 @@ export default function EntrepriseSousTraitanteInformation() {
                 </div>
                 <div>
                   <input
-                    {...register("Entreprise.soustraitante.effectif")}
+                    {...register(`Entreprise.soustraitante.${index}.effectif`)}
                     className="border px-2 py-0.5 w-full text-center text-sm"
                     placeholder="Nombre effectif prévu"
                     type="text"
@@ -125,7 +134,7 @@ export default function EntrepriseSousTraitanteInformation() {
                 <div className=" font-bold text-sm ">Tél : {"  "}</div>
                 <div>
                   <input
-                    {...register("Entreprise.soustraitante.tel")}
+                    {...register(`Entreprise.soustraitante.${index}.tel`)}
                     className="border px-2 py-0.5 w-full text-center text-sm"
                     placeholder="format 01.00.00.00.00"
                     type="text"
@@ -136,7 +145,7 @@ export default function EntrepriseSousTraitanteInformation() {
                 <div className=" font-bold text-sm ">Fax : {"  "}</div>
                 <div>
                   <input
-                    {...register("Entreprise.soustraitante.fax")}
+                    {...register(`Entreprise.soustraitante.${index}.fax`)}
                     className="border px-2 py-0.5 w-full text-center text-sm"
                     placeholder="format 01.00.00.00.00"
                     type="text"
@@ -151,7 +160,9 @@ export default function EntrepriseSousTraitanteInformation() {
                 </div>
                 <div>
                   <input
-                    {...register("Entreprise.soustraitante.representant.name")}
+                    {...register(
+                      `Entreprise.soustraitante.${index}.representant.name`,
+                    )}
                     className="border px-2 py-0.5 w-full text-center text-sm"
                     placeholder="Nom ici"
                     type="text"
@@ -162,7 +173,9 @@ export default function EntrepriseSousTraitanteInformation() {
                 <div className=" font-bold text-sm ">Tél : {"  "}</div>
                 <div>
                   <input
-                    {...register("Entreprise.soustraitante.representant.tel")}
+                    {...register(
+                      `Entreprise.soustraitante.${index}.representant.tel`,
+                    )}
                     className="border px-2 py-0.5 w-full text-center text-sm"
                     placeholder="format 06.00.00.00.00"
                     type="text"
@@ -173,7 +186,9 @@ export default function EntrepriseSousTraitanteInformation() {
                 <div className=" font-bold text-sm ">Mail : {"  "}</div>
                 <div>
                   <input
-                    {...register("Entreprise.soustraitante.representant.mail")}
+                    {...register(
+                      `Entreprise.soustraitante.${index}.representant.mail`,
+                    )}
                     className="border px-2 py-0.5 w-full text-center text-sm"
                     placeholder="Mail ici"
                     type="text"
@@ -188,7 +203,9 @@ export default function EntrepriseSousTraitanteInformation() {
                 </div>
                 <div>
                   <input
-                    {...register("Entreprise.soustraitante.responsable.name")}
+                    {...register(
+                      `Entreprise.soustraitante.${index}.responsable.name`,
+                    )}
                     className="border px-2 py-0.5 w-full text-center text-sm"
                     placeholder="Nom ici"
                     type="text"
@@ -199,7 +216,9 @@ export default function EntrepriseSousTraitanteInformation() {
                 <div className=" font-bold text-sm ">Tél : {"  "}</div>
                 <div>
                   <input
-                    {...register("Entreprise.soustraitante.responsable.tel")}
+                    {...register(
+                      `Entreprise.soustraitante.${index}.responsable.tel`,
+                    )}
                     className="border px-2 py-0.5 w-full text-center text-sm"
                     placeholder="format 06.00.00.00.00"
                     type="text"
@@ -210,7 +229,9 @@ export default function EntrepriseSousTraitanteInformation() {
                 <div className=" font-bold text-sm ">Mail : {"  "}</div>
                 <div>
                   <input
-                    {...register("Entreprise.soustraitante.responsable.mail")}
+                    {...register(
+                      `Entreprise.soustraitante.${index}.responsable.mail`,
+                    )}
                     className="border px-2 py-0.5 w-full text-center text-sm"
                     placeholder="Mail ici"
                     type="text"

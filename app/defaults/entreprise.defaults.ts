@@ -5,6 +5,7 @@ export const entrepriseDefaults: EntrepriseType = {
     state: false,
     effectif1: "",
     effectif2: "",
+    soustraitant: "",
   },
   information: {
     state: false,
@@ -34,27 +35,5 @@ export const entrepriseDefaults: EntrepriseType = {
     },
   },
 
-  soustraitante: {
-    state: false,
-    checkbox: { state: false },
-
-    name: "",
-    address: "",
-    effectif: "",
-
-    tel: "",
-    fax: "",
-
-    representant: {
-      name: "",
-      tel: "",
-      mail: "",
-    },
-
-    responsable: {
-      name: "",
-      tel: "",
-      mail: "",
-    },
-  },
+  soustraitante: [],
 };
