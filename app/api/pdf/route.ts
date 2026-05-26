@@ -40,7 +40,7 @@ export async function POST(req: Request) {
   return new Response(Buffer.from(pdf), {
     headers: {
       "Content-Type": "application/pdf",
-      "Content-Disposition": 'attachment; filename="document.pdf"',
+      "Content-Disposition": 'attachment; filename="Plan-de-prevention-.pdf"',
     },
   });
 }

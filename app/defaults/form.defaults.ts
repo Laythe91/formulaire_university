@@ -6,6 +6,7 @@ import { inspectionDefaults } from "./inspection.defaults";
 import { documentDefaults } from "./document.defaults";
 import { headerDefaults } from "./header.default";
 import { globalStateDefaults } from "./globalState.default";
+import { riskDefaults } from "./risk.defaults";
 
 export const formDefaults = {
   Header: headerDefaults,
@@ -15,5 +16,6 @@ export const formDefaults = {
   UniversityInformation: universityDefaults,
   Inspection: inspectionDefaults,
   Document: documentDefaults,
+  Risk: riskDefaults,
   Global: globalStateDefaults,
 };

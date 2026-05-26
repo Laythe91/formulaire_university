@@ -40,6 +40,7 @@ export default function Page({
   const methods = useForm<FormData>({
     resolver: zodResolver(schema) as any,
     defaultValues: formDefaults,
+    shouldUnregister: false,
   });
 
   // 1. On écoute la valeur de l'input "Nom de société"
@@ -84,6 +85,7 @@ export default function Page({
 
   const onSubmit = async (data: FormData) => {
     console.log("PECORE");
+
     const res = await fetch("/api/pdf", {
       method: "POST",
       headers: {
@@ -200,14 +202,39 @@ const values = methods.watch();
                                                 SUBMIT
                                             ========================= */}
                                               {GlobalState && (
-                                                <Button
-                                                  onClick={methods.handleSubmit(
-                                                    onSubmit,
-                                                  )}
-                                                  className="bg-blue-600 flex text-white px-4 py-2 mt-10 mb-10 mx-auto"
+                                                <button
+                                                  type="button"
+                                                  onClick={() => {
+                                                    const data =
+                                                      methods.getValues();
+
+                                                    const result =
+                                                      schema.safeParse(data);
+
+                                                    console.log(
+                                                      "RESULT =",
+                                                      result,
+                                                    );
+                                                    console.log(
+                                                      methods.getValues().Risk
+                                                        .amiante,
+                                                    );
+                                                    if (!result.success) {
+                                                      console.log(
+                                                        "ERROR =",
+                                                        result.error.format(),
+                                                      );
+                                                      return;
+                                                    }
+
+                                                    console.log(
+                                                      "VALID DATA =",
+                                                      result.data,
+                                                    );
+                                                  }}
                                                 >
-                                                  Valider
-                                                </Button>
+                                                  Test Zod
+                                                </button>
                                               )}
                                             </>
                                           )}

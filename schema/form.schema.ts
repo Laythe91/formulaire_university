@@ -17,7 +17,7 @@ export const schema = z.object({
   Condition: ConditionTypeSchema,
   UniversityInformation: UniversityInformationTypeSchema,
   Inspection: InspectionTypeSchema,
-  //Risk: RiskTypeSchema,
-  //Document: DocumentTypeSchema,
+  Risk: RiskTypeSchema,
+  Document: DocumentTypeSchema,
   //Global: GlobalStateTypeSchema,
 });

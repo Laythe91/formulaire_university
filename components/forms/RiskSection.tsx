@@ -50,60 +50,25 @@ export default function RiskSection() {
   useEffect(() => {
     const validations = [];
 
-    if (amianteChecked) {
-      validations.push(amianteValid);
-    }
-
-    if (bioChimChecked) {
-      validations.push(bioChimValid);
-    }
-
-    if (bruitChecked) validations.push(bruitValid);
-
-    if (circulationChecked) validations.push(circulationValid);
-
-    if (chuteHauteurChecked) {
-      validations.push(chuteHauteurValid);
-    }
-
-    if (chuteMaterielChecked) {
-      validations.push(chuteMaterielValid);
-    }
-
-    if (chutePiedChecked) {
-      validations.push(chutePiedValid);
-    }
-
-    if (electricChecked) {
-      validations.push(electricValid);
-    }
-
-    if (espaceconfineChecked) {
-      validations.push(espaceconfineValid);
-    }
-
-    if (incendieChecked) {
-      validations.push(incendieValid);
-    }
-
-    if (machineChecked) validations.push(machineValid);
-
-    if (manutentionChecked) {
-      validations.push(manutentionValid);
-    }
-
-    if (outillageChecked) {
-      validations.push(outillageValid);
-    }
+    if (amianteChecked) validations.push(!!amianteValid);
+    if (bioChimChecked) validations.push(!!bioChimValid);
+    if (bruitChecked) validations.push(!!bruitValid);
+    if (circulationChecked) validations.push(!!circulationValid);
+    if (chuteHauteurChecked) validations.push(!!chuteHauteurValid);
+    if (chuteMaterielChecked) validations.push(!!chuteMaterielValid);
+    if (chutePiedChecked) validations.push(!!chutePiedValid);
+    if (electricChecked) validations.push(!!electricValid);
+    if (espaceconfineChecked) validations.push(!!espaceconfineValid);
+    if (incendieChecked) validations.push(!!incendieValid);
+    if (machineChecked) validations.push(!!machineValid);
+    if (manutentionChecked) validations.push(!!manutentionValid);
+    if (outillageChecked) validations.push(!!outillageValid);
 
     const riskSectionValid =
-      validations.length > 0 && validations.every(Boolean);
+      validations.length > 0 && validations.every((v) => v === true);
 
     setValue("Risk.state", riskSectionValid);
   }, [
-    // =========================
-    // CHECKED
-    // =========================
     amianteChecked,
     bioChimChecked,
     bruitChecked,
@@ -118,9 +83,6 @@ export default function RiskSection() {
     manutentionChecked,
     outillageChecked,
 
-    // =========================
-    // VALID
-    // =========================
     amianteValid,
     bioChimValid,
     bruitValid,
@@ -134,7 +96,6 @@ export default function RiskSection() {
     machineValid,
     manutentionValid,
     outillageValid,
-    setValue,
   ]);
 
   return (

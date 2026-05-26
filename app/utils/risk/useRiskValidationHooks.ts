@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
-
 import { validateRiskSection } from "./validateRiskSection";
 
 type UseRiskValidationParams = {
@@ -10,6 +9,47 @@ type UseRiskValidationParams = {
 };
 
 export function useRiskValidation({
+  path,
+  phaseCount,
+  mesureCount,
+}: UseRiskValidationParams) {
+  const { watch, setValue } = useFormContext();
+
+  const phases = Array.from({ length: phaseCount }, (_, i) =>
+    watch(`${path}.phase.${i + 1}`),
+  );
+
+  const mesures = Array.from({ length: mesureCount }, (_, i) =>
+    watch(`${path}.mesure.${i + 1}`),
+  );
+
+  const universite = Array.from({ length: mesureCount }, (_, i) =>
+    watch(`${path}.universite.${i + 1}`),
+  );
+
+  const ee = Array.from({ length: mesureCount }, (_, i) =>
+    watch(`${path}.ee.${i + 1}`),
+  );
+
+  const observations = watch(`${path}.observations`);
+
+  useEffect(() => {
+    const globalValid = validateRiskSection({
+      phases,
+      mesures,
+      universite,
+      ee,
+      observations,
+    });
+
+    setValue(`${path}.global.state`, globalValid, {
+      shouldDirty: false,
+      shouldTouch: false,
+      shouldValidate: false,
+    });
+  }, [phases, mesures, universite, ee, observations, setValue, path]);
+}
+/*export function useRiskValidation({
   path,
   phaseCount,
   mesureCount,
@@ -51,3 +91,4 @@ export function useRiskValidation({
     setValue(`${path}.global.state`, globalValid);
   }, [phases, mesures, universite, ee, observations, path, setValue]);
 }
+*/
