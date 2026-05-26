@@ -15,6 +15,12 @@ export default function HeaderSection({ date }: Props) {
   const nomSociete = watch("Entreprise.titulaire.name");
 
   useEffect(() => {
+    setValue("Header.date", date, {
+      shouldDirty: false,
+    });
+  });
+
+  useEffect(() => {
     // =========================
     // VALIDATION PLAN NUMBER
     // =========================

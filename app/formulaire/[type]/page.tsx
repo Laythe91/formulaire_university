@@ -82,7 +82,25 @@ export default function Page({
     DocumentState,
   ]);
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit = async (data: FormData) => {
+    console.log("PECORE");
+    const res = await fetch("/api/pdf", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const blob = await res.blob();
+
+    const url = window.URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "document.pdf";
+    a.click();
+
     console.log(data);
   };
 
@@ -92,12 +110,15 @@ export default function Page({
     setDate(new Date().toLocaleDateString("fr-FR"));
   }, []);
 
-  /*const values = methods.watch();
+  /*
+const values = methods.watch();
 
   useEffect(() => {
     console.log("FORM VALUES:", values);
   }, [values]);
 */
+  const values = methods.watch();
+
   return (
     <div className="w-[210mm] mx-auto mt-4">
       <FormProvider {...methods}>
@@ -180,7 +201,9 @@ export default function Page({
                                             ========================= */}
                                               {GlobalState && (
                                                 <Button
-                                                  type="submit"
+                                                  onClick={methods.handleSubmit(
+                                                    onSubmit,
+                                                  )}
                                                   className="bg-blue-600 flex text-white px-4 py-2 mt-10 mb-10 mx-auto"
                                                 >
                                                   Valider

@@ -1,12 +1,23 @@
 import { z } from "zod";
-import { entrepriseSchema } from "./entreprise.schema";
-import { operationSchema } from "./operationInformation.schema";
-import { informationUniversitySchema } from "./informationUniversity.schema";
-import { executionConditionSchema } from "./executionCondition.schema";
+
+import { EntrepriseTypeSchema } from "./entreprise.schema";
+import { OperationTypeSchema } from "./operationInformation.schema";
+import { ConditionTypeSchema } from "./condition.schema";
+import { UniversityInformationTypeSchema } from "./informationUniversity.schema";
+import { InspectionTypeSchema } from "./inspection.schema";
+import { DocumentTypeSchema } from "./document.schema";
+import { HeaderTypeSchema } from "./header.schema";
+//import { GlobalStateTypeSchema } from "./globalState.schema";
+import { RiskTypeSchema } from "./risk.schema";
 
 export const schema = z.object({
-  Entreprise: entrepriseSchema,
-  Operation: operationSchema,
-  Condition: executionConditionSchema,
-  UniversityInformation: informationUniversitySchema,
+  Header: HeaderTypeSchema,
+  Entreprise: EntrepriseTypeSchema,
+  Operation: OperationTypeSchema,
+  Condition: ConditionTypeSchema,
+  UniversityInformation: UniversityInformationTypeSchema,
+  Inspection: InspectionTypeSchema,
+  //Risk: RiskTypeSchema,
+  //Document: DocumentTypeSchema,
+  //Global: GlobalStateTypeSchema,
 });

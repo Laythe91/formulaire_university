@@ -1,66 +1,46 @@
 import { z } from "zod";
 
-const phoneRegex = /^(\d{2}\.){4}\d{2}$/;
+export const EntrepriseRenseignementSchema = z.object({
+  state: z.boolean(),
+  effectif1: z.string(),
+  effectif2: z.string(),
+  soustraitant: z.string(),
+});
 
-export const entrepriseSchema = z.object({
-  renseignement: z.object({
-    state: z.boolean().default(false),
+export const EntrepriseInformationSchema = z.object({
+  state: z.boolean(),
+});
 
-    effectif1: z.string().regex(/^\d+$/, "Nombre invalide"),
+export const EntreprisePersonneSchema = z.object({
+  state: z.boolean(),
 
-    effectif2: z.string().regex(/^\d+$/, "Nombre invalide"),
-  }),
-  titulaire: z.object({
-    state: z.boolean().default(false),
-
-    checkbox: z.object({
-      state: z.boolean().default(false),
-    }),
-
-    name: z.string().min(2),
-    address: z.string().min(5),
-    effectif: z.string().min(1),
-
-    tel: z.string().regex(phoneRegex),
-    fax: z.string().regex(phoneRegex),
-
-    representant: z.object({
-      name: z.string().min(2),
-      tel: z.string().regex(phoneRegex),
-      mail: z.string().email(),
-    }),
-
-    responsable: z.object({
-      name: z.string().min(2),
-      tel: z.string().regex(phoneRegex),
-      mail: z.string().email(),
-    }),
+  checkbox: z.object({
+    state: z.boolean(),
   }),
 
-  soustraitante: z.object({
-    state: z.boolean().default(false),
+  name: z.string(),
+  address: z.string(),
+  effectif: z.string(),
 
-    checkbox: z.object({
-      state: z.boolean().default(false),
-    }),
+  tel: z.string(),
+  fax: z.string(),
 
-    name: z.string().min(2),
-    address: z.string().min(5),
-    effectif: z.string().min(1),
-
-    tel: z.string().regex(phoneRegex),
-    fax: z.string().regex(phoneRegex),
-
-    representant: z.object({
-      name: z.string().min(2),
-      tel: z.string().regex(phoneRegex),
-      mail: z.string().email(),
-    }),
-
-    responsable: z.object({
-      name: z.string().min(2),
-      tel: z.string().regex(phoneRegex),
-      mail: z.string().email(),
-    }),
+  representant: z.object({
+    name: z.string(),
+    tel: z.string(),
+    mail: z.string(),
   }),
+
+  responsable: z.object({
+    name: z.string(),
+    tel: z.string(),
+    mail: z.string(),
+  }),
+});
+
+export const EntrepriseTypeSchema = z.object({
+  renseignement: EntrepriseRenseignementSchema,
+  titulaire: EntreprisePersonneSchema,
+  soustraitante: z.array(EntreprisePersonneSchema),
+  information: EntrepriseInformationSchema,
 });

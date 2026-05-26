@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const operationSchema = z.object({
+export const OperationTypeSchema = z.object({
   state: z.boolean().default(false),
   annuel: z.object({
     state: z.boolean().default(false),

@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const executionConditionSchema = z.object({
+export const ConditionTypeSchema = z.object({
   "1": z.object({
     state: z.boolean().default(false),
   }),
