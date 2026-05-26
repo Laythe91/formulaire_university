@@ -56,6 +56,7 @@ export default function JointInspectionSection() {
                 <input
                   {...register("Inspection.date")}
                   className="border px-2 py-0.5  text-center text-sm"
+                  maxLength={10}
                   placeholder="JJ/MM/AAAA"
                   type="text"
                 />
@@ -71,11 +72,15 @@ export default function JointInspectionSection() {
                     Pour l'Université Paris VIII : {"  "}
                   </div>
                   <div>
-                    <input
+                    <textarea
                       {...register("Inspection.university")}
-                      className="border px-2 py-0.5 w-full text-center text-sm"
-                      placeholder=""
-                      type="text"
+                      rows={1}
+                      onInput={(e) => {
+                        e.currentTarget.style.height = "auto";
+                        e.currentTarget.style.height = `${e.currentTarget.scrollHeight}px`;
+                      }}
+                      className="border px-2 py-1 w-125 text-sm resize-none overflow-hidden wrap-break-words whitespace-pre-wrap leading-tight"
+                      placeholder="Nom ici"
                     />
                   </div>
                 </div>
@@ -84,11 +89,15 @@ export default function JointInspectionSection() {
                     Pour la Société {Societe} : {"  "}
                   </div>
                   <div>
-                    <input
+                    <textarea
                       {...register("Inspection.titulaire")}
-                      className="border px-2 py-0.5 w-full text-center text-sm"
-                      placeholder=""
-                      type="text"
+                      rows={1}
+                      onInput={(e) => {
+                        e.currentTarget.style.height = "auto";
+                        e.currentTarget.style.height = `${e.currentTarget.scrollHeight}px`;
+                      }}
+                      className="border px-2 py-1 w-125 text-sm resize-none overflow-hidden wrap-break-words whitespace-pre-wrap leading-tight"
+                      placeholder="Nom ici"
                     />
                   </div>
                 </div>
@@ -103,11 +112,15 @@ export default function JointInspectionSection() {
                       </div>
 
                       <div>
-                        <input
+                        <textarea
                           {...register(`Inspection.soustraitant.${index}`)}
-                          className="border px-2 py-0.5 w-full text-center text-sm"
-                          placeholder=""
-                          type="text"
+                          rows={1}
+                          onInput={(e) => {
+                            e.currentTarget.style.height = "auto";
+                            e.currentTarget.style.height = `${e.currentTarget.scrollHeight}px`;
+                          }}
+                          className="border px-2 py-1 w-125 text-sm resize-none overflow-hidden wrap-break-words whitespace-pre-wrap leading-tight"
+                          placeholder="Nom ici"
                         />
                       </div>
                     </div>

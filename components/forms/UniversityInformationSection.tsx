@@ -60,7 +60,7 @@ export default function UniversityInformationSection() {
                 placeholder="Donneur d'ordre"
               />
             </div>
-            <div className="text-sm mb-1 grid grid-cols-2 w-full">
+            <div className="text-sm mb-1 mt-3 grid grid-cols-2 w-full">
               <div className="pl-2">
                 Tél :{" "}
                 <input

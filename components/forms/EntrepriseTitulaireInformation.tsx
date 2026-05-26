@@ -1,7 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useFormContext } from "react-hook-form";
 
 export default function EntrepriseTitulaireInformation() {
+  const addressRef = useRef<HTMLTextAreaElement | null>(null);
+
+  useEffect(() => {
+    if (addressRef.current) {
+      addressRef.current.style.height = "auto";
+      addressRef.current.style.height = `${addressRef.current.scrollHeight}px`;
+    }
+  }, []);
+
   const { register, watch, setValue } = useFormContext();
   const EntrepriseTitulaire = watch("Entreprise.titulaire.checkbox.state");
   const EntrepriseTitulaireNom = watch("Entreprise.titulaire.name");
@@ -101,7 +110,7 @@ export default function EntrepriseTitulaireInformation() {
                   <input
                     {...register("Entreprise.titulaire.effectif")}
                     maxLength={6}
-                    className="border px-2 py-0.5 w-full text-center text-sm"
+                    className="border px-2 py-0.5 w-20 text-center text-sm"
                     placeholder="Nombre effectif prévu"
                     type="text"
                   />

@@ -95,7 +95,7 @@ export default function EntrepriseSousTraitanteInformation({
               <div className=" font-bold text-sm ">
                 Nom de l'entreprise sous-traintante : {"  "}
               </div>
-              <div className="w-120">
+              <div className="w-140">
                 <input
                   {...register(`Entreprise.soustraitante.${index}.name`)}
                   className="border px-2 py-0.5 w-full text-start text-sm"
@@ -112,7 +112,12 @@ export default function EntrepriseSousTraitanteInformation({
                 <textarea
                   {...register(`Entreprise.soustraitante.${index}.address`)}
                   placeholder="Adresse entreprise soustraitante"
-                  className="w-full min-h-15 h-20 border border-gray-300 p-2 text-sm outline-none resize-none focus:border-black transition-colors"
+                  rows={3}
+                  onInput={(e) => {
+                    e.currentTarget.style.height = "auto";
+                    e.currentTarget.style.height = `${e.currentTarget.scrollHeight}px`;
+                  }}
+                  className="w-full min-h-15 border p-2 text-sm resize-none overflow-hidden wrap-break-words whitespace-pre-wrap"
                 />
               </div>
             </div>
@@ -124,7 +129,8 @@ export default function EntrepriseSousTraitanteInformation({
                 <div>
                   <input
                     {...register(`Entreprise.soustraitante.${index}.effectif`)}
-                    className="border px-2 py-0.5 w-full text-center text-sm"
+                    maxLength={6}
+                    className="border px-2 py-0.5 w-20 text-center text-sm"
                     placeholder="Nombre effectif prévu"
                     type="text"
                   />
@@ -135,6 +141,7 @@ export default function EntrepriseSousTraitanteInformation({
                 <div>
                   <input
                     {...register(`Entreprise.soustraitante.${index}.tel`)}
+                    maxLength={14}
                     className="border px-2 py-0.5 w-full text-center text-sm"
                     placeholder="format 01.00.00.00.00"
                     type="text"
@@ -146,6 +153,7 @@ export default function EntrepriseSousTraitanteInformation({
                 <div>
                   <input
                     {...register(`Entreprise.soustraitante.${index}.fax`)}
+                    maxLength={14}
                     className="border px-2 py-0.5 w-full text-center text-sm"
                     placeholder="format 01.00.00.00.00"
                     type="text"
@@ -159,13 +167,17 @@ export default function EntrepriseSousTraitanteInformation({
                   Nom du représentant de l'entreprise : {"  "}
                 </div>
                 <div>
-                  <input
+                  <textarea
                     {...register(
                       `Entreprise.soustraitante.${index}.representant.name`,
                     )}
-                    className="border px-2 py-0.5 w-full text-center text-sm"
+                    rows={1}
+                    onInput={(e) => {
+                      e.currentTarget.style.height = "auto";
+                      e.currentTarget.style.height = `${e.currentTarget.scrollHeight}px`;
+                    }}
+                    className="border px-2 py-1 w-125 text-sm resize-none overflow-hidden wrap-break-words whitespace-pre-wrap leading-tight"
                     placeholder="Nom ici"
-                    type="text"
                   />
                 </div>
               </div>
@@ -176,6 +188,7 @@ export default function EntrepriseSousTraitanteInformation({
                     {...register(
                       `Entreprise.soustraitante.${index}.representant.tel`,
                     )}
+                    maxLength={14}
                     className="border px-2 py-0.5 w-full text-center text-sm"
                     placeholder="format 06.00.00.00.00"
                     type="text"
@@ -189,7 +202,8 @@ export default function EntrepriseSousTraitanteInformation({
                     {...register(
                       `Entreprise.soustraitante.${index}.representant.mail`,
                     )}
-                    className="border px-2 py-0.5 w-full text-center text-sm"
+                    maxLength={100}
+                    className="border px-2 py-0.5 w-170 text-sm"
                     placeholder="Mail ici"
                     type="text"
                   />
@@ -202,13 +216,17 @@ export default function EntrepriseSousTraitanteInformation({
                   Nom du responsable du suivi des travaux: {"  "}
                 </div>
                 <div>
-                  <input
+                  <textarea
                     {...register(
                       `Entreprise.soustraitante.${index}.responsable.name`,
                     )}
-                    className="border px-2 py-0.5 w-full text-center text-sm"
+                    rows={1}
+                    onInput={(e) => {
+                      e.currentTarget.style.height = "auto";
+                      e.currentTarget.style.height = `${e.currentTarget.scrollHeight}px`;
+                    }}
+                    className="border px-2 py-1 w-120 text-sm resize-none overflow-hidden wrap-break-words whitespace-pre-wrap leading-tight"
                     placeholder="Nom ici"
-                    type="text"
                   />
                 </div>
               </div>
@@ -219,6 +237,7 @@ export default function EntrepriseSousTraitanteInformation({
                     {...register(
                       `Entreprise.soustraitante.${index}.responsable.tel`,
                     )}
+                    maxLength={14}
                     className="border px-2 py-0.5 w-full text-center text-sm"
                     placeholder="format 06.00.00.00.00"
                     type="text"
@@ -232,7 +251,8 @@ export default function EntrepriseSousTraitanteInformation({
                     {...register(
                       `Entreprise.soustraitante.${index}.responsable.mail`,
                     )}
-                    className="border px-2 py-0.5 w-full text-center text-sm"
+                    maxLength={100}
+                    className="border px-2 py-0.5 w-170 text-center text-sm"
                     placeholder="Mail ici"
                     type="text"
                   />
