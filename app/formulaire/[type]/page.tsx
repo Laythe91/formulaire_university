@@ -112,14 +112,25 @@ export default function Page({
     setDate(new Date().toLocaleDateString("fr-FR"));
   }, []);
 
-  /*
-const values = methods.watch();
+  const methodDebugZODFinal = () => {
+    const data = methods.getValues();
+
+    const result = schema.safeParse(data);
+
+    console.log("RESULT =", result);
+    console.log(methods.getValues().Risk.amiante);
+    if (!result.success) {
+      console.log("ERROR =", result.error.format());
+      return;
+    }
+
+    console.log("VALID DATA =", result.data);
+  };
+  const values = methods.watch();
 
   useEffect(() => {
     console.log("FORM VALUES:", values);
   }, [values]);
-*/
-  const values = methods.watch();
 
   return (
     <div className="w-[210mm] mx-auto mt-4">
@@ -202,39 +213,14 @@ const values = methods.watch();
                                                 SUBMIT
                                             ========================= */}
                                               {GlobalState && (
-                                                <button
-                                                  type="button"
-                                                  onClick={() => {
-                                                    const data =
-                                                      methods.getValues();
-
-                                                    const result =
-                                                      schema.safeParse(data);
-
-                                                    console.log(
-                                                      "RESULT =",
-                                                      result,
-                                                    );
-                                                    console.log(
-                                                      methods.getValues().Risk
-                                                        .amiante,
-                                                    );
-                                                    if (!result.success) {
-                                                      console.log(
-                                                        "ERROR =",
-                                                        result.error.format(),
-                                                      );
-                                                      return;
-                                                    }
-
-                                                    console.log(
-                                                      "VALID DATA =",
-                                                      result.data,
-                                                    );
-                                                  }}
+                                                <Button
+                                                  onClick={methods.handleSubmit(
+                                                    onSubmit,
+                                                  )}
+                                                  className="bg-blue-600 flex text-white px-4 py-2 mt-10 mb-10 mx-auto"
                                                 >
-                                                  Test Zod
-                                                </button>
+                                                  Valider
+                                                </Button>
                                               )}
                                             </>
                                           )}

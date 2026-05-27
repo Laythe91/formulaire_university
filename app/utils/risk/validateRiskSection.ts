@@ -23,6 +23,60 @@ export function validateRiskSection({
   observations,
 }: ValidateRiskParams): boolean {
   /**
+   * 1. AU MOINS UNE PHASE
+   */
+  const hasPhase = phases.some(Boolean);
+
+  /**
+   * 2. RÈGLE BLOQUANTE DE COHÉRENCE
+   */
+  const mesuresStrictValid = mesures.every((mesure, i) => {
+    const uni = universite[i];
+    const eeVal = ee[i];
+
+    const hasImplementation = !!uni || !!eeVal;
+
+    if (mesure && !hasImplementation) return false;
+    if (!mesure && hasImplementation) return false;
+
+    return true;
+  });
+
+  /**
+   * 3. AU MOINS UNE MESURE RÉELLEMENT VALIDE
+   * (IMPORTANT : c’est ce qui manquait)
+   */
+  const hasAtLeastOneValidMeasure = mesures.some((mesure, i) => {
+    const uni = universite[i];
+    const eeVal = ee[i];
+
+    return !!mesure && (uni || eeVal);
+  });
+
+  /**
+   * 4. OBSERVATIONS
+   */
+  const observationsValid = (observations ?? "").trim().length >= 3;
+
+  /**
+   * 5. RÈGLE FINALE CORRIGÉE
+   */
+  return (
+    hasPhase &&
+    hasAtLeastOneValidMeasure &&
+    mesuresStrictValid &&
+    observationsValid
+  );
+}
+
+export function validateRiskSectionOLD({
+  phases,
+  mesures,
+  universite,
+  ee,
+  observations,
+}: ValidateRiskParams): boolean {
+  /**
    * 1. RÈGLE : au moins une phase doit être sélectionnée
    * → sinon la section n’est pas considérée comme active
    */

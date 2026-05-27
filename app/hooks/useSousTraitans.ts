@@ -1,19 +1,19 @@
-import { useFormContext } from "react-hook-form";
+import { useFormContext, useWatch } from "react-hook-form";
 import type { EntreprisePersonne } from "@/types/entreprise.type";
 
 export function useSousTraitants() {
-  const { watch } = useFormContext();
+  const { control } = useFormContext();
 
-  const soustraitants = watch(
-    "Entreprise.soustraitante",
-  ) as EntreprisePersonne[];
+  const soustraitants =
+    (useWatch({
+      control,
+      name: "Entreprise.soustraitante",
+    }) as EntreprisePersonne[]) || [];
 
-  const count = soustraitants?.length ?? 0;
+  const count = soustraitants.length;
 
   const allValid =
-    count === 0
-      ? true
-      : soustraitants.every((s: EntreprisePersonne) => s.state);
+    count === 0 ? true : soustraitants.every((s) => s?.state === true);
 
   return {
     soustraitants,

@@ -2,13 +2,14 @@ import { useFieldArray, useFormContext } from "react-hook-form";
 import EntrepriseTitulaireInformation from "./EntrepriseTitulaireInformation";
 import EntrepriseSousTraitanteInformation from "./EntrepriseSousTraitanteInformation";
 import React, { useEffect } from "react";
+import { EntreprisePersonne } from "@/types/entreprise.type";
 
 export default function CompanyInformationSection2() {
   const { register, watch, setValue, control } = useFormContext();
   const entrepriseTitulaire = watch("Entreprise.titulaire.checkbox.state");
   const entrepriseTitulaireState = watch("Entreprise.titulaire.state");
-  const soutraitantCare = watch("Entreprise.soustraitant.checkbox.state");
-  const soustraitantState = watch("Entreprise.soustraitante.state");
+  //const soutraitantCare = watch("Entreprise.soustraitant.checkbox.state");
+  //const soustraitantState = watch("Entreprise.soustraitante.state");
 
   const count = watch("Entreprise.renseignement.soustraitant");
 
@@ -36,22 +37,33 @@ export default function CompanyInformationSection2() {
     replace(newArray);
   }, [count]);
 
+  const sousTraitants: EntreprisePersonne[] =
+    watch("Entreprise.soustraitante") || [];
+
   useEffect(() => {
-    const hasTitulaire = entrepriseTitulaire && entrepriseTitulaireState;
+    const subscription = watch((value) => {
+      const titulaireOK =
+        value.Entreprise?.titulaire?.checkbox?.state &&
+        value.Entreprise?.titulaire?.state;
 
-    const allSousTraitantsValid =
-      fields.length === 0
-        ? true
-        : fields.every((_, index) =>
-            watch(`Entreprise.soustraitante.${index}.state`),
-          );
+      const sousTraitants = (value.Entreprise?.soustraitante ??
+        []) as EntreprisePersonne[];
+      const sousTraitantsOK =
+        sousTraitants.length === 0
+          ? true
+          : sousTraitants.every((st) => st?.state === true);
 
-    const isValid = hasTitulaire && allSousTraitantsValid;
+      const isValid = titulaireOK && sousTraitantsOK;
 
-    setValue("Entreprise.information.state", isValid, {
-      shouldDirty: false,
+      setValue("Entreprise.information.state", isValid, {
+        shouldDirty: false,
+        shouldTouch: false,
+        shouldValidate: false,
+      });
     });
-  }, [entrepriseTitulaire, entrepriseTitulaireState, fields, watch, setValue]);
+
+    return () => subscription.unsubscribe();
+  }, [watch, setValue]);
 
   return (
     <table className="w-full border-2 border-black border-collapse table-fixed mt-3">

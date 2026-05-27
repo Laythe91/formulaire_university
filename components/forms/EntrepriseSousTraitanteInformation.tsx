@@ -68,6 +68,10 @@ export default function EntrepriseSousTraitanteInformation({
     setValue(
       `Entreprise.soustraitante.${index}.state`,
       validPhones && validMails && validText,
+      {
+        shouldDirty: false,
+        shouldTouch: false,
+      },
     );
   }, [
     SousTraitant,
@@ -95,12 +99,16 @@ export default function EntrepriseSousTraitanteInformation({
               <div className=" font-bold text-sm ">
                 Nom de l'entreprise sous-traintante : {"  "}
               </div>
-              <div className="w-140">
-                <input
+              <div>
+                <textarea
                   {...register(`Entreprise.soustraitante.${index}.name`)}
-                  className="border px-2 py-0.5 w-full text-start text-sm"
+                  rows={1}
+                  onInput={(e) => {
+                    e.currentTarget.style.height = "auto";
+                    e.currentTarget.style.height = `${e.currentTarget.scrollHeight}px`;
+                  }}
+                  className="border px-2 py-0.5 w-125 text-start text-sm resize-none overflow-hidden wrap-break-words whitespace-pre-wrap leading-tight"
                   placeholder="Nom de l'entreprise soustraitante ici"
-                  type="text"
                 />
               </div>
             </div>
@@ -252,7 +260,7 @@ export default function EntrepriseSousTraitanteInformation({
                       `Entreprise.soustraitante.${index}.responsable.mail`,
                     )}
                     maxLength={100}
-                    className="border px-2 py-0.5 w-170 text-center text-sm"
+                    className="border px-2 py-0.5 w-170 text-sm"
                     placeholder="Mail ici"
                     type="text"
                   />
