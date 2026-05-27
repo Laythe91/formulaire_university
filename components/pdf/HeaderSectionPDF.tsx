@@ -73,7 +73,7 @@ export default function HeaderSectionPDF({ data }: Props) {
             <div className="flex flex-col items-center gap-1">
               <span className="font-semibold text-sm">PLAN DE PREVENTION</span>
 
-              <div className="border px-2 py-1 w-full text-center uppercase text-sm font-semibold resize-none overflow-hidden leading-tight">
+              <div className=" px-2 py-1 w-full text-center uppercase text-sm font-semibold resize-none overflow-hidden leading-tight">
                 {nomSociete || (
                   <span className="text-gray-400">Nom de société</span>
                 )}

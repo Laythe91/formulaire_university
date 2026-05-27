@@ -1,5 +1,6 @@
 "use client";
 
+import CovidSectionPDF from "@/components/pdf/CovidSectionPDF";
 import HeaderSectionPDF from "@/components/pdf/HeaderSectionPDF";
 import { useEffect, useState } from "react";
 
@@ -20,6 +21,7 @@ export default function PdfTemplate() {
     <>
       <div className="w-[210mm] mx-auto mt-4">
         <HeaderSectionPDF data={data} />
+        <CovidSectionPDF />
       </div>
     </>
   );
