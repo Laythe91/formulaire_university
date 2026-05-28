@@ -1,22 +1,26 @@
-import { useFormContext } from "react-hook-form";
-import Image from "next/image";
-import { useRiskValidation } from "@/app/utils/risk/useRiskValidationHooks";
+type Props = { data: any };
 
-export default function MachineRiskPDF() {
-  const { register } = useFormContext();
+export default function MachineRiskPDF({ data }: Props) {
+  const phase1 = data?.phase?.["1"] || false;
+  const phase2 = data?.phase?.["2"] || false;
 
-  useRiskValidation({
-    path: "Risk.machine",
-    phaseCount: 2,
-    mesureCount: 2,
-  });
+  const mesure1 = data?.mesure?.["1"] || false;
+  const mesure2 = data?.mesure?.["2"] || false;
+
+  const universite1 = data?.universite?.["1"] || false;
+  const universite2 = data?.universite?.["2"] || false;
+
+  const ee1 = data?.ee?.["1"] || false;
+  const ee2 = data?.ee?.["2"] || false;
+
+  const observation = data?.observation || "";
 
   return (
     <>
       {/* En-tête du Risque */}
       <div className="bg-yellow-100 border-black border-2 flex flex-col justify-center items-center text-center uppercase mt-3 h-20">
         <span className="font-semibold">machine</span>
-        <Image
+        <img
           src="/pictograms/machine.svg"
           alt="machine"
           width={128}
@@ -75,7 +79,8 @@ export default function MachineRiskPDF() {
               <div className="flex flex-col gap-4">
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                   <input
-                    {...register("Risk.machine.phase.1")}
+                    checked={phase1}
+                    readOnly
                     type="checkbox"
                     className="scale-75 accent-black w-4 shrink-0 mt-1"
                   />
@@ -84,7 +89,8 @@ export default function MachineRiskPDF() {
 
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                   <input
-                    {...register("Risk.machine.phase.2")}
+                    checked={phase2}
+                    readOnly
                     type="checkbox"
                     className="scale-75 accent-black w-4 shrink-0 mt-1"
                   />
@@ -97,7 +103,8 @@ export default function MachineRiskPDF() {
             <td className="border-x border-t border-black align-top p-3 pb-1">
               <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                 <input
-                  {...register("Risk.machine.mesure.1")}
+                  checked={mesure1}
+                  readOnly
                   type="checkbox"
                   className="scale-75 accent-black w-4 shrink-0 mt-1"
                 />
@@ -109,7 +116,8 @@ export default function MachineRiskPDF() {
             {/* Université 1 */}
             <td className="border-x border-t border-black align-top p-3 pb-1 text-center">
               <input
-                {...register("Risk.machine.universite.1")}
+                checked={universite1}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -118,7 +126,8 @@ export default function MachineRiskPDF() {
             {/* EE 1 */}
             <td className="border-x border-t border-black align-top p-3 pb-1 text-center">
               <input
-                {...register("Risk.machine.ee.1")}
+                checked={ee1}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -131,7 +140,8 @@ export default function MachineRiskPDF() {
             <td className="border-x border-b border-black align-top p-3 pt-1">
               <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                 <input
-                  {...register("Risk.machine.mesure.2")}
+                  checked={mesure2}
+                  readOnly
                   type="checkbox"
                   className="scale-75 accent-black w-4 shrink-0 mt-1"
                 />
@@ -142,7 +152,8 @@ export default function MachineRiskPDF() {
             {/* Université 2 */}
             <td className="border-x border-b border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.machine.universite.2")}
+                checked={universite2}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -151,7 +162,8 @@ export default function MachineRiskPDF() {
             {/* EE 2 */}
             <td className="border-x border-b border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.machine.ee.2")}
+                checked={ee2}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -165,16 +177,9 @@ export default function MachineRiskPDF() {
         <label className="text-sm font-bold text-gray-800">
           Observations :
         </label>
-        <textarea
-          {...register("Risk.machine.observations")}
-          rows={3}
-          onInput={(e) => {
-            e.currentTarget.style.height = "auto";
-            e.currentTarget.style.height = `${e.currentTarget.scrollHeight}px`;
-          }}
-          placeholder="Renseigner ici les observations ou précisions concernant les mesures ... SI AUCUNE OBSERVATION METTRE AU MINIMUM RAS"
-          className="w-full min-h-15 h-20 overflow-hidden  border border-gray-300 p-2 text-sm wrap-break-words resize-none "
-        />
+        <span className="w-full min-h-20 border border-gray-300 p-2 text-sm whitespace-pre-wrap wrap-break-words">
+          {observation}
+        </span>
       </div>
     </>
   );

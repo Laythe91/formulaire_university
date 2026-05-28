@@ -1,123 +1,76 @@
-import { useFormContext } from "react-hook-form";
-import RiskChoices from "./RisksPDF/RiskChoicesPDF";
-import CirculationRisk from "./RisksPDF/CirculationRiskPDF";
-import BruitRisk from "./RisksPDF/BruitRiskPDF";
-import ChutePlainPiedRisk from "./RisksPDF/ChutePlainPiedRiskPDF";
-import ChuteHauteurRisk from "./RisksPDF/ChuteHauteurRiskPDF";
-import ChuteMaterielRisk from "./RisksPDF/ChuteMaterielRiskPDF";
-import MachineRisk from "./RisksPDF/MachineRiskPDF";
-import ElectricRisk from "./RisksPDF/ElectricRiskPDF";
-import OutillageRisk from "./RisksPDF/OutillageRiskPDF";
-import IncendieRisk from "./RisksPDF/IncendieRiskPDF";
-import BioChimRisk from "./RisksPDF/BioChimRiskPDF";
-import EspaceConfinesRisk from "./RisksPDF/EspacesConfinesRiskPDF";
 import AmianteRiskPDF from "./RisksPDF/AmianteRiskPDF";
-import { useEffect } from "react";
-import Manutention from "./RisksPDF/ManutentionManuelMecaniquePDF";
+import BruitRiskPDF from "./RisksPDF/BruitRiskPDF";
+import ChuteHauteurRiskPDF from "./RisksPDF/ChuteHauteurRiskPDF";
+import ChuteMaterielRiskPDF from "./RisksPDF/ChuteMaterielRiskPDF";
+import ChutePlainPiedRiskPDF from "./RisksPDF/ChutePlainPiedRiskPDF";
+import CirculationRiskPDF from "./RisksPDF/CirculationRiskPDF";
+import ElectricRiskPDF from "./RisksPDF/ElectricRiskPDF";
+import EspaceConfinesRiskPDF from "./RisksPDF/EspacesConfinesRiskPDF";
+import IncendieRiskPDF from "./RisksPDF/IncendieRiskPDF";
+import MachineRiskPDF from "./RisksPDF/MachineRiskPDF";
+import ManutentionPDF from "./RisksPDF/ManutentionManuelMecaniquePDF";
+import OutillageRiskPDF from "./RisksPDF/OutillageRiskPDF";
+import BioChimRiskPDF from "./RisksPDF/BioChimRiskPDF";
+import RiskChoicesPDF from "./RisksPDF/RiskChoicesPDF";
+type Props = { data: any };
 
-export default function RiskSection() {
-  const { register, watch, setValue } = useFormContext();
-
+export default function RiskSectionPDF({ data }: Props) {
   //Risque coché
-  const amianteChecked = watch("Risk.amiante.checkbox.state");
-  const circulationChecked = watch("Risk.circulation.checkbox.state");
-  const bioChimChecked = watch("Risk.bioChim.checkbox.state");
-  const bruitChecked = watch("Risk.bruit.checkbox.state");
-  const chuteHauteurChecked = watch("Risk.chuteHauteur.checkbox.state");
-  const chuteMaterielChecked = watch("Risk.chuteMateriel.checkbox.state");
-  const chutePiedChecked = watch("Risk.chutePied.checkbox.state");
-  const electricChecked = watch("Risk.electrique.checkbox.state");
-  const espaceconfineChecked = watch("Risk.espaceconfine.checkbox.state");
-  const incendieChecked = watch("Risk.incendie.checkbox.state");
-  const machineChecked = watch("Risk.machine.checkbox.state");
-  const manutentionChecked = watch("Risk.manutention.checkbox.state");
-  const outillageChecked = watch("Risk.outillage.checkbox.state");
+  const amianteChecked = data?.Risk?.amiante?.checkbox?.state || false;
+  const circulationChecked = data?.Risk?.circulation?.checkbox?.state || false;
+  const bioChimChecked = data?.Risk?.bioChim?.checkbox?.state || false;
+  const bruitChecked = data?.Risk?.bruit?.checkbox?.state || false;
+  const chuteHauteurChecked =
+    data?.Risk?.chuteHauteur?.checkbox?.state || false;
+  const chuteMaterielChecked =
+    data?.Risk?.chuteMateriel?.checkbox?.state || false;
+  const chutePiedChecked = data?.Risk?.chutePied?.checkbox?.state || false;
+  const electricChecked = data?.Risk?.electrique?.checkbox?.state || false;
+  const espaceconfineChecked =
+    data?.Risk?.espaceconfine?.checkbox?.state || false;
+  const incendieChecked = data?.Risk?.incendie?.checkbox?.state || false;
+  const machineChecked = data?.Risk?.machine?.checkbox?.state || false;
+  const manutentionChecked = data?.Risk?.manutention?.checkbox?.state || false;
+  const outillageChecked = data?.Risk?.outillage?.checkbox?.state || false;
 
-  const amianteValid = watch("Risk.amiante.global.state");
-  const bruitValid = watch("Risk.bruit.global.state");
-  const circulationValid = watch("Risk.circulation.global.state");
-  const chuteHauteurValid = watch("Risk.chuteHauteur.global.state");
-  const chuteMaterielValid = watch("Risk.chuteMateriel.global.state");
-  const chutePiedValid = watch("Risk.chutePied.global.state");
-  const electricValid = watch("Risk.electrique.global.state");
-  const espaceconfineValid = watch("Risk.espaceconfine.global.state");
-  const incendieValid = watch("Risk.incendie.global.state");
-  const machineValid = watch("Risk.machine.global.state");
-  const manutentionValid = watch("Risk.manutention.global.state");
-  const outillageValid = watch("Risk.outillage.global.state");
-  const bioChimValid = watch("Risk.bioChim.global.state");
-
-  useEffect(() => {
-    const validations = [];
-
-    if (amianteChecked) validations.push(!!amianteValid);
-    if (bioChimChecked) validations.push(!!bioChimValid);
-    if (bruitChecked) validations.push(!!bruitValid);
-    if (circulationChecked) validations.push(!!circulationValid);
-    if (chuteHauteurChecked) validations.push(!!chuteHauteurValid);
-    if (chuteMaterielChecked) validations.push(!!chuteMaterielValid);
-    if (chutePiedChecked) validations.push(!!chutePiedValid);
-    if (electricChecked) validations.push(!!electricValid);
-    if (espaceconfineChecked) validations.push(!!espaceconfineValid);
-    if (incendieChecked) validations.push(!!incendieValid);
-    if (machineChecked) validations.push(!!machineValid);
-    if (manutentionChecked) validations.push(!!manutentionValid);
-    if (outillageChecked) validations.push(!!outillageValid);
-
-    const riskSectionValid =
-      validations.length > 0 && validations.every((v) => v === true);
-
-    setValue("Risk.state", riskSectionValid);
-  }, [
-    amianteChecked,
-    bioChimChecked,
-    bruitChecked,
-    circulationChecked,
-    chuteHauteurChecked,
-    chuteMaterielChecked,
-    chutePiedChecked,
-    electricChecked,
-    espaceconfineChecked,
-    incendieChecked,
-    machineChecked,
-    manutentionChecked,
-    outillageChecked,
-
-    amianteValid,
-    bioChimValid,
-    bruitValid,
-    circulationValid,
-    chuteHauteurValid,
-    chuteMaterielValid,
-    chutePiedValid,
-    electricValid,
-    espaceconfineValid,
-    incendieValid,
-    machineValid,
-    manutentionValid,
-    outillageValid,
-  ]);
+  const amiantedata = data?.Risk?.amiante;
+  const circulationdata = data?.Risk?.circulation;
+  const bioChimdata = data?.Risk?.bioChim;
+  const bruitdata = data?.Risk?.bruit;
+  const chuteHauteurdata = data?.Risk?.chuteHauteur;
+  const chuteMaterieldata = data?.Risk?.chuteMateriel;
+  const chutePieddata = data?.Risk?.chutePied;
+  const electricdata = data?.Risk?.electrique;
+  const espaceconfinedata = data?.Risk?.espaceconfine;
+  const incendiedata = data?.Risk?.incendie;
+  const machinedata = data?.Risk?.machine;
+  const manutentiondata = data?.Risk?.manutention;
+  const outillagedata = data?.Risk?.outillage;
 
   return (
     <div className="mt-5 ">
       <h2 className="font-bold underline uppercase text-center text-xl">
         Analyse des risque Pendant l'opération
       </h2>
-      <RiskChoices />
+      <RiskChoicesPDF data={data} />
 
-      {bruitChecked && <BruitRisk />}
-      {chuteHauteurChecked && <ChuteHauteurRisk />}
-      {chuteMaterielChecked && <ChuteMaterielRisk />}
-      {chutePiedChecked && <ChutePlainPiedRisk />}
-      {circulationChecked && <CirculationRisk />}
-      {electricChecked && <ElectricRisk />}
-      {espaceconfineChecked && <EspaceConfinesRisk />}
-      {incendieChecked && <IncendieRisk />}
-      {machineChecked && <MachineRisk />}
-      {manutentionChecked && <Manutention />}
-      {outillageChecked && <OutillageRisk />}
-      {bioChimChecked && <BioChimRisk />}
-      {amianteChecked && <AmianteRiskPDF />}
+      {bruitChecked && <BruitRiskPDF data={bruitdata} />}
+      {chuteHauteurChecked && <ChuteHauteurRiskPDF data={chuteHauteurdata} />}
+      {chuteMaterielChecked && (
+        <ChuteMaterielRiskPDF data={chuteMaterieldata} />
+      )}
+      {chutePiedChecked && <ChutePlainPiedRiskPDF data={chutePieddata} />}
+      {circulationChecked && <CirculationRiskPDF data={circulationdata} />}
+      {electricChecked && <ElectricRiskPDF data={electricdata} />}
+      {espaceconfineChecked && (
+        <EspaceConfinesRiskPDF data={espaceconfinedata} />
+      )}
+      {incendieChecked && <IncendieRiskPDF data={incendiedata} />}
+      {machineChecked && <MachineRiskPDF data={machinedata} />}
+      {manutentionChecked && <ManutentionPDF data={manutentiondata} />}
+      {outillageChecked && <OutillageRiskPDF data={outillagedata} />}
+      {bioChimChecked && <BioChimRiskPDF data={bioChimdata} />}
+      {amianteChecked && <AmianteRiskPDF data={amiantedata} />}
     </div>
   );
 }

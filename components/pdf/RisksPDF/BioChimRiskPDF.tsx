@@ -1,15 +1,62 @@
-import { useFormContext } from "react-hook-form";
-import Image from "next/image";
-import { useRiskValidation } from "@/app/utils/risk/useRiskValidationHooks";
+type Props = { data: any };
+export default function BioChimRiskPDF({ data }: Props) {
+  const phase1 = data?.phase?.["1"] || false;
+  const phase2 = data?.phase?.["2"] || false;
+  const phase3 = data?.phase?.["3"] || false;
+  const phase4 = data?.phase?.["4"] || false;
+  const phase5 = data?.phase?.["5"] || false;
+  const phase6 = data?.phase?.["6"] || false;
+  const phase7 = data?.phase?.["7"] || false;
+  const phase8 = data?.phase?.["8"] || false;
+  const phase9 = data?.phase?.["9"] || false;
+  const phase10 = data?.phase?.["10"] || false;
+  const phase11 = data?.phase?.["11"] || false;
+  const phase12 = data?.phase?.["12"] || false;
+  const phase13 = data?.phase?.["13"] || false;
 
-export default function BioChimRiskPDF() {
-  const { register } = useFormContext();
+  const mesure1 = data?.mesure?.["1"] || false;
+  const mesure2 = data?.mesure?.["2"] || false;
+  const mesure3 = data?.mesure?.["3"] || false;
+  const mesure4 = data?.mesure?.["4"] || false;
+  const mesure5 = data?.mesure?.["5"] || false;
+  const mesure6 = data?.mesure?.["6"] || false;
+  const mesure7 = data?.mesure?.["7"] || false;
+  const mesure8 = data?.mesure?.["8"] || false;
+  const mesure9 = data?.mesure?.["9"] || false;
+  const mesure10 = data?.mesure?.["10"] || false;
+  const mesure11 = data?.mesure?.["11"] || false;
+  const mesure12 = data?.mesure?.["12"] || false;
+  const mesure13 = data?.mesure?.["13"] || false;
 
-  useRiskValidation({
-    path: "Risk.bioChim",
-    phaseCount: 11,
-    mesureCount: 13,
-  });
+  const universite1 = data?.universite?.["1"] || false;
+  const universite2 = data?.universite?.["2"] || false;
+  const universite3 = data?.universite?.["3"] || false;
+  const universite4 = data?.universite?.["4"] || false;
+  const universite5 = data?.universite?.["5"] || false;
+  const universite6 = data?.universite?.["6"] || false;
+  const universite7 = data?.universite?.["7"] || false;
+  const universite8 = data?.universite?.["8"] || false;
+  const universite9 = data?.universite?.["9"] || false;
+  const universite10 = data?.universite?.["10"] || false;
+  const universite11 = data?.universite?.["11"] || false;
+  const universite12 = data?.universite?.["12"] || false;
+  const universite13 = data?.universite?.["13"] || false;
+
+  const ee1 = data?.ee?.["1"] || false;
+  const ee2 = data?.ee?.["2"] || false;
+  const ee3 = data?.ee?.["3"] || false;
+  const ee4 = data?.ee?.["4"] || false;
+  const ee5 = data?.ee?.["5"] || false;
+  const ee6 = data?.ee?.["6"] || false;
+  const ee7 = data?.ee?.["7"] || false;
+  const ee8 = data?.ee?.["8"] || false;
+  const ee9 = data?.ee?.["9"] || false;
+  const ee10 = data?.ee?.["10"] || false;
+  const ee11 = data?.ee?.["11"] || false;
+  const ee12 = data?.ee?.["12"] || false;
+  const ee13 = data?.ee?.["13"] || false;
+
+  const observation = data?.observation || "";
 
   return (
     <>
@@ -20,35 +67,35 @@ export default function BioChimRiskPDF() {
         </span>
         <div className="flex flex-row gap-x-3">
           {" "}
-          <Image
+          <img
             src="/pictograms/produit-corrosif.svg"
             alt="Chute de plain pied"
             width={128}
             height={128}
             className="h-12.5 w-auto"
           />
-          <Image
+          <img
             src="/pictograms/produit-nocif.svg"
             alt="Chute de plain pied"
             width={128}
             height={128}
             className="h-12.5 w-auto"
           />
-          <Image
+          <img
             src="/pictograms/produit-inflammable.svg"
             alt="Chute de plain pied"
             width={128}
             height={128}
             className="h-12.5 w-auto"
           />
-          <Image
+          <img
             src="/pictograms/produit-toxique.svg"
             alt="Chute de plain pied"
             width={128}
             height={128}
             className="h-12.5 w-auto"
           />
-          <Image
+          <img
             src="/pictograms/produit-explosif.svg"
             alt="Chute de plain pied"
             width={128}
@@ -108,7 +155,8 @@ export default function BioChimRiskPDF() {
               <div className="flex flex-col gap-4">
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                   <input
-                    {...register("Risk.bioChim.phase.1")}
+                    checked={phase1}
+                    readOnly
                     type="checkbox"
                     className="scale-75 accent-black w-4 shrink-0 mt-1"
                   />
@@ -124,7 +172,8 @@ export default function BioChimRiskPDF() {
 
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                   <input
-                    {...register("Risk.bioChim.phase.2")}
+                    checked={phase2}
+                    readOnly
                     type="checkbox"
                     className="scale-75 accent-black w-4 shrink-0 mt-1"
                   />
@@ -140,7 +189,8 @@ export default function BioChimRiskPDF() {
 
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                   <input
-                    {...register("Risk.bioChim.phase.3")}
+                    checked={phase3}
+                    readOnly
                     type="checkbox"
                     className="scale-75 accent-black w-4 shrink-0 mt-1"
                   />
@@ -150,7 +200,8 @@ export default function BioChimRiskPDF() {
 
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                   <input
-                    {...register("Risk.bioChim.phase.4")}
+                    checked={phase4}
+                    readOnly
                     type="checkbox"
                     className="scale-75 accent-black w-4 shrink-0 mt-1"
                   />
@@ -159,7 +210,8 @@ export default function BioChimRiskPDF() {
 
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                   <input
-                    {...register("Risk.bioChim.phase.5")}
+                    checked={phase5}
+                    readOnly
                     type="checkbox"
                     className="scale-75 accent-black w-4 shrink-0 mt-1"
                   />
@@ -168,7 +220,8 @@ export default function BioChimRiskPDF() {
 
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                   <input
-                    {...register("Risk.bioChim.phase.6")}
+                    checked={phase6}
+                    readOnly
                     type="checkbox"
                     className="scale-75 accent-black w-4 shrink-0 mt-1"
                   />
@@ -177,7 +230,8 @@ export default function BioChimRiskPDF() {
 
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                   <input
-                    {...register("Risk.bioChim.phase.7")}
+                    checked={phase7}
+                    readOnly
                     type="checkbox"
                     className="scale-75 accent-black w-4 shrink-0 mt-1"
                   />
@@ -186,7 +240,8 @@ export default function BioChimRiskPDF() {
 
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                   <input
-                    {...register("Risk.bioChim.phase.8")}
+                    checked={phase8}
+                    readOnly
                     type="checkbox"
                     className="scale-75 accent-black w-4 shrink-0 mt-1"
                   />
@@ -195,7 +250,8 @@ export default function BioChimRiskPDF() {
 
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                   <input
-                    {...register("Risk.bioChim.phase.9")}
+                    checked={phase9}
+                    readOnly
                     type="checkbox"
                     className="scale-75 accent-black w-4 shrink-0 mt-1"
                   />
@@ -204,7 +260,8 @@ export default function BioChimRiskPDF() {
 
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                   <input
-                    {...register("Risk.bioChim.phase.10")}
+                    checked={phase10}
+                    readOnly
                     type="checkbox"
                     className="scale-75 accent-black w-4 shrink-0 mt-1"
                   />
@@ -213,7 +270,8 @@ export default function BioChimRiskPDF() {
 
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                   <input
-                    {...register("Risk.bioChim.phase.11")}
+                    checked={phase11}
+                    readOnly
                     type="checkbox"
                     className="scale-75 accent-black w-4 shrink-0 mt-1"
                   />
@@ -226,7 +284,8 @@ export default function BioChimRiskPDF() {
             <td className="border-x border-t border-black align-top p-3 pb-1">
               <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                 <input
-                  {...register("Risk.bioChim.mesure.1")}
+                  checked={mesure1}
+                  readOnly
                   type="checkbox"
                   className="scale-75 accent-black w-4 shrink-0 mt-1"
                 />
@@ -243,7 +302,8 @@ export default function BioChimRiskPDF() {
             {/* Université 1 */}
             <td className="border-x border-t border-black align-top p-3 pb-1 text-center">
               <input
-                {...register("Risk.bioChim.universite.1")}
+                checked={universite1}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -252,7 +312,8 @@ export default function BioChimRiskPDF() {
             {/* EE 1 */}
             <td className="border-x border-t border-black align-top p-3 pb-1 text-center">
               <input
-                {...register("Risk.bioChim.ee.1")}
+                checked={ee1}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -265,7 +326,8 @@ export default function BioChimRiskPDF() {
             <td className="border-x border-black align-top p-3 py-1">
               <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                 <input
-                  {...register("Risk.bioChim.mesure.2")}
+                  checked={mesure2}
+                  readOnly
                   type="checkbox"
                   className="scale-75 accent-black w-4 shrink-0 mt-1"
                 />
@@ -282,7 +344,8 @@ export default function BioChimRiskPDF() {
             {/* Université 2 */}
             <td className="border-x border-black align-top p-3 py-1 text-center">
               <input
-                {...register("Risk.bioChim.universite.2")}
+                checked={universite2}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -291,7 +354,8 @@ export default function BioChimRiskPDF() {
             {/* EE 2 */}
             <td className="border-x border-black align-top p-3 py-1 text-center">
               <input
-                {...register("Risk.bioChim.ee.2")}
+                checked={ee2}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -304,7 +368,8 @@ export default function BioChimRiskPDF() {
             <td className="border-x border-black align-top p-3 py-1">
               <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                 <input
-                  {...register("Risk.bioChim.mesure.3")}
+                  checked={mesure3}
+                  readOnly
                   type="checkbox"
                   className="scale-75 accent-black w-4 shrink-0 mt-1"
                 />
@@ -315,7 +380,8 @@ export default function BioChimRiskPDF() {
             {/* Université 3 */}
             <td className="border-x border-black align-top p-3 py-1 text-center">
               <input
-                {...register("Risk.bioChim.universite.3")}
+                checked={universite3}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -324,7 +390,8 @@ export default function BioChimRiskPDF() {
             {/* EE 3 */}
             <td className="border-x border-black align-top p-3 py-1 text-center">
               <input
-                {...register("Risk.bioChim.ee.3")}
+                checked={ee3}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -337,7 +404,8 @@ export default function BioChimRiskPDF() {
             <td className="border-x border-black align-top p-3 pt-1">
               <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                 <input
-                  {...register("Risk.bioChim.mesure.4")}
+                  checked={mesure4}
+                  readOnly
                   type="checkbox"
                   className="scale-75 accent-black w-4 shrink-0 mt-1"
                 />
@@ -348,7 +416,8 @@ export default function BioChimRiskPDF() {
             {/* Université 4 */}
             <td className="border-x  border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.bioChim.universite.4")}
+                checked={universite4}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -357,7 +426,8 @@ export default function BioChimRiskPDF() {
             {/* EE 4 */}
             <td className="border-x  border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.bioChim.ee.4")}
+                checked={ee4}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -369,7 +439,8 @@ export default function BioChimRiskPDF() {
             <td className="border-x border-black align-top p-3 pt-1">
               <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                 <input
-                  {...register("Risk.bioChim.mesure.5")}
+                  checked={mesure5}
+                  readOnly
                   type="checkbox"
                   className="scale-75 accent-black w-4 shrink-0 mt-1"
                 />
@@ -380,7 +451,8 @@ export default function BioChimRiskPDF() {
             {/* Université 5 */}
             <td className="border-x  border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.bioChim.universite.5")}
+                checked={universite5}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -389,7 +461,8 @@ export default function BioChimRiskPDF() {
             {/* EE 5 */}
             <td className="border-x  border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.bioChim.ee.5")}
+                checked={ee5}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -401,7 +474,8 @@ export default function BioChimRiskPDF() {
             <td className="border-x border-black align-top p-3 pt-1">
               <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                 <input
-                  {...register("Risk.bioChim.mesure.6")}
+                  checked={mesure6}
+                  readOnly
                   type="checkbox"
                   className="scale-75 accent-black w-4 shrink-0 mt-1"
                 />
@@ -413,7 +487,8 @@ export default function BioChimRiskPDF() {
             {/* Université 6 */}
             <td className="border-x border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.bioChim.universite.6")}
+                checked={universite6}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -422,7 +497,8 @@ export default function BioChimRiskPDF() {
             {/* EE 6 */}
             <td className="border-x border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.bioChim.ee.6")}
+                checked={ee6}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -434,7 +510,8 @@ export default function BioChimRiskPDF() {
             <td className="border-x border-black align-top p-3 pt-1">
               <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                 <input
-                  {...register("Risk.bioChim.mesure.7")}
+                  checked={mesure7}
+                  readOnly
                   type="checkbox"
                   className="scale-75 accent-black w-4 shrink-0 mt-1"
                 />
@@ -446,7 +523,8 @@ export default function BioChimRiskPDF() {
             {/* Université 7 */}
             <td className="border-x  border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.bioChim.universite.7")}
+                checked={universite7}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -455,7 +533,8 @@ export default function BioChimRiskPDF() {
             {/* EE 7 */}
             <td className="border-x  border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.bioChim.ee.7")}
+                checked={ee7}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -467,7 +546,8 @@ export default function BioChimRiskPDF() {
             <td className="border-x border-black align-top p-3 pt-1">
               <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                 <input
-                  {...register("Risk.bioChim.mesure.8")}
+                  checked={mesure8}
+                  readOnly
                   type="checkbox"
                   className="scale-75 accent-black w-4 shrink-0 mt-1"
                 />
@@ -485,7 +565,8 @@ export default function BioChimRiskPDF() {
             {/* Université 8 */}
             <td className="border-x  border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.bioChim.universite.8")}
+                checked={universite8}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -494,7 +575,8 @@ export default function BioChimRiskPDF() {
             {/* EE 8 */}
             <td className="border-x  border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.bioChim.ee.8")}
+                checked={ee8}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -506,7 +588,8 @@ export default function BioChimRiskPDF() {
             <td className="border-x border-black align-top p-3 pt-1">
               <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                 <input
-                  {...register("Risk.bioChim.mesure.9")}
+                  checked={mesure9}
+                  readOnly
                   type="checkbox"
                   className="scale-75 accent-black w-4 shrink-0 mt-1"
                 />
@@ -517,7 +600,8 @@ export default function BioChimRiskPDF() {
             {/* Université 9 */}
             <td className="border-x  border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.bioChim.universite.9")}
+                checked={universite9}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -526,7 +610,8 @@ export default function BioChimRiskPDF() {
             {/* EE 9 */}
             <td className="border-x  border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.bioChim.ee.9")}
+                checked={ee9}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -538,7 +623,8 @@ export default function BioChimRiskPDF() {
             <td className="border-x border-black align-top p-3 pt-1">
               <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                 <input
-                  {...register("Risk.bioChim.mesure.10")}
+                  checked={mesure10}
+                  readOnly
                   type="checkbox"
                   className="scale-75 accent-black w-4 shrink-0 mt-1"
                 />
@@ -549,7 +635,8 @@ export default function BioChimRiskPDF() {
             {/* Université 10 */}
             <td className="border-x  border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.bioChim.universite.10")}
+                checked={universite10}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -558,7 +645,8 @@ export default function BioChimRiskPDF() {
             {/* EE 10 */}
             <td className="border-x  border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.bioChim.ee.10")}
+                checked={ee10}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -570,7 +658,8 @@ export default function BioChimRiskPDF() {
             <td className="border-x border-black align-top p-3 pt-1">
               <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                 <input
-                  {...register("Risk.bioChim.mesure.11")}
+                  checked={mesure11}
+                  readOnly
                   type="checkbox"
                   className="scale-75 accent-black w-4 shrink-0 mt-1"
                 />
@@ -581,7 +670,8 @@ export default function BioChimRiskPDF() {
             {/* Université 11 */}
             <td className="border-x  border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.bioChim.universite.11")}
+                checked={universite11}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -590,7 +680,8 @@ export default function BioChimRiskPDF() {
             {/* EE 11 */}
             <td className="border-x border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.bioChim.ee.11")}
+                checked={ee11}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -602,7 +693,8 @@ export default function BioChimRiskPDF() {
             <td className="border-x border-black align-top p-3 pt-1">
               <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                 <input
-                  {...register("Risk.bioChim.mesure.12")}
+                  checked={mesure12}
+                  readOnly
                   type="checkbox"
                   className="scale-75 accent-black w-4 shrink-0 mt-1"
                 />
@@ -613,7 +705,8 @@ export default function BioChimRiskPDF() {
             {/* Université 12 */}
             <td className="border-x  border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.bioChim.universite.12")}
+                checked={universite12}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -622,7 +715,8 @@ export default function BioChimRiskPDF() {
             {/* EE 12 */}
             <td className="border-x border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.bioChim.ee.12")}
+                checked={ee12}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -634,7 +728,8 @@ export default function BioChimRiskPDF() {
             <td className="border-x border-black align-top p-3 pt-1">
               <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                 <input
-                  {...register("Risk.bioChim.mesure.13")}
+                  checked={mesure13}
+                  readOnly
                   type="checkbox"
                   className="scale-75 accent-black w-4 shrink-0 mt-1"
                 />
@@ -645,7 +740,8 @@ export default function BioChimRiskPDF() {
             {/* Université 13 */}
             <td className="border-x  border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.bioChim.universite.13")}
+                checked={universite13}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -654,7 +750,8 @@ export default function BioChimRiskPDF() {
             {/* EE 13 */}
             <td className="border-x border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.bioChim.ee.13")}
+                checked={ee13}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -668,16 +765,9 @@ export default function BioChimRiskPDF() {
         <label className="text-sm font-bold text-gray-800">
           Observations :
         </label>
-        <textarea
-          {...register("Risk.bioChim.observations")}
-          rows={3}
-          onInput={(e) => {
-            e.currentTarget.style.height = "auto";
-            e.currentTarget.style.height = `${e.currentTarget.scrollHeight}px`;
-          }}
-          placeholder="Renseigner ici les observations ou précisions concernant les mesures ... SI AUCUNE OBSERVATION METTRE AU MINIMUM RAS"
-          className="w-full min-h-15 h-20 overflow-hidden  border border-gray-300 p-2 text-sm wrap-break-words resize-none "
-        />
+        <span className="w-full min-h-20 border border-gray-300 p-2 text-sm whitespace-pre-wrap wrap-break-words">
+          {observation}
+        </span>
       </div>
     </>
   );

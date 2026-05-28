@@ -1,22 +1,42 @@
-import { useFormContext } from "react-hook-form";
-import Image from "next/image";
-import { useRiskValidation } from "@/app/utils/risk/useRiskValidationHooks";
+type Props = { data: any };
 
-export default function IncendieRiskPDF() {
-  const { register } = useFormContext();
+export default function IncendieRiskPDF({ data }: Props) {
+  const phase1 = data?.phase?.["1"] || false;
+  const phase2 = data?.phase?.["2"] || false;
+  const phase3 = data?.phase?.["3"] || false;
 
-  useRiskValidation({
-    path: "Risk.incendie",
-    phaseCount: 3,
-    mesureCount: 7,
-  });
+  const mesure1 = data?.mesure?.["1"] || false;
+  const mesure2 = data?.mesure?.["2"] || false;
+  const mesure3 = data?.mesure?.["3"] || false;
+  const mesure4 = data?.mesure?.["4"] || false;
+  const mesure5 = data?.mesure?.["5"] || false;
+  const mesure6 = data?.mesure?.["6"] || false;
+  const mesure7 = data?.mesure?.["7"] || false;
+
+  const universite1 = data?.universite?.["1"] || false;
+  const universite2 = data?.universite?.["2"] || false;
+  const universite3 = data?.universite?.["3"] || false;
+  const universite4 = data?.universite?.["4"] || false;
+  const universite5 = data?.universite?.["5"] || false;
+  const universite6 = data?.universite?.["6"] || false;
+  const universite7 = data?.universite?.["7"] || false;
+
+  const ee1 = data?.ee?.["1"] || false;
+  const ee2 = data?.ee?.["2"] || false;
+  const ee3 = data?.ee?.["3"] || false;
+  const ee4 = data?.ee?.["4"] || false;
+  const ee5 = data?.ee?.["5"] || false;
+  const ee6 = data?.ee?.["6"] || false;
+  const ee7 = data?.ee?.["7"] || false;
+
+  const observation = data?.observation || "";
 
   return (
     <>
       {/* En-tête du Risque */}
       <div className="bg-yellow-100 border-black border-2 flex flex-col justify-center items-center text-center uppercase mt-3 h-20">
         <span className="font-semibold">incendie</span>
-        <Image
+        <img
           src="/pictograms/produit-inflammable.svg"
           alt="Chute de plain pied"
           width={128}
@@ -75,7 +95,8 @@ export default function IncendieRiskPDF() {
               <div className="flex flex-col gap-4">
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                   <input
-                    {...register("Risk.incendie.phase.1")}
+                    checked={phase1}
+                    readOnly
                     type="checkbox"
                     className="scale-75 accent-black w-4 shrink-0 mt-1"
                   />
@@ -85,7 +106,8 @@ export default function IncendieRiskPDF() {
 
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                   <input
-                    {...register("Risk.incendie.phase.2")}
+                    checked={phase2}
+                    readOnly
                     type="checkbox"
                     className="scale-75 accent-black w-4 shrink-0 mt-1"
                   />
@@ -95,7 +117,8 @@ export default function IncendieRiskPDF() {
 
                 <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                   <input
-                    {...register("Risk.incendie.phase.3")}
+                    checked={phase3}
+                    readOnly
                     type="checkbox"
                     className="scale-75 accent-black w-4 shrink-0 mt-1"
                   />
@@ -108,7 +131,8 @@ export default function IncendieRiskPDF() {
             <td className="border-x border-t border-black align-top p-3 pb-1">
               <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                 <input
-                  {...register("Risk.incendie.mesure.1")}
+                  checked={mesure1}
+                  readOnly
                   type="checkbox"
                   className="scale-75 accent-black w-4 shrink-0 mt-1"
                 />
@@ -119,7 +143,8 @@ export default function IncendieRiskPDF() {
             {/* Université 1 */}
             <td className="border-x border-t border-black align-top p-3 pb-1 text-center">
               <input
-                {...register("Risk.incendie.universite.1")}
+                checked={universite1}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -128,7 +153,8 @@ export default function IncendieRiskPDF() {
             {/* EE 1 */}
             <td className="border-x border-t border-black align-top p-3 pb-1 text-center">
               <input
-                {...register("Risk.incendie.ee.1")}
+                checked={ee1}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -141,7 +167,8 @@ export default function IncendieRiskPDF() {
             <td className="border-x border-black align-top p-3 py-1">
               <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                 <input
-                  {...register("Risk.incendie.mesure.2")}
+                  checked={mesure2}
+                  readOnly
                   type="checkbox"
                   className="scale-75 accent-black w-4 shrink-0 mt-1"
                 />
@@ -152,7 +179,8 @@ export default function IncendieRiskPDF() {
             {/* Université 2 */}
             <td className="border-x border-black align-top p-3 py-1 text-center">
               <input
-                {...register("Risk.incendie.universite.2")}
+                checked={universite2}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -161,7 +189,8 @@ export default function IncendieRiskPDF() {
             {/* EE 2 */}
             <td className="border-x border-black align-top p-3 py-1 text-center">
               <input
-                {...register("Risk.incendie.ee.2")}
+                checked={ee2}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -174,7 +203,8 @@ export default function IncendieRiskPDF() {
             <td className="border-x border-black align-top p-3 py-1">
               <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                 <input
-                  {...register("Risk.incendie.mesure.3")}
+                  checked={mesure3}
+                  readOnly
                   type="checkbox"
                   className="scale-75 accent-black w-4 shrink-0 mt-1"
                 />
@@ -191,7 +221,8 @@ export default function IncendieRiskPDF() {
             {/* Université 3 */}
             <td className="border-x border-black align-top p-3 py-1 text-center">
               <input
-                {...register("Risk.incendie.universite.3")}
+                checked={universite3}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -200,7 +231,8 @@ export default function IncendieRiskPDF() {
             {/* EE 3 */}
             <td className="border-x border-black align-top p-3 py-1 text-center">
               <input
-                {...register("Risk.incendie.ee.3")}
+                checked={ee3}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -213,7 +245,8 @@ export default function IncendieRiskPDF() {
             <td className="border-x border-black align-top p-3 pt-1">
               <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                 <input
-                  {...register("Risk.incendie.mesure.4")}
+                  checked={mesure4}
+                  readOnly
                   type="checkbox"
                   className="scale-75 accent-black w-4 shrink-0 mt-1"
                 />
@@ -224,7 +257,8 @@ export default function IncendieRiskPDF() {
             {/* Université 4 */}
             <td className="border-x  border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.incendie.universite.4")}
+                checked={universite4}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -233,7 +267,8 @@ export default function IncendieRiskPDF() {
             {/* EE 4 */}
             <td className="border-x  border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.incendie.ee.4")}
+                checked={ee4}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -245,7 +280,8 @@ export default function IncendieRiskPDF() {
             <td className="border-x border-black align-top p-3 pt-1">
               <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                 <input
-                  {...register("Risk.incendie.mesure.5")}
+                  checked={mesure5}
+                  readOnly
                   type="checkbox"
                   className="scale-75 accent-black w-4 shrink-0 mt-1"
                 />
@@ -257,7 +293,8 @@ export default function IncendieRiskPDF() {
             {/* Université 5 */}
             <td className="border-x  border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.incendie.universite.5")}
+                checked={universite5}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -266,7 +303,8 @@ export default function IncendieRiskPDF() {
             {/* EE 5 */}
             <td className="border-x  border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.incendie.ee.5")}
+                checked={ee5}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -278,7 +316,8 @@ export default function IncendieRiskPDF() {
             <td className="border-x border-black align-top p-3 pt-1">
               <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                 <input
-                  {...register("Risk.incendie.mesure.6")}
+                  checked={mesure6}
+                  readOnly
                   type="checkbox"
                   className="scale-75 accent-black w-4 shrink-0 mt-1"
                 />
@@ -289,7 +328,8 @@ export default function IncendieRiskPDF() {
             {/* Université 6 */}
             <td className="border-x border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.incendie.universite.6")}
+                checked={universite6}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -298,7 +338,8 @@ export default function IncendieRiskPDF() {
             {/* EE 6 */}
             <td className="border-x border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.incendie.ee.6")}
+                checked={ee6}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -310,7 +351,8 @@ export default function IncendieRiskPDF() {
             <td className="border-x border-black align-top p-3 pt-1">
               <label className="text-sm flex items-start gap-2 leading-snug cursor-pointer">
                 <input
-                  {...register("Risk.incendie.mesure.7")}
+                  checked={mesure7}
+                  readOnly
                   type="checkbox"
                   className="scale-75 accent-black w-4 shrink-0 mt-1"
                 />
@@ -321,7 +363,8 @@ export default function IncendieRiskPDF() {
             {/* Université 7 */}
             <td className="border-x  border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.incendie.universite.7")}
+                checked={universite7}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -330,7 +373,8 @@ export default function IncendieRiskPDF() {
             {/* EE 7 */}
             <td className="border-x border-b border-black align-top p-3 pt-1 text-center">
               <input
-                {...register("Risk.incendie.ee.7")}
+                checked={ee7}
+                readOnly
                 type="checkbox"
                 className="scale-75 accent-black mt-1"
               />
@@ -344,16 +388,9 @@ export default function IncendieRiskPDF() {
         <label className="text-sm font-bold text-gray-800">
           Observations :
         </label>
-        <textarea
-          {...register("Risk.incendie.observations")}
-          rows={3}
-          onInput={(e) => {
-            e.currentTarget.style.height = "auto";
-            e.currentTarget.style.height = `${e.currentTarget.scrollHeight}px`;
-          }}
-          placeholder="Renseigner ici les observations ou précisions concernant les mesures ... SI AUCUNE OBSERVATION METTRE AU MINIMUM RAS"
-          className="w-full min-h-15 h-20 overflow-hidden  border border-gray-300 p-2 text-sm wrap-break-words resize-none "
-        />
+        <span className="w-full min-h-20 border border-gray-300 p-2 text-sm whitespace-pre-wrap wrap-break-words">
+          {observation}
+        </span>
       </div>
     </>
   );
