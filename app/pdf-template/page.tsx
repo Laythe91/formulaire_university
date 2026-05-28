@@ -1,8 +1,8 @@
 "use client";
 
-import CompanyInformationSection2 from "@/components/forms/CompanyInformationSection2";
 import BottomHeaderSection from "@/components/pdf/BottomHeaderSectionPDF";
-import CompanyInformationSection1PDF from "@/components/pdf/CompanyInformationSection1";
+import CompanyInformationSection1PDF from "@/components/pdf/CompanyInformationSection1PDF";
+import CompanyInformationSection2PDF from "@/components/pdf/CompanyInformationSection2PDF";
 import CovidSectionPDF from "@/components/pdf/CovidSectionPDF";
 import ExecutionConditionSection from "@/components/pdf/ExecutionConditionSectionPDF";
 import FilesToCompanySection from "@/components/pdf/FilesToCompanySectionPDF";
@@ -39,7 +39,7 @@ export default function PdfTemplate() {
         <UniversityInformationSection data={data} />
         <RescueOrganizationSection />
         <CompanyInformationSection1PDF data={data} />
-
+        <CompanyInformationSection2PDF data={data} />
         <CovidSectionPDF />
         <FilesToCompanySection data={data} />
         <SocialOfficeSectionPDF data={data} />
