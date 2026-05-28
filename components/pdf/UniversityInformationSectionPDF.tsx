@@ -4,7 +4,7 @@ type Props = {
   data: any;
 };
 
-export default function UniversityInformationSection({ data }: Props) {
+export default function UniversityInformationSectionPDF({ data }: Props) {
   const nom = data?.UniversityInformation?.nom || "";
   const phone1 = data?.UniversityInformation?.phone1 || "";
   const phone2 = data?.UniversityInformation?.phone2 || "";

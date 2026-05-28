@@ -2,7 +2,7 @@ type Props = {
   data: any;
 };
 
-export default function FilesToCompanySection({ data }: Props) {
+export default function FilesToCompanySectionPDF({ data }: Props) {
   const consigne = data?.Document?.consigne?.state || false;
   const dta = data?.Document?.dta?.state || false;
   const permisFeu = data?.Document?.permisFeu?.state || false;

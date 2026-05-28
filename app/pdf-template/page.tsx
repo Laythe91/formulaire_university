@@ -5,17 +5,16 @@ import CompanyInformationSection1PDF from "@/components/pdf/CompanyInformationSe
 import CompanyInformationSection2PDF from "@/components/pdf/CompanyInformationSection2PDF";
 import CovidSectionPDF from "@/components/pdf/CovidSectionPDF";
 import ExecutionConditionSection from "@/components/pdf/ExecutionConditionSectionPDF";
-import FilesToCompanySection from "@/components/pdf/FilesToCompanySectionPDF";
+import FilesToCompanySectionPDF from "@/components/pdf/FilesToCompanySectionPDF";
 import HeaderSectionPDF from "@/components/pdf/HeaderSectionPDF";
 import InstructionsSectionPDF from "@/components/pdf/InstructionsSectionPDF";
-import InstructionsSection from "@/components/pdf/InstructionsSectionPDF";
 import JointInspectionSectionPDF from "@/components/pdf/JointInspectionSectionPDF";
 import OperationInformationSection from "@/components/pdf/OperationInformationSectionPDF";
-import RescueOrganizationSection from "@/components/pdf/RescueOrganizationSectionPDF";
+import RescueOrganizationSectionPDF from "@/components/pdf/RescueOrganizationSectionPDF";
 import RiskSectionPDF from "@/components/pdf/RiskSectionPDF";
 import SignatureSectionPDF from "@/components/pdf/SignatureSectionPDF";
 import SocialOfficeSectionPDF from "@/components/pdf/SocialOfficeSectionPDF";
-import UniversityInformationSection from "@/components/pdf/UniversityInformationSectionPDF";
+import UniversityInformationSectionPDF from "@/components/pdf/UniversityInformationSectionPDF";
 import { useEffect, useState } from "react";
 
 export default function PdfTemplate() {
@@ -38,14 +37,14 @@ export default function PdfTemplate() {
         <BottomHeaderSection data={data} />
         <OperationInformationSection data={data} />
         <ExecutionConditionSection data={data} />
-        <UniversityInformationSection data={data} />
-        <RescueOrganizationSection />
+        <UniversityInformationSectionPDF data={data} />
+        <RescueOrganizationSectionPDF />
         <CompanyInformationSection1PDF data={data} />
         <CompanyInformationSection2PDF data={data} />
         <JointInspectionSectionPDF data={data} />
         <RiskSectionPDF data={data} />
         <CovidSectionPDF />
-        <FilesToCompanySection data={data} />
+        <FilesToCompanySectionPDF data={data} />
         <SocialOfficeSectionPDF data={data} />
         <InstructionsSectionPDF />
         <SignatureSectionPDF data={data} />

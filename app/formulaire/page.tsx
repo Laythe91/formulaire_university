@@ -100,7 +100,7 @@ export default function Page({
 
     const a = document.createElement("a");
     a.href = url;
-    a.download = "document.pdf";
+    a.download = "Plan-Prevention-.pdf";
     a.click();
 
     console.log(data);

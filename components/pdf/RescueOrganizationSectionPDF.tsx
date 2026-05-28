@@ -1,6 +1,6 @@
 import { EMERGENCY_CONTACT, PRESIDENT_CONTACT } from "@/app/const/const";
 
-export default function RescueOrganizationSection() {
+export default function RescueOrganizationSectionPDF() {
   return (
     <table className="w-full border-2 border-black border-collapse table-fixed mt-1">
       <tbody>
