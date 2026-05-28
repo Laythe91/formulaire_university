@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function InstructionsSectionPDF() {
   return (
     <>
@@ -57,11 +55,14 @@ export default function InstructionsSectionPDF() {
                 <div className="flex items-start gap-2 -ml-10">
                   {/* ICI : Conteneur du pictogramme avec dimensions fixes pour le PDF */}
                   <div className="w-8 h-8 shrink-0 pt-0.5">
-                    <Image
+                    <img
                       src="/pictograms/fumer.svg"
-                      alt="Chute de plain pied"
-                      width={80}
-                      height={80}
+                      alt="Interdiction de fumer"
+                      width={32}
+                      height={32}
+                      style={{
+                        objectFit: "contain",
+                      }}
                     />
                   </div>
 

@@ -9,6 +9,7 @@ import FilesToCompanySection from "@/components/pdf/FilesToCompanySectionPDF";
 import HeaderSectionPDF from "@/components/pdf/HeaderSectionPDF";
 import InstructionsSectionPDF from "@/components/pdf/InstructionsSectionPDF";
 import InstructionsSection from "@/components/pdf/InstructionsSectionPDF";
+import JointInspectionSectionPDF from "@/components/pdf/JointInspectionSectionPDF";
 import OperationInformationSection from "@/components/pdf/OperationInformationSectionPDF";
 import RescueOrganizationSection from "@/components/pdf/RescueOrganizationSectionPDF";
 import SignatureSectionPDF from "@/components/pdf/SignatureSectionPDF";
@@ -40,6 +41,7 @@ export default function PdfTemplate() {
         <RescueOrganizationSection />
         <CompanyInformationSection1PDF data={data} />
         <CompanyInformationSection2PDF data={data} />
+        <JointInspectionSectionPDF data={data} />
         <CovidSectionPDF />
         <FilesToCompanySection data={data} />
         <SocialOfficeSectionPDF data={data} />
