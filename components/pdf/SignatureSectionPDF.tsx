@@ -1,12 +1,13 @@
 import { PRESIDENT_CONTACT } from "@/app/const/const";
-import { useSousTraitants } from "@/app/hooks/useSousTraitans";
-import { useFormContext } from "react-hook-form";
 
-export default function SignatureSection() {
-  const { watch } = useFormContext();
-  const { count, soustraitants } = useSousTraitants();
+type Props = { data: any };
+
+export default function SignatureSectionPDF({ data }: Props) {
+  const sousTraitants = data?.Entreprise?.soustraitante || [];
+  const count = sousTraitants.length;
+  const Societe = data?.Entreprise?.titulaire?.name || "";
   const NomPresident = PRESIDENT_CONTACT.name;
-  const Societe = watch("Entreprise.titulaire.name");
+
   return (
     <>
       <div className="text-sm">
@@ -42,8 +43,8 @@ export default function SignatureSection() {
               </div>
 
               <div className=" mt-5">
-                <span className="font-semibold">Fonction :</span>
-                Président de l’Université
+                <span className="font-semibold">Fonction : </span> Président de
+                l’Université
               </div>
 
               <div className="mt-10">
@@ -87,7 +88,7 @@ export default function SignatureSection() {
               >
                 <div className=" mb-2 whitespace-pre-wrap wrap-break-words">
                   <span className="font-semibold">
-                    Pour la Société sous-traitante : {soustraitants?.[0]?.name}
+                    Pour la Société sous-traitante : {sousTraitants[0]?.name}
                   </span>
                   <br />
                   <br />
@@ -125,7 +126,7 @@ export default function SignatureSection() {
                     <div className=" mb-2 whitespace-pre-wrap wrap-break-words">
                       <span className="font-semibold">
                         Pour la Société sous-traitante {firstIndex + 1} :{" "}
-                        {soustraitants?.[firstIndex]?.name}
+                        {sousTraitants[firstIndex]?.name}
                       </span>
                       <br />
                       <br />
@@ -154,7 +155,7 @@ export default function SignatureSection() {
                       <div className=" mb-2 whitespace-pre-wrap wrap-break-words">
                         <span className="font-semibold">
                           Pour la Société sous-traitante {secondIndex + 1} :{" "}
-                          {soustraitants?.[secondIndex]?.name}
+                          {sousTraitants[secondIndex]?.name}
                         </span>
                         <br />
                         <br />

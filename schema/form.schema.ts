@@ -9,6 +9,7 @@ import { DocumentTypeSchema } from "./document.schema";
 import { HeaderTypeSchema } from "./header.schema";
 //import { GlobalStateTypeSchema } from "./globalState.schema";
 import { RiskTypeSchema } from "./risk.schema";
+import { SocialOfficeSchema } from "./socialOffice.schema";
 
 export const schema = z.object({
   Header: HeaderTypeSchema,
@@ -17,6 +18,7 @@ export const schema = z.object({
   Condition: ConditionTypeSchema,
   UniversityInformation: UniversityInformationTypeSchema,
   Inspection: InspectionTypeSchema,
+  SocialOffice: SocialOfficeSchema,
   Risk: RiskTypeSchema,
   Document: DocumentTypeSchema,
   //Global: GlobalStateTypeSchema,

@@ -1,9 +1,6 @@
 import Image from "next/image";
-import { useFormContext } from "react-hook-form";
 
-export default function InstructionsSection() {
-  const { register, watch } = useFormContext();
-
+export default function InstructionsSectionPDF() {
   return (
     <>
       <table className="w-full border-2 border-black border-collapse table-fixed mt-3 mb-4 text-sm">

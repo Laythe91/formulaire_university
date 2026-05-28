@@ -7,6 +7,7 @@ import { DocumentType } from "./document.type";
 import { HeaderType } from "./header.type";
 import { GlobalStateType } from "./globalState.type";
 import { RiskType } from "./risk.types";
+import { SocialOfficeType } from "./socialOffice.type";
 
 export type FormData = {
   Header: HeaderType;
@@ -17,5 +18,6 @@ export type FormData = {
   Inspection: InspectionType;
   Risk: RiskType;
   Document: DocumentType;
+  SocialOffice: SocialOfficeType;
   Global: GlobalStateType;
 };

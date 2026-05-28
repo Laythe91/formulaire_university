@@ -1,88 +1,21 @@
-import { useEffect } from "react";
-import { useFormContext } from "react-hook-form";
 type Props = {
-  date: string;
+  data: any;
 };
 
-export default function OperationInformationSection({ date }: Props) {
-  const { register, watch, setValue } = useFormContext();
+export default function OperationInformationSection({ data }: Props) {
   // const dateRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
   // const yearRegex = /^\d{4}$/;
-  const annuel = watch("Operation.annuel.state");
-  const ponctuel = watch("Operation.ponctuel.state");
-  const start = watch("Operation.date.start");
-  const end = watch("Operation.date.end");
-  const objet = watch("Operation.objet");
-  const planValid = watch("Header.planNumber.state");
-  const year = date.split("/")[2];
+  const start = data?.Operation?.date?.start || "";
+  const end = data?.Operation?.date?.end || "";
+  const annuel = data?.Operation?.annuel?.state || false;
+  const danger = data?.Operation?.danger?.state || false;
+  const ponctuel = data?.Operation?.ponctuel?.state || false;
+  const plus400h = data?.Operation?.plus400h?.state || false;
+  const objet = data?.Operation?.objet || "";
 
-  const handleExclusive = (field: "annuel" | "ponctuel", value: boolean) => {
-    if (field === "annuel") {
-      setValue("Operation.annuel.state", value);
-      if (value) {
-        setValue("Operation.ponctuel.state", false);
-        setValue("Operation.date.start", year);
-        setValue("Operation.date.end", year);
-        setValue("Header.planNumber.value", "");
-      }
-    }
-
-    if (field === "ponctuel") {
-      setValue("Operation.ponctuel.state", value);
-      if (value) {
-        setValue("Operation.annuel.state", false);
-        setValue("Operation.date.start", "");
-        setValue("Operation.date.end", "");
-        setValue("Header.planNumber.value", "");
-      }
-    }
-  };
-
-  useEffect(() => {
-    if (!annuel) return;
-    if (!start) return;
-
-    setValue("Operation.date.end", start, {
-      shouldDirty: true,
-      shouldValidate: true,
-    });
-  }, [start, annuel, setValue]);
-
-  useEffect(() => {
-    const hasType = annuel || ponctuel;
-    const currentYear = new Date().getFullYear();
-    // =========================
-    // VALIDATION DATE
-    // =========================
-    let validDate = false;
-
-    if (annuel) {
-      const startYear = Number(start);
-
-      validDate = /^\d{4}$/.test(start || "") && startYear >= currentYear;
-    }
-
-    if (ponctuel) {
-      const dateRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
-
-      const startValid = dateRegex.test(start || "");
-      const endValid = dateRegex.test(end || "");
-
-      const parseDate = (d: string) => {
-        const [day, month, year] = d.split("/").map(Number);
-        return new Date(year, month - 1, day).getTime();
-      };
-
-      validDate = startValid && endValid && parseDate(end) >= parseDate(start);
-    }
-    const validObjet = (objet ?? "").trim().length >= 6;
-
-    const isValid = hasType && validDate && validObjet && planValid;
-
-    setValue("Operation.state", isValid, {
-      shouldDirty: false,
-    });
-  }, [annuel, ponctuel, planValid, start, end, objet, setValue]);
+  if (annuel) {
+    const year = start.split("/")[2];
+  }
 
   return (
     <table className="w-full border-2 border-black border-collapse table-fixed mt-3">
@@ -103,7 +36,7 @@ export default function OperationInformationSection({ date }: Props) {
                 <input
                   type="checkbox"
                   checked={annuel}
-                  onChange={(e) => handleExclusive("annuel", e.target.checked)}
+                  readOnly
                   className="scale-75 accent-black w-4 shrink-0"
                 />
                 Annuelle
@@ -111,8 +44,9 @@ export default function OperationInformationSection({ date }: Props) {
 
               <label className="text-sm flex items-center gap-1 leading-snug">
                 <input
-                  {...register("Operation.plus400h.state")}
                   type="checkbox"
+                  checked={plus400h}
+                  readOnly
                   className="scale-75 accent-black w-4 shrink-0"
                 />
                 Plus de 400 heures
@@ -124,20 +58,14 @@ export default function OperationInformationSection({ date }: Props) {
                 <input
                   type="checkbox"
                   checked={ponctuel}
-                  onChange={(e) =>
-                    handleExclusive("ponctuel", e.target.checked)
-                  }
+                  readOnly
                   className="scale-75 accent-black w-4 shrink-0"
                 />
                 Ponctuelle
               </label>
 
               <label className="text-sm flex items-center gap-1 leading-snug">
-                <input
-                  {...register("Operation.danger.state")}
-                  type="checkbox"
-                  className="scale-75 accent-black w-4 shrink-0"
-                />
+                <input type="checkbox" checked={danger} readOnly />
                 Travaux dangereux
               </label>
             </div>
@@ -160,26 +88,20 @@ export default function OperationInformationSection({ date }: Props) {
                   <td className="border border-black p-2 w-1/3 text-center">
                     <div className="font-semibold text-sm">
                       Date prévisible de début :
-                      <input
-                        {...register("Operation.date.start")}
-                        maxLength={10}
-                        className="border px-2 py-0.5 w-full text-center uppercase text-sm"
-                        placeholder="JJ/MM/AAAA"
-                        type="text"
-                      />
+                      <span className="border px-2 py-0.5 w-full text-center uppercase text-sm">
+                        {" "}
+                        {start}
+                      </span>
                     </div>
                   </td>
 
                   <td className="border border-black p-2 w-1/3 text-center">
                     <div className="font-semibold text-sm">
                       Date prévisible de fin :
-                      <input
-                        {...register("Operation.date.end")}
-                        maxLength={10}
-                        className="border px-2 py-0.5 w-full text-center uppercase text-sm"
-                        placeholder="JJ/MM/AAAA"
-                        type="text"
-                      />
+                      <span className="border px-2 py-0.5 w-full text-center uppercase text-sm">
+                        {" "}
+                        {end}
+                      </span>
                     </div>
                   </td>
                 </>
@@ -191,14 +113,7 @@ export default function OperationInformationSection({ date }: Props) {
                     className="border border-black p-2 text-center"
                   >
                     <div className="font-semibold flex flex-col items-center text-sm">
-                      <span>Année de prévention</span>{" "}
-                      <input
-                        {...register("Operation.date.start")}
-                        maxLength={4}
-                        className="border px-2 py-0.5 w-1/3 text-center uppercase text-sm"
-                        placeholder="AAAA"
-                        type="text"
-                      />
+                      <span>Année de prévention</span> <span>{start}</span>
                     </div>
                   </td>
                 </>
@@ -210,17 +125,9 @@ export default function OperationInformationSection({ date }: Props) {
                   Nature/Objet de l'opération :
                 </div>
                 <div className="mt-1">
-                  {" "}
-                  <textarea
-                    {...register("Operation.objet")}
-                    rows={2}
-                    onInput={(e) => {
-                      e.currentTarget.style.height = "auto";
-                      e.currentTarget.style.height = `${e.currentTarget.scrollHeight}px`;
-                    }}
-                    className="border px-2 py-1 w-full  text-sm resize-none overflow-hidden wrap-break-words whitespace-pre-wrap leading-tight"
-                    placeholder="Nature/Objet de l'opération à indiquer ici"
-                  />
+                  <div className="border px-2 py-1 w-full  text-sm resize-none overflow-hidden wrap-break-words whitespace-pre-wrap leading-tight">
+                    {objet}
+                  </div>
                 </div>
               </td>
             </tr>

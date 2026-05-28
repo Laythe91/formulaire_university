@@ -23,7 +23,7 @@ export default function SocialOfficeSection() {
                 <label className="text-sm flex items-center gap-1 leading-snug">
                   <input
                     type="checkbox"
-                    {...register("socialOffice.Locker.state")}
+                    {...register("SocialOffice.Locker")}
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Vestiaires
@@ -32,7 +32,7 @@ export default function SocialOfficeSection() {
                 <label className="text-sm flex items-center gap-1 leading-snug">
                   <input
                     type="checkbox"
-                    {...register("socialOffice.Cafeteria.state")}
+                    {...register("SocialOffice.Cafeteria")}
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Réfectoire
@@ -41,7 +41,7 @@ export default function SocialOfficeSection() {
                 <label className="text-sm flex items-center gap-1 leading-snug">
                   <input
                     type="checkbox"
-                    {...register("socialOffice.wc.state")}
+                    {...register("SocialOffice.wc")}
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Sanitaires dans l’Université

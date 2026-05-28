@@ -1,7 +1,12 @@
 import { useFormContext } from "react-hook-form";
+type Props = {
+  data: any;
+};
 
-export default function SocialOfficeSection() {
-  const { register, watch } = useFormContext();
+export default function SocialOfficeSectionPDF({ data }: Props) {
+  const Locker = data?.SocialOffice?.Locker || false;
+  const Cafeteria = data?.SocialOffice?.Cafeteria || false;
+  const wc = data?.SocialOffice?.wc || false;
 
   return (
     <>
@@ -23,7 +28,8 @@ export default function SocialOfficeSection() {
                 <label className="text-sm flex items-center gap-1 leading-snug">
                   <input
                     type="checkbox"
-                    {...register("socialOffice.Locker.state")}
+                    checked={Locker}
+                    readOnly
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Vestiaires
@@ -32,7 +38,8 @@ export default function SocialOfficeSection() {
                 <label className="text-sm flex items-center gap-1 leading-snug">
                   <input
                     type="checkbox"
-                    {...register("socialOffice.Cafeteria.state")}
+                    checked={Cafeteria}
+                    readOnly
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Réfectoire
@@ -41,7 +48,8 @@ export default function SocialOfficeSection() {
                 <label className="text-sm flex items-center gap-1 leading-snug">
                   <input
                     type="checkbox"
-                    {...register("socialOffice.wc.state")}
+                    checked={wc}
+                    readOnly
                     className="scale-75 accent-black w-4 shrink-0"
                   />
                   Sanitaires dans l’Université
