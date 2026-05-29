@@ -117,7 +117,7 @@ export default function BioChimRisk() {
                     Intervention dans le local où sont utilisées / stockés des
                     produits chimiques produits chimiques ou gaz{" "}
                     <span className="text-red-600 font-bold">
-                      (à préciser : )
+                      (à préciser dans observation )
                     </span>{" "}
                   </span>
                 </label>
@@ -133,7 +133,7 @@ export default function BioChimRisk() {
                     Travaux sur installations ou conduites ayant contenu des
                     produits chimiques ou gaz{" "}
                     <span className="text-red-600 font-bold">
-                      (à préciser : )
+                      (à préciser dans observation)
                     </span>{" "}
                   </span>
                 </label>

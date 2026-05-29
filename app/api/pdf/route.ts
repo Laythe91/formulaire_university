@@ -28,7 +28,8 @@ export async function POST(req: Request) {
 
   await page.waitForSelector("body");
 
-  await page.emulateMediaType("screen");
+  // await page.emulateMediaType("screen");
+  await page.emulateMediaType("print");
 
   const pdf = await page.pdf({
     format: "A4",
@@ -38,8 +39,8 @@ export async function POST(req: Request) {
     displayHeaderFooter: true,
 
     margin: {
-      top: "20mm",
-      bottom: "20mm",
+      top: "10mm",
+      bottom: "10mm",
       left: "10mm",
       right: "10mm",
     },

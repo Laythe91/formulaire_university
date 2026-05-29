@@ -10,7 +10,7 @@ export default function SignatureSectionPDF({ data }: Props) {
 
   return (
     <>
-      <div className="text-sm">
+      <div className="text-sm mx-5">
         Les signatures du représentant de l'entreprise utilisatrice et des
         représentants mandatés de toutes les entreprises intervenantes
         entérinent l'accord de chacun sur le contenu de ce document comportant
@@ -28,73 +28,46 @@ export default function SignatureSectionPDF({ data }: Props) {
       >
         <tbody>
           {/* Ligne principale */}
-          <tr>
-            {/* Université */}
-            <td
-              className="border border-black p-3 align-top wrap-break-words whitespace-normal"
-              style={{ height: "350px" }}
-            >
-              <div className=" mb-2 whitespace-pre-wrap wrap-break-words">
-                <span className="font-semibold">
-                  Pour l'Université de Paris VIII :
-                </span>
-                <br />
-                <br />
-                représentée par:
-              </div>
-
-              <div className="mt-10">
-                <span className="font-semibold">Nom :</span> {NomPresident}
-              </div>
-
-              <div className=" mt-5">
-                <span className="font-semibold">Fonction : </span> Président de
-                l’Université
-              </div>
-
-              <div className="mt-10">
-                <span className="font-semibold">Visa :</span>
-              </div>
-            </td>
-
-            {/* Titulaire */}
-            <td
-              className="border border-black p-3 align-top wrap-break-words whitespace-normal"
-              style={{ height: "350px" }}
-            >
-              <div className=" mb-2 whitespace-pre-wrap wrap-break-words">
-                <span className="font-semibold">
-                  Pour la Société Titulaire :
-                </span>{" "}
-                {Societe}
-                <br />
-                <br />
-                représentée par:
-              </div>
-
-              <div className="mt-10">
-                <span className="font-semibold">Nom :</span>
-              </div>
-
-              <div className=" mt-5">
-                <span className="font-semibold">Fonction :</span>
-              </div>
-
-              <div className="mt-10">
-                <span className="font-semibold">Visa :</span>
-              </div>
-            </td>
-
-            {/* Si un seul sous-traitant → colonne sur la même ligne */}
-            {count === 1 && (
+          <div className="pdf-section">
+            <tr>
+              {/* Université */}
               <td
                 className="border border-black p-3 align-top wrap-break-words whitespace-normal"
                 style={{ height: "350px" }}
               >
                 <div className=" mb-2 whitespace-pre-wrap wrap-break-words">
                   <span className="font-semibold">
-                    Pour la Société sous-traitante : {sousTraitants[0]?.name}
+                    Pour l'Université de Paris VIII :
                   </span>
+                  <br />
+                  <br />
+                  représentée par:
+                </div>
+
+                <div className="mt-10">
+                  <span className="font-semibold">Nom :</span> {NomPresident}
+                </div>
+
+                <div className=" mt-5">
+                  <span className="font-semibold">Fonction : </span> Président
+                  de l’Université
+                </div>
+
+                <div className="mt-10">
+                  <span className="font-semibold">Visa :</span>
+                </div>
+              </td>
+
+              {/* Titulaire */}
+              <td
+                className="border border-black p-3 align-top wrap-break-words whitespace-normal"
+                style={{ height: "350px" }}
+              >
+                <div className=" mb-2 whitespace-pre-wrap wrap-break-words">
+                  <span className="font-semibold">
+                    Pour la Société Titulaire :
+                  </span>{" "}
+                  {Societe}
                   <br />
                   <br />
                   représentée par:
@@ -112,9 +85,37 @@ export default function SignatureSectionPDF({ data }: Props) {
                   <span className="font-semibold">Visa :</span>
                 </div>
               </td>
-            )}
-          </tr>
 
+              {/* Si un seul sous-traitant → colonne sur la même ligne */}
+              {count === 1 && (
+                <td
+                  className="border border-black p-3 align-top wrap-break-words whitespace-normal"
+                  style={{ height: "350px" }}
+                >
+                  <div className=" mb-2 whitespace-pre-wrap wrap-break-words">
+                    <span className="font-semibold">
+                      Pour la Société sous-traitante : {sousTraitants[0]?.name}
+                    </span>
+                    <br />
+                    <br />
+                    représentée par:
+                  </div>
+
+                  <div className="mt-10">
+                    <span className="font-semibold">Nom :</span>
+                  </div>
+
+                  <div className=" mt-5">
+                    <span className="font-semibold">Fonction :</span>
+                  </div>
+
+                  <div className="mt-10">
+                    <span className="font-semibold">Visa :</span>
+                  </div>
+                </td>
+              )}
+            </tr>
+          </div>
           {/* Si plusieurs sous-traitants → une ligne par sous-traitant */}
           {count > 1 &&
             Array.from({ length: Math.ceil(count / 2) }).map((_, rowIndex) => {
@@ -122,45 +123,17 @@ export default function SignatureSectionPDF({ data }: Props) {
               const secondIndex = firstIndex + 1;
 
               return (
-                <tr key={rowIndex}>
-                  {/* Sous-traitant gauche */}
-                  <td
-                    className="border border-black p-3 align-top wrap-break-words whitespace-normal"
-                    style={{ height: "350px" }}
-                  >
-                    <div className=" mb-2 whitespace-pre-wrap wrap-break-words">
-                      <span className="font-semibold">
-                        Pour la Société sous-traitante {firstIndex + 1} :{" "}
-                        {sousTraitants[firstIndex]?.name}
-                      </span>
-                      <br />
-                      <br />
-                      représentée par:
-                    </div>
-
-                    <div className="mt-10">
-                      <span className="font-semibold">Nom :</span>
-                    </div>
-
-                    <div className=" mt-5">
-                      <span className="font-semibold">Fonction :</span>
-                    </div>
-
-                    <div className="mt-10">
-                      <span className="font-semibold">Visa :</span>
-                    </div>
-                  </td>
-
-                  {/* Sous-traitant droite */}
-                  {secondIndex < count ? (
+                <div className="pdf-section">
+                  <tr key={rowIndex}>
+                    {/* Sous-traitant gauche */}
                     <td
                       className="border border-black p-3 align-top wrap-break-words whitespace-normal"
                       style={{ height: "350px" }}
                     >
                       <div className=" mb-2 whitespace-pre-wrap wrap-break-words">
                         <span className="font-semibold">
-                          Pour la Société sous-traitante {secondIndex + 1} :{" "}
-                          {sousTraitants[secondIndex]?.name}
+                          Pour la Société sous-traitante {firstIndex + 1} :{" "}
+                          {sousTraitants[firstIndex]?.name}
                         </span>
                         <br />
                         <br />
@@ -179,10 +152,40 @@ export default function SignatureSectionPDF({ data }: Props) {
                         <span className="font-semibold">Visa :</span>
                       </div>
                     </td>
-                  ) : (
-                    <td className="border border-black"></td>
-                  )}
-                </tr>
+
+                    {/* Sous-traitant droite */}
+                    {secondIndex < count ? (
+                      <td
+                        className="border border-black p-3 align-top wrap-break-words whitespace-normal"
+                        style={{ height: "350px" }}
+                      >
+                        <div className=" mb-2 whitespace-pre-wrap wrap-break-words">
+                          <span className="font-semibold">
+                            Pour la Société sous-traitante {secondIndex + 1} :{" "}
+                            {sousTraitants[secondIndex]?.name}
+                          </span>
+                          <br />
+                          <br />
+                          représentée par:
+                        </div>
+
+                        <div className="mt-10">
+                          <span className="font-semibold">Nom :</span>
+                        </div>
+
+                        <div className=" mt-5">
+                          <span className="font-semibold">Fonction :</span>
+                        </div>
+
+                        <div className="mt-10">
+                          <span className="font-semibold">Visa :</span>
+                        </div>
+                      </td>
+                    ) : (
+                      <td className="border border-black"></td>
+                    )}
+                  </tr>
+                </div>
               );
             })}
         </tbody>

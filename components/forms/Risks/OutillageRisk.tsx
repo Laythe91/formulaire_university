@@ -6,7 +6,7 @@ export default function OutillageRisk() {
   const { register } = useFormContext();
 
   useRiskValidation({
-    path: "Risk.manutention",
+    path: "Risk.outillage",
     phaseCount: 2,
     mesureCount: 4,
   });

@@ -32,7 +32,7 @@ export default function PdfTemplate() {
 
   return (
     <>
-      <div className="w-[210mm] mx-auto mt-4">
+      <div className="w-[210mm] mx-auto">
         <HeaderSectionPDF data={data} />
         <BottomHeaderSection data={data} />
         <OperationInformationSection data={data} />

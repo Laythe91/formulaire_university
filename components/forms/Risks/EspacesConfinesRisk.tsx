@@ -91,7 +91,7 @@ export default function EspaceConfinesRisk() {
                   <span>
                     Travaux dans une cuve ou espace confiné{" "}
                     <span className="text-red-600 font-bold">
-                      (produits contenus : à préciser ….)
+                      (produits contenus : à préciser dans observation)
                     </span>{" "}
                   </span>
                 </label>

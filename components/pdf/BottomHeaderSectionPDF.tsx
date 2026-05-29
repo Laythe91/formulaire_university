@@ -22,7 +22,12 @@ export default function BottomHeaderSection({ data }: Props) {
         {nomSociete}
       </div>
 
-      <div className="text-xs leading-relaxed text-justify">
+      <div
+        className="text-xs leading-relaxed text-justify mx-3"
+        style={{
+          width: "99%",
+        }}
+      >
         En application de l'article R237-8 du décret n°92-158 du 20 février 1992
         et de l'arrêté du 19 mars 1993, le présent document doit être établi en
         concertation,{" "}
