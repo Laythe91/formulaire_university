@@ -15,7 +15,7 @@ export default function ChuteMaterielRiskPDF({ data }: Props) {
   const ee1 = data?.ee?.["1"] || false;
   const ee2 = data?.ee?.["2"] || false;
 
-  const observation = data?.observation || "";
+  const observation = data?.observations || "";
   return (
     <>
       {/* En-tête du Risque */}

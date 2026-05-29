@@ -17,7 +17,7 @@ export default function CirculationRiskPDF({ data }: Props) {
   const ee2 = data?.ee?.["2"] || false;
   const ee3 = data?.ee?.["3"] || false;
 
-  const observation = data?.observation || "";
+  const observation = data?.observations || "";
 
   return (
     <>

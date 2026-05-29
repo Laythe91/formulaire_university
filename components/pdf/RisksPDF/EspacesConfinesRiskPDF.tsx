@@ -23,7 +23,7 @@ export default function EspaceConfinesRiskPDF({ data }: Props) {
   const ee4 = data?.ee?.["4"] || false;
   const ee5 = data?.ee?.["5"] || false;
 
-  const observation = data?.observation || "";
+  const observation = data?.observations || "";
 
   return (
     <>

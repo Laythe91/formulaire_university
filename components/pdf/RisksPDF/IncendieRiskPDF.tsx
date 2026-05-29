@@ -29,7 +29,7 @@ export default function IncendieRiskPDF({ data }: Props) {
   const ee6 = data?.ee?.["6"] || false;
   const ee7 = data?.ee?.["7"] || false;
 
-  const observation = data?.observation || "";
+  const observation = data?.observations || "";
 
   return (
     <>

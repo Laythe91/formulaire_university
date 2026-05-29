@@ -21,7 +21,7 @@ export default function ManutentionPDF({ data }: Props) {
   const ee3 = data?.ee?.["3"] || false;
   const ee4 = data?.ee?.["4"] || false;
 
-  const observation = data?.observation || "";
+  const observation = data?.observations || "";
 
   return (
     <>

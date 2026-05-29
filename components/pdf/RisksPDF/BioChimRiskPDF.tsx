@@ -56,7 +56,7 @@ export default function BioChimRiskPDF({ data }: Props) {
   const ee12 = data?.ee?.["12"] || false;
   const ee13 = data?.ee?.["13"] || false;
 
-  const observation = data?.observation || "";
+  const observation = data?.observations || "";
 
   return (
     <>

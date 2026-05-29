@@ -28,7 +28,7 @@ export default function ElectricRiskPDF({ data }: Props) {
   const ee5 = data?.ee?.["5"] || false;
   const ee6 = data?.ee?.["6"] || false;
 
-  const observation = data?.observation || "";
+  const observation = data?.observations || "";
   return (
     <>
       {/* En-tête du Risque */}
