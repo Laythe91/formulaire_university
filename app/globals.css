@@ -138,6 +138,12 @@ tr.pdf-section {
   -webkit-column-break-inside: avoid;
 }
 
+.observation-section {
+  break-before: auto;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+}
 @layer base {
   * {
     @apply border-border outline-ring/50;

@@ -180,16 +180,15 @@ export default function BruitRiskPDF({ data }: Props) {
             </tr>
           </tbody>
         </table>
-
-        {/* Zone d'Observations en dessous du tableau global */}
-        <div className="w-full border-2 border-black p-3 bg-white flex flex-col gap-1.5 mt-3">
-          <label className="text-sm font-bold text-gray-800">
-            Observations :
-          </label>
-          <span className="w-full min-h-20 border border-gray-300 p-2 text-sm whitespace-pre-wrap wrap-break-words">
-            {observation}
-          </span>
-        </div>
+      </div>
+      {/* Zone d'Observations en dessous du tableau global */}
+      <div className="observation-section w-full border-2 border-black p-3 bg-white flex flex-col gap-1.5 mt-3">
+        <label className="text-sm font-bold text-gray-800">
+          Observations :
+        </label>
+        <span className="w-full min-h-20 border border-gray-300 p-2 text-sm whitespace-pre-wrap wrap-break-words">
+          {observation}
+        </span>
       </div>
     </>
   );

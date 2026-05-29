@@ -19,11 +19,11 @@ export default function EntrepriseSousTraitanteInformationPDF({ data }: Props) {
     <>
       <tr>
         <td className="border p-2 border-black">
-          <div className="flex flex-row items-center gap-3">
+          <div className="flex flex-row items-center gap-1">
             <div className=" font-bold text-sm ">
               Nom de l'entreprise sous-traintante : {"  "}
             </div>
-            <div className="break-word whitespace-pre-wrap w-140">{Nom}</div>
+            <div className="break-word whitespace-pre-wrap w-135">{Nom}</div>
           </div>
           <div className="flex flex-row gap-3 mt-3">
             <div className=" font-bold text-sm mt-2">
@@ -36,83 +36,83 @@ export default function EntrepriseSousTraitanteInformationPDF({ data }: Props) {
             </div>
           </div>
           <div className="flex flex-col gap-2 mt-5">
-            <div className="flex flex-row items-center gap-3">
+            <div className="flex flex-row items-center gap-1">
               <div className=" font-bold text-sm ">Effectif prévu : {"  "}</div>
               <div>
-                <span className="border px-2 py-0.5 w-20 text-center text-sm">
+                <span className=" px-2 py-0.5 w-20 text-center text-sm">
                   {" "}
                   {effectif}
                 </span>
               </div>
             </div>
-            <div className="flex flex-row items-center space-x-4">
+            <div className="flex flex-row items-center space-x-1">
               <div className=" font-bold text-sm ">Tél : {"  "}</div>
               <div>
-                <span className="border px-2 py-0.5 w-full text-center text-sm">
+                <span className=" px-2 py-0.5 w-full text-center text-sm">
                   {tel}
                 </span>
               </div>
             </div>
-            <div className="flex flex-row items-center gap-3">
+            <div className="flex flex-row items-center gap-1">
               <div className=" font-bold text-sm ">Fax : {"  "}</div>
               <div>
-                <span className="border px-2 py-0.5 w-full text-center text-sm">
+                <span className=" px-2 py-0.5 w-full text-center text-sm">
                   {fax}
                 </span>
               </div>
             </div>
           </div>
           <div className="flex flex-col gap-2 mt-5">
-            <div className="flex flex-row items-center gap-3">
+            <div className="flex flex-row items-center gap-1">
               <div className=" font-bold text-sm ">
                 Nom du représentant de l'entreprise : {"  "}
               </div>
               <div>
-                <div className="border px-2 py-1 w-120 text-sm whitespace-pre-wrap wrap-break-words leading-tight">
+                <div className=" px-2 py-1 w-120 text-sm whitespace-pre-wrap wrap-break-words leading-tight">
                   {representantNom}
                 </div>
               </div>
             </div>
-            <div className="flex flex-row items-center gap-3">
+            <div className="flex flex-row items-center gap-1">
               <div className=" font-bold text-sm ">Tél : {"  "}</div>
               <div>
-                <span className="border px-2 py-0.5 w-full text-center text-sm">
+                <span className=" px-2 py-0.5 w-full text-center text-sm">
                   {representantTel}
                 </span>
               </div>
             </div>
-            <div className="flex flex-row items-center gap-3">
+            <div className="flex flex-row items-center gap-1">
               <div className=" font-bold text-sm ">Mail : {"  "}</div>
               <div>
-                <div className="border px-2 py-1 w-170 text-sm whitespace-pre-wrap wrap-break-words">
+                <div className=" px-2 py-1 w-170 text-sm whitespace-pre-wrap wrap-break-words">
                   {representantMail}
                 </div>
               </div>
             </div>
           </div>
           <div className="flex flex-col gap-2 mt-5">
-            <div className="flex flex-row items-center gap-3">
+            <div className="flex flex-row items-center gap-1">
               <div className=" font-bold text-sm ">
                 Nom du responsable du suivi des travaux: {"  "}
               </div>
               <div>
-                <div className="border px-2 py-1 w-120 text-sm whitespace-pre-wrap wrap-break-words leading-tight">
+                <div className="px-2 w-120 text-sm whitespace-pre-wrap wrap-break-words leading-tight">
                   {responsableNom}
                 </div>
               </div>
             </div>
-            <div className="flex flex-row items-center gap-3">
+            <div className="flex flex-row items-center gap-1">
               <div className=" font-bold text-sm ">Tél : {"  "}</div>
               <div>
-                <span className="border px-2 py-0.5 w-full text-center text-sm">
+                <span className=" px-2 py-0.5 w-full text-center text-sm">
                   {responsableTel}
                 </span>
               </div>
             </div>
-            <div className="flex flex-row items-center gap-3">
+            <div className="flex flex-row items-center gap-1">
               <div className=" font-bold text-sm ">Mail : {"  "}</div>
               <div>
-                <div className="border px-2 py-1 w-170 text-sm whitespace-pre-wrap wrap-break-words">
+                <div className="px-2 py-1 w-170 text-sm whitespace-pre-wrap wrap-break-words">
                   {responsableMail}
                 </div>
               </div>

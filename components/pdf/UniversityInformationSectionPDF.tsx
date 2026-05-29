@@ -37,27 +37,29 @@ export default function UniversityInformationSectionPDF({ data }: Props) {
 
                 <div>Fax : {PRESIDENT_CONTACT.Fax}</div>
               </div>
-              <div className="text-sm mb-1">
-                <span className="font-bold">
+              <div className="flex flex-row gap-3 items-center text-sm mb-1">
+                <div className="font-bold">
                   Nom de la personne chargée du suivi de l’opération (si
-                  différente du donneur d’ordre) :{" "}
-                </span>
-                <span className="border px-2 py-1 text-sm resize-none overflow-hidden break-all whitespace-pre-wrap align-middle ml-1  w-60">
-                  {" "}
-                  {nom}
-                </span>
+                  différente du donneur d’ordre) :
+                </div>
+
+                <div className="w-50">
+                  <div className="w-full min-h-10 px-2 text-sm whitespace-pre-wrap wrap-break-words">
+                    {nom}
+                  </div>
+                </div>
               </div>
               <div className="text-sm mb-1 mt-3 grid grid-cols-2 w-full">
                 <div className="pl-2">
                   Tél :{" "}
-                  <span className="border px-2 py-0.5 text-center text-sm">
+                  <span className=" px-2 py-0.5 text-center text-sm">
                     {" "}
                     {phone1}
                   </span>
                 </div>
                 <div className="">
                   Portable :{" "}
-                  <span className="border px-2 py-0.5 text-center text-sm">
+                  <span className=" px-2 py-0.5 text-center text-sm">
                     {" "}
                     {phone2}
                   </span>

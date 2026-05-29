@@ -10,7 +10,7 @@ export default function SignatureSectionPDF({ data }: Props) {
 
   return (
     <>
-      <div className="text-sm mx-5">
+      <div className="text-sm mx-5 pdf-section">
         Les signatures du représentant de l'entreprise utilisatrice et des
         représentants mandatés de toutes les entreprises intervenantes
         entérinent l'accord de chacun sur le contenu de ce document comportant
