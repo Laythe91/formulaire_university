@@ -96,21 +96,25 @@ export default function OperationInformationSection({ data }: Props) {
 
                 {ponctuel && (
                   <>
-                    <td className="border border-black p-2 w-1/3 text-center">
-                      <div className="font-semibold text-sm">
-                        Date prévisible de début :
-                        <span className="border px-2 py-0.5 w-full text-center uppercase text-sm">
-                          {" "}
+                    <td className="border border-black p-2 w-1/3">
+                      <div className="flex flex-col items-center text-center gap-1">
+                        <div className="font-semibold text-sm">
+                          Date prévisible de début :
+                        </div>
+
+                        <span className="px-2 py-0.5 uppercase text-sm w-fit min-w-24 text-center">
                           {start}
                         </span>
                       </div>
                     </td>
 
-                    <td className="border border-black p-2 w-1/3 text-center">
-                      <div className="font-semibold text-sm">
-                        Date prévisible de fin :
-                        <span className="border px-2 py-0.5 w-full text-center uppercase text-sm">
-                          {" "}
+                    <td className="border border-black p-2 w-1/3">
+                      <div className="flex flex-col items-center text-center gap-1">
+                        <div className="font-semibold text-sm">
+                          Date prévisible de fin :
+                        </div>
+
+                        <span className="px-2 py-0.5 uppercase text-sm w-fit min-w-24 text-center">
                           {end}
                         </span>
                       </div>
@@ -123,8 +127,13 @@ export default function OperationInformationSection({ data }: Props) {
                       colSpan={2}
                       className="border border-black p-2 text-center"
                     >
-                      <div className="font-semibold flex flex-col items-center text-sm">
-                        <span>Année de prévention</span> <span>{start}</span>
+                      <div className="flex flex-col items-center text-sm">
+                        <div className="font-semibold">
+                          Année de prévention :
+                        </div>
+                        <span className="px-2 py-0.5 uppercase text-sm w-fit min-w-24 text-center">
+                          {start}
+                        </span>
                       </div>
                     </td>
                   </>
