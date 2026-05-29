@@ -14,6 +14,8 @@ export default function JointInspectionSection() {
     watch(`Inspection.soustraitant.${index}`),
   );
 
+  const soustraitantsData = watch("Entreprise.soustraitante") || [];
+
   useEffect(() => {
     let isValid = false;
 
@@ -101,14 +103,15 @@ export default function JointInspectionSection() {
                     />
                   </div>
                 </div>
-                {count > 0 &&
-                  Array.from({ length: count }).map((_, index) => (
+                {soustraitantsData.length > 0 &&
+                  soustraitantsData.map((sousTraitant: any, index: number) => (
                     <div
                       key={index}
                       className="flex flex-row items-center space-x-3"
                     >
                       <div className="text-sm">
-                        Pour l'Entreprise sous-traitante {index + 1} :
+                        Pour l'Entreprise sous-traitante {index + 1} (
+                        {sousTraitant.name}) :
                       </div>
 
                       <div>

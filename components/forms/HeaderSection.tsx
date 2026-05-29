@@ -9,6 +9,7 @@ export default function HeaderSection({ date }: Props) {
   const { register, watch, setValue } = useFormContext();
 
   const ponctuel = watch("Operation.ponctuel.state");
+  const annuel = watch("Operation.annuel.state");
 
   const planNumber = watch("Header.planNumber.value");
 
@@ -85,12 +86,14 @@ export default function HeaderSection({ date }: Props) {
                 <div className="flex items-center justify-center gap-1">
                   {/* PREFIXE P- uniquement si ponctuel */}
 
-                  <input
-                    {...register("Header.planNumber.value")}
-                    placeholder={ponctuel ? "P-Numéro" : "Numéro"}
-                    className="border border-black px-2 py-0.5 w-24 text-center text-sm font-semibold"
-                    type="text"
-                  />
+                  {(ponctuel || annuel) && (
+                    <input
+                      {...register("Header.planNumber.value")}
+                      placeholder={ponctuel ? "P-Numéro" : "Numéro"}
+                      className="border border-black px-2 py-0.5 w-24 text-center text-sm font-semibold"
+                      type="text"
+                    />
+                  )}
                 </div>
               </div>
 

@@ -111,7 +111,7 @@ export default function EntrepriseTitulaireInformation() {
                     {...register("Entreprise.titulaire.effectif")}
                     maxLength={6}
                     className="border px-2 py-0.5 w-20 text-center text-sm"
-                    placeholder="Nombre effectif prévu"
+                    placeholder=""
                     type="text"
                   />
                 </div>

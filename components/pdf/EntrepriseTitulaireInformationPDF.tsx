@@ -30,9 +30,9 @@ export default function EntrepriseTitulaireInformationPDF({ data }: Props) {
               Adresse de l'entreprise : {"  "}
             </div>
             <div className="w-100">
-              <span className="w-full min-h-15 border p-2 text-sm resize-none overflow-hidden wrap-break-words whitespace-pre-wrap">
+              <div className="w-full min-h-15 p-2 text-sm whitespace-pre-wrap wrap-break-words">
                 {Address}
-              </span>
+              </div>
             </div>
           </div>
           <div className="flex flex-col gap-2 mt-5">
@@ -68,10 +68,9 @@ export default function EntrepriseTitulaireInformationPDF({ data }: Props) {
                 Nom du représentant de l'entreprise : {"  "}
               </div>
               <div>
-                <span className="border px-2 py-1 w-125 text-sm resize-none overflow-hidden wrap-break-words whitespace-pre-wrap leading-tight">
-                  {" "}
+                <div className="border px-2 py-1 w-120 text-sm whitespace-pre-wrap wrap-break-words leading-tight">
                   {representantNom}
-                </span>
+                </div>
               </div>
             </div>
             <div className="flex flex-row items-center gap-3">
@@ -85,9 +84,9 @@ export default function EntrepriseTitulaireInformationPDF({ data }: Props) {
             <div className="flex flex-row items-center gap-3">
               <div className=" font-bold text-sm ">Mail : {"  "}</div>
               <div>
-                <span className="border px-2 py-0.5 w-170 text-sm">
+                <div className="border px-2 py-1 w-170 text-sm whitespace-pre-wrap wrap-break-words">
                   {representantMail}
-                </span>
+                </div>
               </div>
             </div>
           </div>
@@ -97,10 +96,9 @@ export default function EntrepriseTitulaireInformationPDF({ data }: Props) {
                 Nom du responsable du suivi des travaux: {"  "}
               </div>
               <div>
-                <span className="border px-2 py-1 w-120 text-sm resize-none overflow-hidden wrap-break-words whitespace-pre-wrap leading-tight">
-                  {" "}
+                <div className="border px-2 py-1 w-120 text-sm whitespace-pre-wrap wrap-break-words leading-tight">
                   {responsableNom}
-                </span>
+                </div>
               </div>
             </div>
             <div className="flex flex-row items-center gap-3">
@@ -114,9 +112,9 @@ export default function EntrepriseTitulaireInformationPDF({ data }: Props) {
             <div className="flex flex-row items-center gap-3">
               <div className=" font-bold text-sm ">Mail : {"  "}</div>
               <div>
-                <span className="border px-2 py-0.5 w-170 text-sm">
+                <div className="border px-2 py-1 w-170 text-sm whitespace-pre-wrap wrap-break-words">
                   {responsableMail}
-                </span>
+                </div>
               </div>
             </div>
           </div>

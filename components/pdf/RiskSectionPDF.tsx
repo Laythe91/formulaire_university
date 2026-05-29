@@ -49,11 +49,12 @@ export default function RiskSectionPDF({ data }: Props) {
 
   return (
     <div className="mt-5 ">
-      <h2 className="font-bold underline uppercase text-center text-xl">
-        Analyse des risque Pendant l'opération
-      </h2>
-      <RiskChoicesPDF data={data} />
-
+      <div className="pdf-section">
+        <h2 className="font-bold underline uppercase text-center text-xl">
+          Analyse des risque Pendant l'opération
+        </h2>
+        <RiskChoicesPDF data={data} />
+      </div>
       {bruitChecked && <BruitRiskPDF data={bruitdata} />}
       {chuteHauteurChecked && <ChuteHauteurRiskPDF data={chuteHauteurdata} />}
       {chuteMaterielChecked && (

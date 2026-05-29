@@ -20,7 +20,6 @@ export default function RiskChoicesPDF({ data }: Props) {
 
   return (
     <>
-    <div className="pdf-section">
       <table
         className="w-full border-2 border-black border-collapse table-fixed mt-3"
         style={{
@@ -182,7 +181,6 @@ export default function RiskChoicesPDF({ data }: Props) {
           </tr>
         </tbody>
       </table>
-      </div>
     </>
   );
 }

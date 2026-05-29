@@ -2,6 +2,7 @@ type Props = { data: any };
 
 export default function JointInspectionSectionPDF({ data }: Props) {
   const sousTraitants = data?.Inspection?.soustraitant || [];
+  const sousTraitantsData = data?.Entreprise?.soustraitante || [];
   const count = sousTraitants.length;
   const Societe = data?.Entreprise?.titulaire?.name || "";
   const date = data?.Inspection?.date || "";
@@ -61,24 +62,27 @@ export default function JointInspectionSectionPDF({ data }: Props) {
                       </span>
                     </div>
                   </div>
-                  {count > 0 &&
-                    Array.from({ length: count }).map((_, index) => (
-                      <div
-                        key={index}
-                        className="flex flex-row items-center space-x-3"
-                      >
-                        <div className="text-sm">
-                          Pour l'Entreprise sous-traitante {index + 1} :
-                        </div>
+                  {sousTraitantsData.length > 0 &&
+                    sousTraitantsData.map(
+                      (sousTraitant: any, index: number) => (
+                        <div
+                          key={index}
+                          className="flex flex-row items-center space-x-3"
+                        >
+                          <div className="text-sm">
+                            Pour l'Entreprise sous-traitante {index + 1} (
+                            {sousTraitant.name}) :
+                          </div>
 
-                        <div>
-                          <span className="border px-2 py-1 w-120 text-sm resize-none overflow-hidden wrap-break-words whitespace-pre-wrap leading-tight">
-                            {" "}
-                            {sousTraitants[index]}
-                          </span>
+                          <div>
+                            <span className="border px-2 py-1 w-120 text-sm resize-none overflow-hidden wrap-break-words whitespace-pre-wrap leading-tight">
+                              {" "}
+                              {sousTraitants[index]}
+                            </span>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ),
+                    )}
                 </div>
               </div>
             </td>
