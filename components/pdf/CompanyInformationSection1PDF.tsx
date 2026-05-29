@@ -8,7 +8,12 @@ export default function CompanyInformationSection1PDF({ data }: Props) {
   const soustraitant = data?.Entreprise?.renseignement?.soustraitant || "";
 
   return (
-    <table className="w-full border-2 border-black border-collapse table-fixed mt-1">
+    <table
+      className="w-full border-2 border-black border-collapse table-fixed mt-1 "
+      style={{
+        width: "99.8%",
+      }}
+    >
       <tbody>
         {/* Ligne titre */}
         <tr>

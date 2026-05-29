@@ -32,7 +32,37 @@ export async function POST(req: Request) {
 
   const pdf = await page.pdf({
     format: "A4",
+
     printBackground: true,
+
+    displayHeaderFooter: true,
+
+    margin: {
+      top: "20mm",
+      bottom: "20mm",
+      left: "10mm",
+      right: "10mm",
+    },
+
+    headerTemplate: `
+    <div></div>
+  `,
+
+    footerTemplate: `
+    <div
+      style="
+        width: 100%;
+        font-size: 10px;
+        padding: 0 20px;
+        color: #444;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+ <span>Page&nbsp;</span><span class="pageNumber"></span><span>/</span><span class="totalPages"></span>
+    </div>
+  `,
   });
 
   await browser.close();

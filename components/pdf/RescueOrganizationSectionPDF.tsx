@@ -2,7 +2,12 @@ import { EMERGENCY_CONTACT, PRESIDENT_CONTACT } from "@/app/const/const";
 
 export default function RescueOrganizationSectionPDF() {
   return (
-    <table className="w-full border-2 border-black border-collapse table-fixed mt-1">
+    <table
+      className="w-full border-2 border-black border-collapse table-fixed mt-1"
+      style={{
+        width: "99.8%",
+      }}
+    >
       <tbody>
         {/* Ligne titre */}
         <tr>

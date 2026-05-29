@@ -68,7 +68,12 @@ export default function AmianteRiskPDF({ data }: Props) {
       </div>
 
       {/* Tableau Unique Structuré */}
-      <table className="w-full border-2 border-black border-collapse table-fixed mt-1">
+      <table
+        className="w-full border-2 border-black border-collapse table-fixed mt-1"
+        style={{
+          width: "99.8%",
+        }}
+      >
         {/* Redéfinition des largeurs (Total: 100% réparti sur 4 colonnes) */}
         <colgroup>
           <col className="w-[38%]" />

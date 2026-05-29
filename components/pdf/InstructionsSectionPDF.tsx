@@ -1,7 +1,12 @@
 export default function InstructionsSectionPDF() {
   return (
     <>
-      <table className="w-full border-2 border-black border-collapse table-fixed mt-3 mb-4 text-sm">
+      <table
+        className="w-full border-2 border-black border-collapse table-fixed mt-3 mb-4 text-sm"
+        style={{
+          width: "99.8%",
+        }}
+      >
         <tbody>
           <tr>
             <td className="border border-black p-2">

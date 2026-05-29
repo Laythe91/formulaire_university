@@ -40,91 +40,102 @@ export default function ExecutionConditionSection() {
   return (
     <table className="w-full border-2 border-black border-collapse table-fixed mt-1">
       <tbody>
-        {/* Ligne titre */}
         <tr>
           <td className="border border-black p-2" colSpan={3}>
             {/* Titre */}
-            <div className="font-bold uppercase underline text-sm mb-1">
+            <div className="font-bold uppercase underline text-sm mb-2">
               Condition d'éxécution
             </div>
 
-            {/* Contenu */}
-            <div className="flex flex-col">
+            {/* Section accès */}
+            <div className="flex flex-col gap-y-2">
               <span className="text-sm">Accès, occupation des lieux :</span>
 
-              <label className="text-sm flex items-start pl-20 leading-snug">
-                <input
-                  type="checkbox"
-                  checked={existante}
-                  onChange={(e) =>
-                    handleExclusive("existante", e.target.checked)
-                  }
-                  className="scale-75 accent-black mt-1 w-4 shrink-0"
-                />
-                Protections collectives existantes
-              </label>
+              <div className="grid grid-cols-1 gap-y-2 pl-20">
+                <label className="text-sm flex items-center gap-1 leading-snug">
+                  <input
+                    type="checkbox"
+                    checked={existante}
+                    onChange={(e) =>
+                      handleExclusive("existante", e.target.checked)
+                    }
+                    className="scale-75 accent-black w-4 shrink-0"
+                  />
+                  Protections collectives existantes
+                </label>
 
-              <label className="text-sm flex items-start pl-20 leading-snug">
-                <input
-                  type="checkbox"
-                  checked={inexistante}
-                  onChange={(e) =>
-                    handleExclusive("inexistante", e.target.checked)
-                  }
-                  className="scale-75 accent-black mt-1 w-4 shrink-0"
-                />
-                Protections collectives inexistantes
-              </label>
+                <label className="text-sm flex items-center gap-1 leading-snug">
+                  <input
+                    type="checkbox"
+                    checked={inexistante}
+                    onChange={(e) =>
+                      handleExclusive("inexistante", e.target.checked)
+                    }
+                    className="scale-75 accent-black w-4 shrink-0"
+                  />
+                  Protections collectives inexistantes
+                </label>
 
-              <label className="text-sm flex items-start pl-20 leading-snug">
-                <input
-                  type="checkbox"
-                  {...register("Condition.3.state")}
-                  className="scale-75 accent-black mt-1 w-4 shrink-0"
-                />
-                Protections individuelles EPI à définir précisément dans le
-                présent plan de prévention
-              </label>
+                <label className="text-sm flex items-center gap-1 leading-snug">
+                  <input
+                    type="checkbox"
+                    {...register("Condition.3.state")}
+                    className="scale-75 accent-black w-4 shrink-0"
+                  />
+                  Protections individuelles EPI à définir précisément dans le
+                  présent plan de prévention
+                </label>
+              </div>
+
+              {/* Documents */}
               <span className="text-sm font-bold mt-3">
                 Documents à fournir et à presenter le jour de l'opération :
               </span>
-              <label className="text-sm flex items-start pl-20 leading-snug">
-                <input
-                  type="checkbox"
-                  {...register("Condition.4.state")}
-                  className="scale-75 accent-black mt-1 w-4 shrink-0"
-                />
 
-                <span>
-                  Certificat d’aptitude à la conduite en sécurité : Si
-                  utilisation de la nacelle CACES (décret n° 98-1084 du 2
-                  décembre 1998)
-                </span>
-              </label>
-              <label className="text-sm flex items-start pl-20 leading-snug">
-                <input
-                  type="checkbox"
-                  {...register("Condition.5.state")}
-                  className="scale-75 accent-black mt-1 w-4 shrink-0"
-                />
+              <div className="grid grid-cols-1 gap-y-2 pl-20">
+                <label className="text-sm flex items-center gap-1 leading-snug">
+                  <input
+                    type="checkbox"
+                    {...register("Condition.4.state")}
+                    className="scale-75 accent-black w-4 shrink-0"
+                  />
 
-                <span>
-                  Certificat de qualification professionnelle :
-                  <span className="font-bold ml-1">
-                    Habilitation électrique – Titre d’habilitation électrique à
-                    fournir avec le présent Plan de Prévention
+                  <span>
+                    Certificat d’aptitude à la conduite en sécurité : Si
+                    utilisation de la nacelle CACES (décret n° 98-1084 du 2
+                    décembre 1998)
                   </span>
-                </span>
-              </label>
-              <label className="text-sm flex items-start pl-20 leading-snug">
-                <input
-                  type="checkbox"
-                  {...register("Condition.6.state")}
-                  className="scale-75 accent-black mt-1 w-4 shrink-0"
-                />
-                Sauveteur Secouriste du Travail – SST (Cf Décret n° 2004-924 du
-                1er septembre 2004)
-              </label>
+                </label>
+
+                <label className="text-sm flex items-center gap-1 leading-snug">
+                  <input
+                    type="checkbox"
+                    {...register("Condition.5.state")}
+                    className="scale-75 accent-black w-4 shrink-0"
+                  />
+
+                  <span>
+                    Certificat de qualification professionnelle :
+                    <span className="font-bold ml-1">
+                      Habilitation électrique – Titre d’habilitation électrique
+                      à fournir avec le présent Plan de Prévention
+                    </span>
+                  </span>
+                </label>
+
+                <label className="text-sm flex items-center gap-1 leading-snug">
+                  <input
+                    type="checkbox"
+                    {...register("Condition.6.state")}
+                    className="scale-75 accent-black w-4 shrink-0"
+                  />
+
+                  <span>
+                    Sauveteur Secouriste du Travail – SST (Cf Décret n° 2004-924
+                    du 1er septembre 2004)
+                  </span>
+                </label>
+              </div>
             </div>
           </td>
         </tr>

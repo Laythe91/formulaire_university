@@ -9,7 +9,12 @@ export default function JointInspectionSectionPDF({ data }: Props) {
   const titulaire = data?.Inspection?.titulaire || "";
 
   return (
-    <table className="w-full border-2 border-black border-collapse table-fixed mt-4">
+    <table
+      className="w-full border-2 border-black border-collapse table-fixed mt-4"
+      style={{
+        width: "99.8%",
+      }}
+    >
       <tbody>
         {/* Ligne titre */}
         <tr>

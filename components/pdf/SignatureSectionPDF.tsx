@@ -20,7 +20,12 @@ export default function SignatureSectionPDF({ data }: Props) {
           les obligations et mesures de prévention qu'il contient.
         </span>
       </div>
-      <table className="w-full border-2 border-black border-collapse table-fixed mt-3 text-sm">
+      <table
+        className="w-full border-2 border-black border-collapse table-fixed mt-3 text-sm"
+        style={{
+          width: "99.8%",
+        }}
+      >
         <tbody>
           {/* Ligne principale */}
           <tr>

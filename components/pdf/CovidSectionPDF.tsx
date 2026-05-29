@@ -7,7 +7,12 @@ export default function CovidSectionPDF() {
           COVID 19 – Mise à jour du Plan de Prévention
         </h2>
       </div>
-      <table className="w-full border-2 border-black border-collapse table-fixed mt-3 text-sm">
+      <table
+        className="w-full border-2 border-black border-collapse table-fixed mt-3 text-sm"
+        style={{
+          width: "99.8%",
+        }}
+      >
         <thead>
           <tr className="bg-gray-100">
             {/* En-têtes */}

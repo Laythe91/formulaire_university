@@ -20,7 +20,12 @@ export default function RiskChoicesPDF({ data }: Props) {
 
   return (
     <>
-      <table className="w-full border-2 border-black border-collapse table-fixed mt-3">
+      <table
+        className="w-full border-2 border-black border-collapse table-fixed mt-3"
+        style={{
+          width: "99.8%",
+        }}
+      >
         <tbody>
           {/* Ligne titre */}
           <tr>

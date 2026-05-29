@@ -18,7 +18,7 @@ export default function BottomHeaderSection({ data }: Props) {
         </div>
       </div>
 
-      <div className="text-center font-bold uppercase mt-1 break-word whitespace-normal">
+      <div className="text-center font-bold uppercase mt-1 wrap-break-words whitespace-pre-wrap">
         {nomSociete}
       </div>
 

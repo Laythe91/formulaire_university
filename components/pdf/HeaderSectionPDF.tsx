@@ -12,7 +12,12 @@ export default function HeaderSectionPDF({ data }: Props) {
   const nomSociete = data?.Entreprise?.titulaire?.name || "";
 
   return (
-    <table className="w-full border-2 border-black border-collapse table-fixed">
+    <table
+      className="w-full border-2 border-black border-collapse table-fixed"
+      style={{
+        width: "99.8%",
+      }}
+    >
       <tbody>
         <tr>
           {/* =========================

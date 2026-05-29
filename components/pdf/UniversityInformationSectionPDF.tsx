@@ -10,7 +10,12 @@ export default function UniversityInformationSectionPDF({ data }: Props) {
   const phone2 = data?.UniversityInformation?.phone2 || "";
 
   return (
-    <table className="w-full border-2 border-black border-collapse table-fixed mt-1">
+    <table
+      className="w-full border-2 border-black border-collapse table-fixed mt-1"
+      style={{
+        width: "99.8%",
+      }}
+    >
       <tbody>
         {/* Ligne titre */}
         <tr>

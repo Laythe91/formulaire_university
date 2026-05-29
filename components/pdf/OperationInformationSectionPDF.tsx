@@ -18,7 +18,12 @@ export default function OperationInformationSection({ data }: Props) {
   }
 
   return (
-    <table className="w-full border-2 border-black border-collapse table-fixed mt-3">
+    <table
+      className="w-full border-2 border-black border-collapse table-fixed mt-3"
+      style={{
+        width: "99.8%",
+      }}
+    >
       <tbody>
         {/* Ligne titre */}
         <tr>
@@ -65,7 +70,12 @@ export default function OperationInformationSection({ data }: Props) {
               </label>
 
               <label className="text-sm flex items-center gap-1 leading-snug">
-                <input type="checkbox" checked={danger} readOnly />
+                <input
+                  type="checkbox"
+                  checked={danger}
+                  readOnly
+                  className="scale-75 accent-black w-4 shrink-0"
+                />
                 Travaux dangereux
               </label>
             </div>
