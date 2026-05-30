@@ -15,7 +15,7 @@ export default function CovidSectionPDF() {
           }}
         >
           <thead>
-            <tr className="bg-gray-100">
+            <tr className="bg-gray-100 pdf-section">
               {/* En-têtes */}
               <th className="border border-black p-2 font-bold uppercase text-sm text-center w-1/3">
                 Risque
@@ -28,7 +28,7 @@ export default function CovidSectionPDF() {
           </thead>
           <tbody>
             {/* Ligne 1 */}
-            <tr>
+            <tr className="pdf-section">
               <td className="border border-black p-2 align-top ">
                 {/* Écris le risque 1 ici */}
                 Exposition des compagnons au COVID 19
@@ -53,7 +53,7 @@ export default function CovidSectionPDF() {
             </tr>
 
             {/* Ligne 2 */}
-            <tr>
+            <tr className="pdf-section">
               <td className="border border-black p-2 align-top ">
                 Mon personnel a été exposé lors d’une intervention chez un
                 client diagnostique positif au COVID 19 ou par un de ses
@@ -71,7 +71,7 @@ export default function CovidSectionPDF() {
             </tr>
 
             {/* Ligne 3 */}
-            <tr>
+            <tr className="pdf-section">
               <td className="border border-black p-2 align-top ">
                 Il manque des collaborateurs sur le chantier pour différentes
                 causes (absence pour cause de maladie, confinement à la maison,
@@ -98,7 +98,7 @@ export default function CovidSectionPDF() {
             </tr>
 
             {/* Ligne 4 */}
-            <tr>
+            <tr className="pdf-section">
               <td className="border border-black p-2 align-top ">
                 Il manque des collaborateurs compétents (possédant des
                 habilitations spécifiques ou le CACES®)
@@ -120,7 +120,7 @@ export default function CovidSectionPDF() {
             </tr>
 
             {/* Ligne 5 */}
-            <tr>
+            <tr className="pdf-section">
               <td className="border border-black p-2 align-top ">
                 Il manque des matériaux de construction
               </td>
@@ -136,7 +136,7 @@ export default function CovidSectionPDF() {
             </tr>
 
             {/* Ligne 6 */}
-            <tr>
+            <tr className="pdf-section">
               <td className="border border-black p-2 align-top ">
                 Il manque des matériels (de levage, électroportatif…)
               </td>
@@ -150,7 +150,7 @@ export default function CovidSectionPDF() {
             </tr>
 
             {/* Ligne 7 */}
-            <tr>
+            <tr className="pdf-section">
               <td className="border border-black p-2 align-top ">
                 Il manque les EPI obligatoires sur le chantier, comme des
                 masques ou des gants, obligatoires pour certaines opérations

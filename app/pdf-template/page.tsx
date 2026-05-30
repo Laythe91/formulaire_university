@@ -20,9 +20,20 @@ import { useEffect, useState } from "react";
 export default function PdfTemplate() {
   const [data, setData] = useState<any>(null);
 
+  /*
   useEffect(() => {
     const injected = (window as any).formData;
     setData(injected);
+
+    console.log(data);
+  }, []);
+*/
+  useEffect(() => {
+    const injected = (window as any).formData;
+
+    if (injected) {
+      setData(injected);
+    }
     console.log(data);
   }, []);
 

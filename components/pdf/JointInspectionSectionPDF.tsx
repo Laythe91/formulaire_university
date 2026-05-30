@@ -38,12 +38,12 @@ export default function JointInspectionSectionPDF({ data }: Props) {
               </div>
               <div className="mx-10">
                 <div className="flex flex-col space-y-2 mt-2">
-                  <div className="flex flex-row items-center space-x-1">
+                  <div className="flex flex-row items-center">
                     <div className=" text-sm ">
                       Pour l'Université Paris VIII : {"  "}
                     </div>
                     <div>
-                      <span className="py-1 w-125 text-sm resize-none overflow-hidden wrap-break-words whitespace-pre-wrap leading-tight">
+                      <span className="w-125 text-sm resize-none overflow-hidden wrap-break-words whitespace-pre-wrap leading-tight">
                         {" "}
                         {university}
                       </span>
@@ -64,7 +64,7 @@ export default function JointInspectionSectionPDF({ data }: Props) {
                       (sousTraitant: any, index: number) => (
                         <div
                           key={index}
-                          className="flex flex-row items-center space-x-1"
+                          className="flex flex-row items-center "
                         >
                           <div className="text-sm">
                             Pour l'Entreprise sous-traitante {index + 1} (
