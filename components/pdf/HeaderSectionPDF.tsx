@@ -49,9 +49,9 @@ export default function HeaderSectionPDF({ data }: Props) {
               className="border border-black p-1 align-middle w-1/3"
               rowSpan={2}
             >
-              <div className="space-y-2 text-center">
+              <div className="space-y-1 text-center">
                 {/* PLAN */}
-                <div className="flex flex-col">
+                <div className="flex flex-col mt-2">
                   <span className="text-gray-600">Plan</span>
 
                   <div className="flex items-center justify-center gap-1">

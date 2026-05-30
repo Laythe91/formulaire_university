@@ -15,7 +15,6 @@ export const EMERGENCY_CONTACT = {
   agent_hour: "09h00 à 17h00",
 };
 
-// lib/pdf/config.ts
 export const PDF_CONFIG = {
   baseUrl: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
 };
