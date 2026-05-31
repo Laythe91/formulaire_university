@@ -1,8 +1,17 @@
 export default function Home() {
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center">
       <h1>Application Plan de Prévention</h1>
-      <a href="/formulaire">Créer un plan</a>
+
+      <span>
+        {" "}
+        <br />
+        FAIRE LA CONSIGNE ICI
+        <br />
+      </span>
+      <a className="text-red-700" href="/formulaire">
+        Créer un plan
+      </a>
     </div>
   );
 }
