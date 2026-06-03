@@ -6,7 +6,7 @@ export default function Home() {
       <span>
         {" "}
         <br />
-        FAIRE LA CONSIGNE ICI PAR MIMOUN
+        FAIRE LA CONSIGNE ICI PAR LAYTHE
         <br />
       </span>
       <a className="text-red-700" href="/formulaire">
