@@ -35,38 +35,12 @@ export default function AmianteRiskPDF({ data }: Props) {
             width: "99.8%",
           }}
         >
-          <span className="font-semibold">
-            Risque de contamination biologique et chimique
-          </span>
+          <span className="font-semibold">Risque à l'amiante</span>
           <div className="flex flex-row gap-x-3">
             {" "}
             <img
-              src="/pictograms/produit-corrosif.svg"
-              alt="Chute de plain pied"
-              width={50}
-              height={50}
-            />
-            <img
-              src="/pictograms/produit-nocif.svg"
-              alt="Chute de plain pied"
-              width={50}
-              height={50}
-            />
-            <img
-              src="/pictograms/produit-inflammable.svg"
-              alt="Chute de plain pied"
-              width={50}
-              height={50}
-            />
-            <img
-              src="/pictograms/produit-toxique.svg"
-              alt="Chute de plain pied"
-              width={50}
-              height={50}
-            />
-            <img
-              src="/pictograms/produit-explosif.svg"
-              alt="Chute de plain pied"
+              src="/pictograms/amiante.svg"
+              alt="amiante"
               width={50}
               height={50}
             />

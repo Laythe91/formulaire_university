@@ -15,37 +15,11 @@ export default function AmianteRisk() {
     <>
       {/* En-tête du Risque */}
       <div className="bg-yellow-100 border-black border-2 flex flex-col justify-center items-center text-center uppercase mt-3 h-20">
-        <span className="font-semibold">
-          Risque de contamination biologique et chimique
-        </span>
+        <span className="font-semibold">Risque à l'amiante</span>
         <div className="flex flex-row gap-x-3">
           {" "}
           <Image
-            src="/pictograms/produit-corrosif.svg"
-            alt="Chute de plain pied"
-            width={50}
-            height={50}
-          />
-          <Image
-            src="/pictograms/produit-nocif.svg"
-            alt="Chute de plain pied"
-            width={50}
-            height={50}
-          />
-          <Image
-            src="/pictograms/produit-inflammable.svg"
-            alt="Chute de plain pied"
-            width={50}
-            height={50}
-          />
-          <Image
-            src="/pictograms/produit-toxique.svg"
-            alt="Chute de plain pied"
-            width={50}
-            height={50}
-          />
-          <Image
-            src="/pictograms/produit-explosif.svg"
+            src="/pictograms/amiante.svg"
             alt="Chute de plain pied"
             width={50}
             height={50}
