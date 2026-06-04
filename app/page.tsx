@@ -105,7 +105,7 @@ export default function Home() {
         <p>Chaque plan possède un numéro unique :</p>
         <ul className="list-disc pl-6">
           <li>Annuel : 1, 2, 3, 4…</li>
-          <li>Ponctuel : P1, P2, P3, P4…</li>
+          <li>Ponctuel : P-1, P-2, P-3, P-4…</li>
         </ul>
       </section>
 
