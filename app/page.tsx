@@ -250,7 +250,11 @@ export default function Home() {
               définies.
             </p>
 
-            <p className="mt-3">Chaque entreprise doit également fournir :</p>
+            <p className="mt-3 text-justify">
+              Les entreprises intervenantes devront également mettre à
+              disposition de leurs salariés l’ensemble des documents transmis
+              par notre établissement, notamment :
+            </p>
 
             <ul className="list-disc pl-6 space-y-1">
               <li>Consignes générales de sécurité</li>
