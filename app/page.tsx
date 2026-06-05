@@ -1,8 +1,13 @@
 "use client";
-import { useState } from "react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [accepted, setAccepted] = useState(false);
+  useEffect(() => {
+    setAccepted(false);
+  }, []);
+
   return (
     <div className="max-w-4xl mx-auto p-6 flex flex-col gap-8">
       <h1 className="text-2xl font-bold text-center">
@@ -177,9 +182,16 @@ export default function Home() {
 
       <div className="text-center mb-15 uppercase">
         {accepted ? (
-          <a className="text-red-700 font-semibold" href="/formulaire">
+          <Link
+            href="/formulaire"
+            className={`font-semibold ${
+              accepted
+                ? "text-red-700"
+                : "pointer-events-none text-gray-400 cursor-not-allowed"
+            }`}
+          >
             Créer un plan
-          </a>
+          </Link>
         ) : (
           <p className="text-gray-400 text-sm">
             Vous devez accepter les consignes pour continuer
