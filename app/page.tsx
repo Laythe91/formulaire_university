@@ -166,7 +166,18 @@ export default function Home() {
               <li>Ponctuel</li>
             </ul>
 
-            <p className="mt-4">Chaque plan possède un numéro unique :</p>
+            <p className="mt-4">
+              Chaque plan possède un numéro unique.{" "}
+              <span className="font-semibold">
+                {" "}
+                Pour obtenir un numéro, il convient de renseigner le tableau
+                Excel mis à disposition sur le domaine
+              </span>
+              . Une fois le numéro attribué, celui-ci devra être reporté sur le
+              Plan de Prévention lors de sa création via l’application pour
+              l’élaboration de plan de prévention dédiée disponible sur le
+              serveur:
+            </p>
 
             <ul className="list-disc pl-6 space-y-1">
               <li>Annuel : 1, 2, 3, 4…</li>
