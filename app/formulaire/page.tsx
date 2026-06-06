@@ -1,15 +1,10 @@
 "use client";
 
 import { use, useEffect, useState } from "react";
-import {
-  useForm,
-  FormProvider,
-  Resolver,
-  SubmitHandler,
-} from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
 
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 
 import RiskSection from "@/components/forms/RiskSection";
 import HeaderSection from "@/components/forms/HeaderSection";
@@ -36,7 +31,7 @@ export default function Page({
 }: {
   params: Promise<{ type: string }>;
 }) {
-  const { type } = use(params);
+  const router = useRouter();
   const methods = useForm<FormData>({
     resolver: zodResolver(schema) as any,
     defaultValues: formDefaults,
@@ -112,7 +107,8 @@ export default function Page({
     setDate(new Date().toLocaleDateString("fr-FR"));
   }, []);
 
-  const methodDebugZODFinal = () => {
+  // POUR DEBUG
+  /* const methodDebugZODFinal = () => {
     const data = methods.getValues();
 
     const result = schema.safeParse(data);
@@ -125,12 +121,35 @@ export default function Page({
     }
 
     console.log("VALID DATA =", result.data);
-  };
+  };*/
+
+  // POUR DEBUG
+  /*
   const values = methods.watch();
 
   useEffect(() => {
     console.log("FORM VALUES:", values);
   }, [values]);
+*/
+  useEffect(() => {
+    const accepted = sessionStorage.getItem("consignes_lues");
+
+    //  console.log("accepted =", accepted);
+
+    if (accepted !== "true") {
+      router.replace("/");
+      return;
+    }
+    /*   console.log(
+      "sessionStorage avant suppression =",
+      sessionStorage.getItem("consignes_lues"),
+    );*/
+    sessionStorage.removeItem("consignes_lues");
+    /*   console.log(
+      "sessionStorage après suppression =",
+      sessionStorage.getItem("consignes_lues"),
+    );*/
+  }, [router]);
 
   return (
     <div className="w-[210mm] mx-auto mt-4">

@@ -3,6 +3,11 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Home() {
+  const handleContinue = () => {
+    sessionStorage.setItem("consignes_lues", "true");
+    window.location.href = "/formulaire";
+  };
+
   const [accepted, setAccepted] = useState(false);
   useEffect(() => {
     setAccepted(false);
@@ -307,8 +312,8 @@ export default function Home() {
 
           <div className="mt-6 text-center">
             {accepted ? (
-              <Link
-                href="/formulaire"
+              <button
+                onClick={handleContinue}
                 className="
               inline-flex
               items-center
@@ -324,7 +329,7 @@ export default function Home() {
             "
               >
                 Créer un plan
-              </Link>
+              </button>
             ) : (
               <p className="text-sm text-gray-500">
                 Vous devez accepter les consignes pour continuer
