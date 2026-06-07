@@ -73,9 +73,13 @@ export default function OperationInformationSection({ date }: Props) {
         return new Date(year, month - 1, day).getTime();
       };
 
-      validDate = startValid && endValid && parseDate(end) >= parseDate(start);
+      validDate =
+        startValid &&
+        endValid &&
+        parseDate(end) >= parseDate(start) &&
+        parseDate(start) >= parseDate(date);
     }
-    const validObjet = (objet ?? "").trim().length >= 6;
+    const validObjet = (objet ?? "").trim().length >= 10;
 
     const isValid = hasType && validDate && validObjet && planValid;
 
