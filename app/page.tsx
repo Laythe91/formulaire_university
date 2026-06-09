@@ -34,10 +34,8 @@ export default function Home() {
           </ul>
         </div>
 
-        <section className="space-y-4">
-          <h2 className="text-2xl font-semibold border-b pb-2">
-            Consigne générale
-          </h2>
+        <section className="space-y-3">
+          <h2 className="text-2xl font-semibold ">Consigne générale</h2>
 
           <h3 className="text-lg font-semibold">
             Importance du Plan de Prévention
@@ -61,9 +59,7 @@ export default function Home() {
 
         <section className="space-y-8">
           <div className="space-y-3">
-            <h3 className="text-xl font-bold border-b pb-1">
-              Informations préalables
-            </h3>
+            <h3 className="text-xl font-bold">Informations préalables</h3>
 
             <p className="font-bold">
               Avant toute création de Plan de Prévention, il est impératif de
