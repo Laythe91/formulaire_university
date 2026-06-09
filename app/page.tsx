@@ -277,7 +277,7 @@ export default function Home() {
               <li>Plan de masse du site</li>
               <li>DTA (Dossier Technique Amiante)</li>
               <li>Consignes d’urgence et d'évacuation</li>
-              <li>Autorisations spécifiques applcables à l'intervention</li>
+              <li>Autorisations spécifiques applicables à l'intervention</li>
               <li>
                 Tout autre document nécessaire à la prévention des risques liés
                 aux travaux
