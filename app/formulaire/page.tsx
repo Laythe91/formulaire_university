@@ -31,6 +31,7 @@ export default function Page({
 }: {
   params: Promise<{ type: string }>;
 }) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
   const methods = useForm<FormData>({
     resolver: zodResolver(schema) as any,
@@ -79,7 +80,7 @@ export default function Page({
   ]);
 
   const onSubmit = async (data: FormData) => {
-    console.log("PECORE");
+    setIsSubmitting(true);
 
     const res = await fetch("/api/pdf", {
       method: "POST",
@@ -99,6 +100,7 @@ export default function Page({
     a.click();
 
     console.log(data);
+    setIsSubmitting(false);
   };
 
   const [date, setDate] = useState("");
@@ -233,12 +235,19 @@ export default function Page({
                                             ========================= */}
                                               {GlobalState && (
                                                 <Button
+                                                  disabled={isSubmitting}
                                                   onClick={methods.handleSubmit(
                                                     onSubmit,
                                                   )}
-                                                  className="bg-blue-600 flex text-white px-4 py-2 mt-10 mb-10 mx-auto"
+                                                  className="bg-blue-600 text-white 
+                                                  px-4 py-2 mt-10 mb-10 mx-auto 
+                                                  flex rounded-lg transition-all 
+                                                  duration-150 hover:bg-blue-700
+                                                  active:scale-95 active:bg-blue-800"
                                                 >
-                                                  Valider
+                                                  {isSubmitting
+                                                    ? "Génération du PDF ..."
+                                                    : "Valider"}
                                                 </Button>
                                               )}
                                             </>

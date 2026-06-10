@@ -7,8 +7,12 @@ export default function SignatureSection() {
   const { count, soustraitants } = useSousTraitants();
   const NomPresident = PRESIDENT_CONTACT.name;
   const Societe = watch("Entreprise.titulaire.name");
+  const planNumber = watch("Header.planNumber.value");
   return (
     <>
+      <div className="text-center uppercase font-bold mt-6 mb-1">
+        Signatures pour le plan {planNumber}{" "}
+      </div>
       <div className="text-sm">
         Les signatures du représentant de l'entreprise utilisatrice et des
         représentants mandatés de toutes les entreprises intervenantes

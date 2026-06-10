@@ -7,18 +7,24 @@ export default function SignatureSectionPDF({ data }: Props) {
   const count = sousTraitants.length;
   const Societe = data?.Entreprise?.titulaire?.name || "";
   const NomPresident = PRESIDENT_CONTACT.name;
+  const planNumber = data?.Header?.planNumber?.value || "";
 
   return (
     <>
-      <div className="text-sm mx-5 pdf-section">
-        Les signatures du représentant de l'entreprise utilisatrice et des
-        représentants mandatés de toutes les entreprises intervenantes
-        entérinent l'accord de chacun sur le contenu de ce document comportant
-        plusieurs pages.{" "}
-        <span className="font-semibold">
-          Elles engagent chacun, pour ce qui le concerne, au respect de toutes
-          les obligations et mesures de prévention qu'il contient.
-        </span>
+      <div className="pdf-section">
+        <div className="text-center uppercase font-bold mt-6 mb-1">
+          Signatures pour le plan {planNumber}{" "}
+        </div>
+        <div className="text-sm mx-3 pdf-section">
+          Les signatures du représentant de l'entreprise utilisatrice et des
+          représentants mandatés de toutes les entreprises intervenantes
+          entérinent l'accord de chacun sur le contenu de ce document comportant
+          plusieurs pages.{" "}
+          <span className="font-semibold">
+            Elles engagent chacun, pour ce qui le concerne, au respect de toutes
+            les obligations et mesures de prévention qu'il contient.
+          </span>
+        </div>
       </div>
       <table
         className="w-full border-2 border-black border-collapse table-fixed mt-3 text-sm"
