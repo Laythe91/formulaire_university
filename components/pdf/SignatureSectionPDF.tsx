@@ -13,7 +13,7 @@ export default function SignatureSectionPDF({ data }: Props) {
     <>
       <div className="pdf-section">
         <div className="text-center uppercase font-bold mt-6 mb-1">
-          Signatures pour le plan {planNumber}{" "}
+          Signatures pour le plan n° {planNumber}{" "}
         </div>
         <div className="text-sm mx-3 pdf-section">
           Les signatures du représentant de l'entreprise utilisatrice et des

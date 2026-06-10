@@ -14,6 +14,8 @@ export default function OperationInformationSection({ date }: Props) {
   const end = watch("Operation.date.end");
   const objet = watch("Operation.objet");
   const planValid = watch("Header.planNumber.state");
+  const Travauxdangereux = watch("Operation.danger.state");
+  const plus400h = watch("Operation.plus400h.state");
   const year = date.split("/")[2];
 
   const handleExclusive = (field: "annuel" | "ponctuel", value: boolean) => {
@@ -81,12 +83,27 @@ export default function OperationInformationSection({ date }: Props) {
     }
     const validObjet = (objet ?? "").trim().length >= 10;
 
-    const isValid = hasType && validDate && validObjet && planValid;
+    const isValid =
+      hasType &&
+      validDate &&
+      validObjet &&
+      planValid &&
+      (Travauxdangereux || plus400h);
 
     setValue("Operation.state", isValid, {
       shouldDirty: false,
     });
-  }, [annuel, ponctuel, planValid, start, end, objet, setValue]);
+  }, [
+    annuel,
+    ponctuel,
+    planValid,
+    Travauxdangereux,
+    plus400h,
+    start,
+    end,
+    objet,
+    setValue,
+  ]);
 
   return (
     <table className="w-full border-2 border-black border-collapse table-fixed mt-3">

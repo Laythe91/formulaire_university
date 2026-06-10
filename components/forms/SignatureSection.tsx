@@ -11,7 +11,7 @@ export default function SignatureSection() {
   return (
     <>
       <div className="text-center uppercase font-bold mt-6 mb-1">
-        Signatures pour le plan {planNumber}{" "}
+        Signatures pour le plan n° {planNumber}{" "}
       </div>
       <div className="text-sm">
         Les signatures du représentant de l'entreprise utilisatrice et des
